@@ -1,0 +1,269 @@
+<mvc:View
+    controllerName="project1.controller.App"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    displayBlock="true">
+    
+    <Shell id="shell" appWidthLimited="false">
+        <App id="app" class="myAppDemoWT">
+            <pages>
+                <!-- Main Application Page -->
+                <Page showHeader="false" enableScrolling="false" class="sapUiContentPadding">
+                    <content>
+                        <!-- Main Layout Container -->
+                        <SplitContainer id="splitContainer" class="sapUiFullHeight">
+                            <!-- Sidebar Navigation -->
+                            <masterPages>
+                                <Page title="" showHeader="false" class="sidebar sapUiFullHeight">
+                                    <content>
+                                        <VBox class="sapUiFullHeight">
+                                            <!-- Application Header -->
+                                            <Panel class="sapUiResponsiveMargin" backgroundDesign="Transparent">
+                                                <content>
+                                                    <VBox alignItems="Center" class="sapUiMediumMargin">
+                                                        <HBox alignItems="Center" class="sapUiMediumMarginBottom">
+                                                            <core:Icon src="sap-icon://flight" size="2rem" color="#3498db" class="sapUiTinyMarginEnd"/>
+                                                            <VBox>
+                                                                <Title text="{navigation>/appInfo/name}" level="H3" class="sapUiNoMarginBottom" titleStyle="H4"/>
+                                                                <Text text="{navigation>/appInfo/description}" class="sapUiContentLabelColor"/>
+                                                            </VBox>
+                                                        </HBox>
+                                                    </VBox>
+                                                </content>
+                                            </Panel>
+
+                                            <!-- Navigation Menu -->
+                                            <List id="navigationList" 
+                                                  items="{navigation>/navigationItems}" 
+                                                  class="sapUiResponsiveMargin"
+                                                  itemPress="onNavigationItemPress">
+                                                <CustomListItem press="onNavigationItemPress" 
+                                                              class="{= ${navigation>id} === ${navigation>/activeSection} ? 'selected' : ''}"
+                                                              type="Active">
+                                                    <content>
+                                                        <HBox alignItems="Center" justifyContent="SpaceBetween" class="sapUiMediumMargin">
+                                                            <HBox alignItems="Center">
+                                                                <core:Icon src="{navigation>icon}" class="sapUiTinyMarginEnd" color="#667eea"/>
+                                                                <VBox class="sapUiTinyMarginStart">
+                                                                    <Text text="{navigation>label}" class="sapUiMediumText"/>
+                                                                    <Text text="{navigation>description}" class="sapUiContentLabelColor sapUiTinyText"/>
+                                                                </VBox>
+                                                            </HBox>
+                                                            <ObjectStatus text="{navigation>badge}" 
+                                                                         visible="{= ${navigation>badge} !== null &amp;&amp; ${navigation>badge} !== undefined}"
+                                                                         class="sapUiTinyMarginStart"
+                                                                         state="Information"/>
+                                                        </HBox>
+                                                    </content>
+                                                </CustomListItem>
+                                            </List>
+
+                                            <!-- Spacer to push user info to bottom -->
+                                            <core:HTML content="&lt;div style='flex-grow: 1;'&gt;&lt;/div&gt;"/>
+
+                                            <!-- User Information Panel -->
+                                            <Panel class="sapUiResponsiveMargin" backgroundDesign="Solid">
+                                                <content>
+                                                    <VBox class="sapUiMediumMargin">
+                                                        <HBox alignItems="Center" justifyContent="SpaceBetween">
+                                                            <HBox alignItems="Center">
+                                                                <!-- User Avatar -->
+                                                                <Button icon="sap-icon://person-placeholder" 
+                                                                        type="Transparent" 
+                                                                        class="sapUiTinyMarginEnd"
+                                                                        press="onUserProfilePress"/>
+                                                                <VBox>
+                                                                    <Text text="{navigation>/userInfo/name}" class="sapUiMediumText"/>
+                                                                    <Text text="{navigation>/userInfo/role}" class="sapUiContentLabelColor sapUiTinyText"/>
+                                                                </VBox>
+                                                            </HBox>
+                                                            <!-- Notifications Badge -->
+                                                            <Button icon="sap-icon://bell" 
+                                                                    type="Transparent" 
+                                                                    press="onShowNotifications"
+                                                                    tooltip="Notifications">
+                                                                <ObjectStatus text="{navigation>/userInfo/notifications}" 
+                                                                             visible="{= ${navigation>/userInfo/notifications} > 0}"
+                                                                             state="Error"/>
+                                                            </Button>
+                                                        </HBox>
+                                                        
+                                                        <!-- Quick Actions -->
+                                                        <HBox class="sapUiTinyMarginTop">
+                                                            <Button icon="sap-icon://refresh" 
+                                                                    type="Transparent" 
+                                                                    tooltip="Refresh" 
+                                                                    press="onQuickRefresh"
+                                                                    class="sapUiTinyMarginEnd"/>
+                                                            <Button icon="sap-icon://download" 
+                                                                    type="Transparent" 
+                                                                    tooltip="Export" 
+                                                                    press="onQuickExport"
+                                                                    class="sapUiTinyMarginEnd"/>
+                                                            <Button icon="sap-icon://log" 
+                                                                    type="Transparent" 
+                                                                    tooltip="Logout" 
+                                                                    press="onLogout"/>
+                                                        </HBox>
+                                                    </VBox>
+                                                </content>
+                                            </Panel>
+                                        </VBox>
+                                    </content>
+                                </Page>
+                            </masterPages>
+
+                            <!-- Main Content Area -->
+                            <detailPages>
+                                <Page id="mainContentPage" 
+                                      title="{navigation>/activeSection}" 
+                                      showHeader="true"
+                                      class="sapUiResponsiveContentPadding">
+                                    
+                                    <!-- Page Header -->
+                                    <customHeader>
+                                        <Toolbar class="sapUiMediumMarginBottom">
+                                            <Title text="AeroMaint - Aircraft Maintenance Dashboard" level="H2"/>
+                                            <ToolbarSpacer/>
+                                            
+                                            <!-- Global Search -->
+                                            <SearchField placeholder="Search aircraft, maintenance records..." 
+                                                       width="300px" 
+                                                       search="onGlobalSearch"
+                                                       class="sapUiTinyMarginEnd"/>
+                                            
+                                            <!-- Emergency Actions -->
+                                            <Button icon="sap-icon://alert" 
+                                                    text="Emergency" 
+                                                    type="Emphasized" 
+                                                    press="onEmergencyAlert"
+                                                    class="sapUiTinyMarginEnd"/>
+                                            
+                                            <!-- System Status -->
+                                            <Button icon="sap-icon://sys-monitor" 
+                                                    type="Transparent" 
+                                                    tooltip="System Status"
+                                                    class="sapUiTinyMarginEnd"/>
+                                        </Toolbar>
+                                    </customHeader>
+
+                                    <content>
+                                        <!-- Dynamic Content Container -->
+                                        <VBox id="mainContentContainer" class="sapUiFullHeight">
+                                            
+                                            <!-- Welcome/Dashboard Content (Default) -->
+                                            <Panel headerText="Welcome to AeroMaint" class="sapUiResponsiveMargin">
+                                                <content>
+                                                    <VBox class="sapUiMediumMargin">
+                                                        <Text text="Aircraft Maintenance Dashboard - Real-time fleet monitoring and predictive maintenance insights" 
+                                                              class="sapUiMediumMarginBottom"/>
+                                                        
+                                                        <!-- Quick Stats -->
+                                                        <HBox class="sapUiMediumMarginBottom">
+                                                            <VBox width="25%" class="sapUiMediumMarginEnd">
+                                                                <Title text="247" level="H2" class="sapUiNoMarginBottom"/>
+                                                                <Text text="Aircraft in Service" class="sapUiContentLabelColor"/>
+                                                            </VBox>
+                                                            <VBox width="25%" class="sapUiMediumMarginEnd">
+                                                                <Title text="18" level="H2" class="sapUiNoMarginBottom"/>
+                                                                <Text text="Scheduled Maintenance" class="sapUiContentLabelColor"/>
+                                                            </VBox>
+                                                            <VBox width="25%" class="sapUiMediumMarginEnd">
+                                                                <Title text="98.2%" level="H2" class="sapUiNoMarginBottom"/>
+                                                                <Text text="Compliance Rate" class="sapUiContentLabelColor"/>
+                                                            </VBox>
+                                                            <VBox width="25%">
+                                                                <Title text="4.2 hrs" level="H2" class="sapUiNoMarginBottom"/>
+                                                                <Text text="Avg. Turnaround Time" class="sapUiContentLabelColor"/>
+                                                            </VBox>
+                                                        </HBox>
+
+                                                        <!-- Action Buttons -->
+                                                        <HBox>
+                                                            <Button text="Open Fleet Dashboard" 
+                                                                    type="Emphasized" 
+                                                                    icon="sap-icon://flight"
+                                                                    class="sapUiTinyMarginEnd"/>
+                                                            <Button text="View Analytics" 
+                                                                    icon="sap-icon://bar-chart"
+                                                                    class="sapUiTinyMarginEnd"/>
+                                                            <Button text="Safety Compliance" 
+                                                                    icon="sap-icon://shield"
+                                                                    class="sapUiTinyMarginEnd"/>
+                                                        </HBox>
+                                                    </VBox>
+                                                </content>
+                                            </Panel>
+
+                                            <!-- Recent Alerts Panel -->
+                                            <Panel headerText="Recent Alerts &amp; Notifications" class="sapUiResponsiveMargin">
+                                                <content>
+                                                    <VBox class="sapUiMediumMargin">
+                                                        <!-- Alert Items -->
+                                                        <HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                                                            <core:Icon src="sap-icon://alert" color="#e74c3c" class="sapUiTinyMarginEnd"/>
+                                                            <VBox class="sapUiTinyMarginStart">
+                                                                <Text text="Critical: Aircraft N789CD requires immediate brake inspection" class="sapUiMediumText"/>
+                                                                <Text text="2 minutes ago" class="sapUiContentLabelColor sapUiTinyText"/>
+                                                            </VBox>
+                                                        </HBox>
+                                                        
+                                                        <HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                                                            <core:Icon src="sap-icon://warning" color="#f39c12" class="sapUiTinyMarginEnd"/>
+                                                            <VBox class="sapUiTinyMarginStart">
+                                                                <Text text="Warning: High vibration detected on Boeing 737-800 N456AB" class="sapUiMediumText"/>
+                                                                <Text text="15 minutes ago" class="sapUiContentLabelColor sapUiTinyText"/>
+                                                            </VBox>
+                                                        </HBox>
+                                                        
+                                                        <HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                                                            <core:Icon src="sap-icon://information" color="#3498db" class="sapUiTinyMarginEnd"/>
+                                                            <VBox class="sapUiTinyMarginStart">
+                                                                <Text text="Info: Maintenance schedule updated for 3 aircraft" class="sapUiMediumText"/>
+                                                                <Text text="1 hour ago" class="sapUiContentLabelColor sapUiTinyText"/>
+                                                            </VBox>
+                                                        </HBox>
+
+                                                        <Button text="View All Alerts" class="sapUiTinyMarginTop"/>
+                                                    </VBox>
+                                                </content>
+                                            </Panel>
+
+                                            <!-- System Information -->
+                                            <Panel headerText="System Information" class="sapUiResponsiveMargin">
+                                                <content>
+                                                    <VBox class="sapUiMediumMargin">
+                                                        <HBox justifyContent="SpaceBetween" class="sapUiTinyMarginBottom">
+                                                            <Text text="Application Version:" class="sapUiMediumText"/>
+                                                            <Text text="{navigation>/appInfo/version}" class="sapUiContentLabelColor"/>
+                                                        </HBox>
+                                                        <HBox justifyContent="SpaceBetween" class="sapUiTinyMarginBottom">
+                                                            <Text text="Environment:" class="sapUiMediumText"/>
+                                                            <Text text="{navigation>/appInfo/environment}" class="sapUiContentLabelColor"/>
+                                                        </HBox>
+                                                        <HBox justifyContent="SpaceBetween" class="sapUiTinyMarginBottom">
+                                                            <Text text="Last Login:" class="sapUiMediumText"/>
+                                                            <Text text="{navigation>/userInfo/lastLogin}" class="sapUiContentLabelColor"/>
+                                                        </HBox>
+                                                        <HBox justifyContent="SpaceBetween">
+                                                            <Text text="Active User:" class="sapUiMediumText"/>
+                                                            <Text text="{navigation>/userInfo/name}" class="sapUiContentLabelColor"/>
+                                                        </HBox>
+                                                    </VBox>
+                                                </content>
+                                            </Panel>
+
+                                        </VBox>
+                                    </content>
+                                </Page>
+                            </detailPages>
+                        </SplitContainer>
+                    </content>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+    
+</mvc:View> 

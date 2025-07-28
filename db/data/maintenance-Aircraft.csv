@@ -1,14 +1,14 @@
-tailNumber;model;lastCheck;nextCheck;flightHours
-SA8880;Airbus A330;2024-09-24;2026-03-27;2847
-KE2815;Airbus A350;2025-01-30;2026-01-28;3714
-DL6343;Airbus A350;2024-08-16;2025-07-11;1122
-QR5924;Airbus A320;2024-08-14;2025-07-19;1289
-AF1454;Boeing 737;2025-01-19;2025-11-20;4439
-ET4010;Boeing 747;2024-11-17;2026-01-28;883
-SK3823;Airbus A330;2024-12-12;2026-01-13;1723
-LA9571;Airbus A330;2024-06-26;2025-06-12;137
-AA7291;Airbus A320;2024-09-09;2025-06-06;4763
-BA8817;Boeing 737;2024-10-12;2025-11-26;1935
+tailNumber;model;lastCheck;nextCheck;flightHours;engineTemperature;vibrationLevel;hydraulicPressure;brakeWearPercent;oilParticleCount;weatherStressIndex;flightHoursSinceLastMaintenance;aircraftAgeYears;flightCycles;riskScore;mtbf;nextMaintenanceEstimate;alertStatus;thresholdExceeded;scheduledMaintenanceDate;maintenanceStatus;scheduledBy
+SA8880;Airbus A330;2024-09-24;2026-03-27;2847;87.2;1.1;2850;45.2;12;0.3;847;8.5;1247;35.2;1200;2025-06-15;Normal;false;2025-06-15;Scheduled;Maintenance Team A
+KE2815;Airbus A350;2025-01-30;2026-01-28;3714;92.8;0.8;3100;38.7;8;0.2;714;5.2;1714;28.5;1500;2025-08-20;Normal;false;2025-08-20;Scheduled;Maintenance Team B
+DL6343;Airbus A350;2024-08-16;2025-07-11;1122;78.5;0.6;2950;22.1;5;0.1;122;3.8;522;15.8;1800;2025-10-12;Normal;false;2025-10-12;Scheduled;Maintenance Team C
+QR5924;Airbus A320;2024-08-14;2025-07-19;1289;95.2;1.4;2700;52.8;18;0.4;289;6.1;689;42.1;1100;2025-05-28;Warning;true;2025-05-28;Scheduled;Maintenance Team A
+AF1454;Boeing 737;2025-01-19;2025-11-20;4439;98.7;1.6;3200;78.9;25;0.5;439;12.3;2439;67.8;900;2025-03-15;Critical;true;2025-03-15;Overdue;Maintenance Team B
+ET4010;Boeing 747;2024-11-17;2026-01-28;883;82.1;0.7;3000;28.4;7;0.2;83;4.5;383;18.9;1600;2025-12-10;Normal;false;2025-12-10;Scheduled;Maintenance Team C
+SK3823;Airbus A330;2024-12-12;2026-01-13;1723;89.3;1.0;2900;41.2;11;0.3;723;7.2;923;32.1;1300;2025-07-22;Normal;false;2025-07-22;Scheduled;Maintenance Team A
+LA9571;Airbus A330;2024-06-26;2025-06-12;137;75.8;0.5;2800;15.6;3;0.1;37;2.1;137;8.5;2000;2025-09-15;Normal;false;2025-09-15;Scheduled;Maintenance Team B
+AA7291;Airbus A320;2024-09-09;2025-06-06;4763;101.2;1.8;3300;85.2;32;0.6;763;15.7;2763;78.9;800;2025-02-28;Critical;true;2025-02-28;Overdue;Maintenance Team C
+BA8817;Boeing 737;2024-10-12;2025-11-26;1935;91.5;1.2;3050;48.7;14;0.3;935;9.8;935;38.4;1200;2025-06-08;Warning;true;2025-06-08;Scheduled;Maintenance Team A
 AF8764;Boeing 747;2025-04-15;2026-02-04;1537
 WN2726;Airbus A320;2025-03-09;2025-12-13;4444
 AC1756;Airbus A350;2025-04-24;2025-12-15;3909

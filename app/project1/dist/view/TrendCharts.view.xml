@@ -1,0 +1,176 @@
+<mvc:View
+    controllerName="project1.controller.ChartController"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:layout="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+    height="100%">
+    
+    <Page title="Sensor Trend Analysis" showHeader="true">
+        <content>
+            <layout:Grid defaultSpan="XL6 L6 M12 S12" class="sapUiSmallMargin">
+                
+                <!-- Engine Temperature Trend Chart -->
+                <Panel headerText="Engine Temperature Trend" class="sapUiSmallMargin">
+                    <content>
+                        <viz:VizFrame
+                            id="temperatureChart"
+                            width="100%"
+                            height="300px"
+                            uiConfig="{applicationSet:'fiori'}"
+                            vizType="line"
+                            vizProperties="{
+                                plotArea: {
+                                    dataLabel: {
+                                        visible: true,
+                                        formatString: '%.1f°C'
+                                    }
+                                },
+                                title: {
+                                    visible: true,
+                                    text: 'Engine Temperature Over Time'
+                                },
+                                xAxis: {
+                                    title: {
+                                        visible: true,
+                                        text: 'Time'
+                                    }
+                                },
+                                yAxis: {
+                                    title: {
+                                        visible: true,
+                                        text: 'Temperature (°C)'
+                                    }
+                                }
+                            }">
+                        </viz:VizFrame>
+                        
+                        <!-- Temperature Status Indicator -->
+                        <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiTinyMarginTop">
+                            <VBox>
+                                <Text text="Current Temperature:" class="sapUiTinyMarginBottom"/>
+                                <ObjectStatus
+                                    text="{temperatureModel>/currentValue}°C"
+                                    state="{= ${temperatureModel>/currentValue} > 95 ? 'Error' : ${temperatureModel>/currentValue} > 90 ? 'Warning' : 'Success'}"
+                                    icon="{= ${temperatureModel>/currentValue} > 95 ? 'sap-icon://alert' : ${temperatureModel>/currentValue} > 90 ? 'sap-icon://warning' : 'sap-icon://accept'}"
+                                />
+                            </VBox>
+                            <VBox>
+                                <Text text="Threshold:" class="sapUiTinyMarginBottom"/>
+                                <Text text="95°C" class="sapUiTinyMarginBottom"/>
+                            </VBox>
+                        </HBox>
+                    </content>
+                </Panel>
+                
+                <!-- Vibration Level Trend Chart -->
+                <Panel headerText="Vibration Level Trend" class="sapUiSmallMargin">
+                    <content>
+                        <viz:VizFrame
+                            id="vibrationChart"
+                            width="100%"
+                            height="300px"
+                            uiConfig="{applicationSet:'fiori'}"
+                            vizType="line"
+                            vizProperties="{
+                                plotArea: {
+                                    dataLabel: {
+                                        visible: true,
+                                        formatString: '%.2fg'
+                                    }
+                                },
+                                title: {
+                                    visible: true,
+                                    text: 'Vibration Level Over Time'
+                                },
+                                xAxis: {
+                                    title: {
+                                        visible: true,
+                                        text: 'Time'
+                                    }
+                                },
+                                yAxis: {
+                                    title: {
+                                        visible: true,
+                                        text: 'Vibration (g-force)'
+                                    }
+                                }
+                            }">
+                        </viz:VizFrame>
+                        
+                        <!-- Vibration Status Indicator -->
+                        <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiTinyMarginTop">
+                            <VBox>
+                                <Text text="Current Vibration:" class="sapUiTinyMarginBottom"/>
+                                <ObjectStatus
+                                    text="{vibrationModel>/currentValue}g"
+                                    state="{= ${vibrationModel>/currentValue} > 1.5 ? 'Error' : ${vibrationModel>/currentValue} > 1.2 ? 'Warning' : 'Success'}"
+                                    icon="{= ${vibrationModel>/currentValue} > 1.5 ? 'sap-icon://alert' : ${vibrationModel>/currentValue} > 1.2 ? 'sap-icon://warning' : 'sap-icon://accept'}"
+                                />
+                            </VBox>
+                            <VBox>
+                                <Text text="Threshold:" class="sapUiTinyMarginBottom"/>
+                                <Text text="1.5g" class="sapUiTinyMarginBottom"/>
+                            </VBox>
+                        </HBox>
+                    </content>
+                </Panel>
+                
+            </layout:Grid>
+            
+            <!-- Chart Controls -->
+            <Panel headerText="Chart Controls" class="sapUiSmallMargin">
+                <content>
+                    <HBox justifyContent="Start" alignItems="Center" class="sapUiSmallMargin">
+                        <Label text="Time Range:" class="sapUiTinyMarginEnd"/>
+                        <Select
+                            id="timeRangeSelect"
+                            width="150px"
+                            class="sapUiTinyMarginEnd"
+                            items="{
+                                path: '/timeRanges'
+                            }">
+                            <core:Item key="{key}" text="{text}"/>
+                        </Select>
+                        
+                        <Label text="Aircraft:" class="sapUiTinyMarginEnd"/>
+                        <Select
+                            id="aircraftSelect"
+                            width="200px"
+                            class="sapUiTinyMarginEnd"
+                            items="{
+                                path: '/aircraft'
+                            }">
+                            <core:Item key="{tailNumber}" text="{tailNumber} - {model}"/>
+                        </Select>
+                        
+                        <Button
+                            text="Refresh Data"
+                            icon="sap-icon://refresh"
+                            press="onRefreshData"
+                            class="sapUiTinyMarginEnd"/>
+                        
+                        <Button
+                            text="Export Data"
+                            icon="sap-icon://download"
+                            press="onExportData"/>
+                    </HBox>
+                </content>
+            </Panel>
+            
+        </content>
+        
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer/>
+                <Button
+                    text="Back to Dashboard"
+                    icon="sap-icon://home"
+                    press="onBackToDashboard"/>
+            </Toolbar>
+        </footer>
+    </Page>
+    
+</mvc:View> 

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Debug ComponentSupport</title>
+    <script
+        id="sap-ui-bootstrap"
+        src="https://sapui5.hana.ondemand.com/1.136.2/resources/sap-ui-core.js"
+        data-sap-ui-theme="sap_horizon"
+        data-sap-ui-libs="sap.m"
+        data-sap-ui-resource-roots='{
+            "project1": "./"
+        }'
+        data-sap-ui-on-init="module:sap/ui/core/ComponentSupport"
+        data-sap-ui-async="true">
+    </script>
+    <script>
+        // Simplified debug logging
+        sap.ui.getCore().attachInit(function() {
+            console.log("✅ UI5 Core Initialized");
+        });
+        
+        // Monitor ComponentSupport with better timing
+        setTimeout(function() {
+            console.log("📁 Checking controller files...");
+            console.log("🎯 Expected files:");
+            console.log("   - App.controller.js");
+            console.log("   - Dashboard.controller.js");
+        }, 2000);
+    </script>
+</head>
+<body class="sapUiBody">
+    <h1>ComponentSupport Debug Test</h1>
+    <div id="content">
+        <div
+            data-sap-ui-component
+            data-name="project1"
+            data-id="debugContainer"
+            data-settings='{"id": "debugComponent"}'>
+            Loading component...
+        </div>
+    </div>
+</body>
+</html> 

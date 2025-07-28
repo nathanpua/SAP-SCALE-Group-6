@@ -32,11 +32,6 @@
       "desktop": true,
       "tablet": true,
       "phone": false
-    },
-    "flexibilityServices": {
-      "js": [
-        "sap/ui/fl/apply/_internal/connectors/JsConnector"
-      ]
     }
   },
   "sap.ui5": {
@@ -58,7 +53,6 @@
         "sap.ui.core": {},
         "sap.m": {},
         "sap.ui.layout": {},
-
         "sap.suite.ui.generic.template": {},
         "sap.suite.ui.commons": {},
         "sap.viz": {},

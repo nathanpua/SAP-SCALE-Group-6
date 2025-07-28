@@ -1,32 +1,53 @@
 using MaintenanceService as service from '../../srv/cat-service';
+
 annotate service.Aircraft with @(
     UI.FieldGroup #GeneratedGroup : {
         $Type : 'UI.FieldGroupType',
         Data : [
             {
                 $Type : 'UI.DataField',
-                Label : 'tailNumber',
+                Label : 'Tail Number',
                 Value : tailNumber,
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'model',
+                Label : 'Model',
                 Value : model,
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'lastCheck',
+                Label : 'Last Check',
                 Value : lastCheck,
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'nextCheck',
+                Label : 'Next Check',
                 Value : nextCheck,
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'flightHours',
+                Label : 'Flight Hours',
                 Value : flightHours,
+            },
+            {
+                $Type : 'UI.DataField',
+                Label : 'Risk Score',
+                Value : riskScore,
+            },
+            {
+                $Type : 'UI.DataField',
+                Label : 'Alert Status',
+                Value : alertStatus,
+            },
+            {
+                $Type : 'UI.DataField',
+                Label : 'Next Maintenance',
+                Value : nextMaintenanceEstimate,
+            },
+            {
+                $Type : 'UI.DataField',
+                Label : 'Maintenance Status',
+                Value : maintenanceStatus,
             }
         ],
     },
@@ -37,6 +58,19 @@ annotate service.Aircraft with @(
             Label : 'General Information',
             Target : '@UI.FieldGroup#GeneratedGroup',
         },
+    ],
+    UI.SelectionFields : [
+        tailNumber,
+        model,
+        alertStatus,
+        riskScore,
+        engineTemperature,
+        vibrationLevel,
+        thresholdExceeded,
+        maintenanceStatus,
+        lastCheck,
+        nextCheck,
+        nextMaintenanceEstimate
     ]
 );
 

@@ -1,0 +1,1715 @@
+/* SAP UI5 Aircraft Maintenance Dashboard Styles - Modern Design */
+
+/* Namespace all custom styles to avoid conflicts */
+.project1-dashboard .sapUiView {
+    height: 100%;
+    background: #f8f9fa;
+}
+
+/* SplitContainer Layout Fixes */
+.sapMSplitContainer {
+    height: 100% !important;
+    width: 100% !important;
+}
+
+.sapMSplitContainer .sapMSplitContainerMaster {
+    width: 320px !important;
+    min-width: 280px !important;
+    max-width: 400px !important;
+    border-right: 1px solid #dee2e6 !important;
+    background: #f8f9fa !important;
+}
+
+.sapMSplitContainer .sapMSplitContainerDetail {
+    flex: 1 !important;
+    min-width: 0 !important;
+    background: white !important;
+}
+
+/* Ensure proper layout for the SplitContainer */
+.sapMSplitContainer .sapMSplitContainerMaster .sapMPage {
+    height: 100% !important;
+    background: #f8f9fa !important;
+}
+
+.sapMSplitContainer .sapMSplitContainerDetail .sapMPage {
+    height: 100% !important;
+    background: white !important;
+}
+
+/* Sidebar specific styling */
+.sidebar {
+    background: #f8f9fa !important;
+    border-right: 1px solid #dee2e6 !important;
+    height: 100% !important;
+    overflow-y: auto !important;
+}
+
+.sidebar .sapMPage {
+    background: #f8f9fa !important;
+    height: 100% !important;
+}
+
+.sidebar .sapMPageContent {
+    background: #f8f9fa !important;
+    height: 100% !important;
+}
+
+/* Ensure the main content area takes full height */
+.sapMSplitContainer .sapMSplitContainerDetail .sapMPage {
+    height: 100% !important;
+    background: white !important;
+}
+
+.sapMSplitContainer .sapMSplitContainerDetail .sapMPageContent {
+    height: 100% !important;
+    background: white !important;
+}
+
+/* Dashboard Container - Use specific selectors */
+.project1-dashboard .sapMPage {
+    padding: 1rem;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Sidebar Styles - Modern SAP Fiori Design */
+.project1-dashboard .sidebar-column {
+    padding-right: 1rem;
+}
+
+.project1-dashboard .sidebar-panel {
+    background: white !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid #e9ecef !important;
+    height: calc(100vh - 2rem) !important;
+    overflow-y: auto !important;
+    position: sticky !important;
+    top: 1rem !important;
+}
+
+.project1-dashboard .sidebar-header {
+    padding: 1.5rem 1.5rem 1rem 1.5rem !important;
+    border-bottom: 1px solid #e9ecef !important;
+}
+
+.project1-dashboard .sidebar-title {
+    color: #2c3e50 !important;
+    font-weight: 600 !important;
+    font-size: 1.25rem !important;
+    margin: 0 !important;
+}
+
+.project1-dashboard .sidebar-toggle-btn {
+    border-radius: 8px !important;
+    transition: all 0.2s ease !important;
+}
+
+.project1-dashboard .sidebar-toggle-btn:hover {
+    background-color: #f8f9fa !important;
+    transform: scale(1.05) !important;
+}
+
+.project1-dashboard .sidebar-separator {
+    margin: 1rem 0 0 0 !important;
+    background-color: #e9ecef !important;
+    border-radius: 0 !important;
+    width: 100% !important;
+}
+
+.project1-dashboard .sidebar-navigation {
+    padding: 1rem 0 !important;
+}
+
+.project1-dashboard .sidebar-nav-list {
+    background: transparent !important;
+    border: none !important;
+}
+
+.project1-dashboard .sidebar-nav-list .sapMList {
+    background: transparent !important;
+}
+
+.project1-dashboard .sidebar-nav-item {
+    margin: 0.25rem 1rem !important;
+    border-radius: 8px !important;
+    border: none !important;
+    background: transparent !important;
+    transition: all 0.2s ease !important;
+}
+
+.project1-dashboard .sidebar-nav-item:hover {
+    background: #f8f9fa !important;
+    transform: translateX(4px) !important;
+}
+
+.project1-dashboard .sidebar-nav-item:active {
+    background: #e9ecef !important;
+}
+
+.project1-dashboard .sidebar-nav-content {
+    padding: 0.75rem !important;
+    width: 100% !important;
+}
+
+.project1-dashboard .sidebar-nav-icon {
+    font-size: 1.25rem !important;
+    color: #6c757d !important;
+    width: 1.5rem !important;
+    text-align: center !important;
+}
+
+.project1-dashboard .sidebar-nav-text {
+    flex: 1 !important;
+    margin-left: 0.75rem !important;
+}
+
+.project1-dashboard .sidebar-nav-title {
+    color: #2c3e50 !important;
+    font-weight: 500 !important;
+    font-size: 0.9rem !important;
+    margin: 0 !important;
+}
+
+.project1-dashboard .sidebar-nav-desc {
+    color: #6c757d !important;
+    font-size: 0.75rem !important;
+    margin: 0.25rem 0 0 0 !important;
+}
+
+.project1-dashboard .sidebar-nav-arrow {
+    font-size: 0.75rem !important;
+    color: #adb5bd !important;
+    transition: transform 0.2s ease !important;
+}
+
+.project1-dashboard .sidebar-nav-item:hover .sidebar-nav-arrow {
+    transform: translateX(2px) !important;
+}
+
+/* Quick Actions Section */
+.project1-dashboard .sidebar-quick-actions {
+    padding: 1rem 1.5rem !important;
+    border-bottom: 1px solid #e9ecef !important;
+}
+
+.project1-dashboard .sidebar-quick-actions .sapMTitle {
+    color: #2c3e50 !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    margin: 0 0 0.75rem 0 !important;
+}
+
+.project1-dashboard .quick-actions-list {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+}
+
+.project1-dashboard .quick-action-btn {
+    border-radius: 8px !important;
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    padding: 0.5rem 0.75rem !important;
+    transition: all 0.2s ease !important;
+    text-align: left !important;
+    justify-content: flex-start !important;
+}
+
+.project1-dashboard .quick-action-btn:hover {
+    background: #f8f9fa !important;
+    transform: translateX(2px) !important;
+}
+
+/* Fleet Summary Section */
+.project1-dashboard .sidebar-fleet-summary {
+    padding: 1rem 1.5rem !important;
+    border-bottom: 1px solid #e9ecef !important;
+}
+
+.project1-dashboard .sidebar-fleet-summary .sapMTitle {
+    color: #2c3e50 !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    margin: 0 0 0.75rem 0 !important;
+}
+
+.project1-dashboard .fleet-summary-stats {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+}
+
+.project1-dashboard .fleet-stat-item {
+    padding: 0.5rem 0 !important;
+    border-bottom: 1px solid #f8f9fa !important;
+}
+
+.project1-dashboard .fleet-stat-item:last-child {
+    border-bottom: none !important;
+}
+
+.project1-dashboard .fleet-stat-label {
+    color: #6c757d !important;
+    font-size: 0.85rem !important;
+    font-weight: 400 !important;
+}
+
+.project1-dashboard .fleet-stat-value {
+    color: #2c3e50 !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+}
+
+.project1-dashboard .fleet-stat-value.success {
+    color: #28a745 !important;
+}
+
+.project1-dashboard .fleet-stat-value.warning {
+    color: #ffc107 !important;
+}
+
+.project1-dashboard .fleet-stat-value.error {
+    color: #dc3545 !important;
+}
+
+/* Recent Activity Section */
+.project1-dashboard .sidebar-recent-activity {
+    padding: 1rem 1.5rem !important;
+}
+
+.project1-dashboard .sidebar-recent-activity .sapMTitle {
+    color: #2c3e50 !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    margin: 0 0 0.75rem 0 !important;
+}
+
+.project1-dashboard .recent-activity-list {
+    background: transparent !important;
+    border: none !important;
+}
+
+.project1-dashboard .recent-activity-list .sapMList {
+    background: transparent !important;
+}
+
+.project1-dashboard .recent-activity-item {
+    margin: 0.25rem 0 !important;
+    border-radius: 6px !important;
+    border: none !important;
+    background: transparent !important;
+    transition: all 0.2s ease !important;
+}
+
+.project1-dashboard .recent-activity-item:hover {
+    background: #f8f9fa !important;
+}
+
+.project1-dashboard .recent-activity-content {
+    padding: 0.5rem !important;
+    width: 100% !important;
+}
+
+.project1-dashboard .recent-activity-icon {
+    font-size: 1rem !important;
+    color: #6c757d !important;
+    width: 1.25rem !important;
+    text-align: center !important;
+    margin-top: 0.125rem !important;
+}
+
+.project1-dashboard .recent-activity-text {
+    flex: 1 !important;
+    margin-left: 0.5rem !important;
+}
+
+.project1-dashboard .recent-activity-title {
+    color: #2c3e50 !important;
+    font-weight: 500 !important;
+    font-size: 0.8rem !important;
+    margin: 0 !important;
+    line-height: 1.3 !important;
+}
+
+.project1-dashboard .recent-activity-time {
+    color: #6c757d !important;
+    font-size: 0.7rem !important;
+    margin: 0.25rem 0 0 0 !important;
+}
+
+/* Main Content Column */
+.project1-dashboard .main-content-column {
+    padding-left: 0.5rem !important;
+}
+
+/* Responsive Design for Sidebar */
+@media (max-width: 1200px) {
+    .project1-dashboard .sidebar-column {
+        padding-right: 0.5rem !important;
+    }
+    
+    .project1-dashboard .main-content-column {
+        padding-left: 0.25rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .sapMSplitContainer .sapMSplitContainerMaster {
+        width: 280px !important;
+        min-width: 250px !important;
+    }
+    
+    .project1-dashboard .sidebar-panel {
+        height: auto !important;
+        position: relative !important;
+        top: 0 !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .project1-dashboard .sidebar-column {
+        padding-right: 0 !important;
+    }
+    
+    .project1-dashboard .main-content-column {
+        padding-left: 0 !important;
+    }
+    
+    .project1-dashboard .sidebar-nav-item {
+        margin: 0.125rem 0.5rem !important;
+    }
+    
+    .project1-dashboard .sidebar-quick-actions,
+    .project1-dashboard .sidebar-fleet-summary,
+    .project1-dashboard .sidebar-recent-activity {
+        padding: 0.75rem 1rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .sapMSplitContainer .sapMSplitContainerMaster {
+        width: 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    .project1-dashboard .sidebar-panel {
+        border-radius: 8px !important;
+    }
+    
+    .project1-dashboard .sidebar-header {
+        padding: 1rem !important;
+    }
+    
+    .project1-dashboard .sidebar-nav-content {
+        padding: 0.5rem !important;
+    }
+    
+    .project1-dashboard .sidebar-nav-title {
+        font-size: 0.85rem !important;
+    }
+    
+    .project1-dashboard .sidebar-nav-desc {
+        font-size: 0.7rem !important;
+    }
+}
+
+/* Dark Theme Support */
+@media (prefers-color-scheme: dark) {
+    .project1-dashboard .sidebar-panel {
+        background: #2c3e50 !important;
+        border-color: #34495e !important;
+    }
+    
+    .project1-dashboard .sidebar-title,
+    .project1-dashboard .sidebar-nav-title,
+    .project1-dashboard .fleet-stat-value {
+        color: #ecf0f1 !important;
+    }
+    
+    .project1-dashboard .sidebar-nav-desc,
+    .project1-dashboard .fleet-stat-label,
+    .project1-dashboard .recent-activity-time {
+        color: #bdc3c7 !important;
+    }
+    
+    .project1-dashboard .sidebar-nav-item:hover,
+    .project1-dashboard .quick-action-btn:hover,
+    .project1-dashboard .recent-activity-item:hover {
+        background: #34495e !important;
+    }
+    
+    .project1-dashboard .sidebar-separator,
+    .project1-dashboard .fleet-stat-item {
+        border-color: #34495e !important;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .project1-dashboard .sidebar-panel {
+        border: 2px solid #000 !important;
+    }
+    
+    .project1-dashboard .sidebar-nav-item:hover {
+        border: 1px solid #000 !important;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    .project1-dashboard .sidebar-nav-item,
+    .project1-dashboard .sidebar-toggle-btn,
+    .project1-dashboard .quick-action-btn,
+    .project1-dashboard .sidebar-nav-arrow {
+        transition: none !important;
+    }
+    
+    .project1-dashboard .sidebar-nav-item:hover,
+    .project1-dashboard .quick-action-btn:hover {
+        transform: none !important;
+    }
+}
+
+/* Modern Dashboard Header */
+.project1-dashboard .dashboard-header-panel {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.project1-dashboard .dashboardTitle {
+    color: #2c3e50 !important;
+    font-weight: 700 !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    font-size: 2rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.project1-dashboard .dashboard-subtitle {
+    color: #6c757d !important;
+    font-size: 1rem !important;
+    font-weight: 400 !important;
+}
+
+.project1-dashboard .action-button {
+    border-radius: 8px !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+}
+
+.project1-dashboard .action-button:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Modern Metrics Grid */
+.project1-dashboard .metrics-panel {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.project1-dashboard .metrics-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 1.5rem !important;
+    padding: 1rem 0 !important;
+}
+
+.project1-dashboard .metric-card {
+    background: white !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid #e9ecef !important;
+    transition: all 0.3s ease !important;
+    overflow: hidden !important;
+}
+
+.project1-dashboard .metric-card:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+    border-color: #007bff !important;
+}
+
+.project1-dashboard .metric-card-header {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+    border-bottom: 1px solid #dee2e6 !important;
+    padding: 1rem !important;
+}
+
+.project1-dashboard .metric-content {
+    padding: 1.5rem !important;
+    text-align: center !important;
+}
+
+.project1-dashboard .metric-value {
+    font-size: 2.5rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.project1-dashboard .metric-value.success {
+    color: #28a745 !important;
+}
+
+.project1-dashboard .metric-value.warning {
+    color: #ffc107 !important;
+}
+
+.project1-dashboard .metric-value.critical {
+    color: #dc3545 !important;
+}
+
+.project1-dashboard .metric-value.neutral {
+    color: #6c757d !important;
+}
+
+.project1-dashboard .trend-text {
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    color: #6c757d !important;
+}
+
+.project1-dashboard .trend-up {
+    color: #28a745 !important;
+}
+
+.project1-dashboard .trend-down {
+    color: #dc3545 !important;
+}
+
+/* Modern Filters Panel */
+.project1-dashboard .filters-panel {
+    background: white !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid #e9ecef !important;
+    margin-bottom: 2rem !important;
+}
+
+.project1-dashboard .filters-form {
+    padding: 1.5rem !important;
+}
+
+.project1-dashboard .filter-label {
+    font-weight: 600 !important;
+    color: #495057 !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.project1-dashboard .filter-control {
+    border-radius: 8px !important;
+    border: 1px solid #ced4da !important;
+    transition: all 0.2s ease !important;
+}
+
+.project1-dashboard .filter-control:focus {
+    border-color: #007bff !important;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25) !important;
+}
+
+.project1-dashboard .filter-actions {
+    align-items: end !important;
+    padding-top: 1.5rem !important;
+}
+
+/* Fleet Status Panel */
+.project1-dashboard .fleet-status-panel {
+    background: white !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid #e9ecef !important;
+    margin-bottom: 2rem !important;
+    overflow: hidden !important;
+}
+
+.project1-dashboard .status-summary {
+    color: #6c757d !important;
+    font-size: 0.875rem !important;
+}
+
+/* Aircraft Status Grid */
+.project1-dashboard .aircraft-status-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+    gap: 1.5rem !important;
+    margin-top: 1rem !important;
+}
+
+.project1-dashboard .aircraft-status-card {
+    background: #f8f9fa !important;
+    border-radius: 8px !important;
+    padding: 1.5rem !important;
+    border: 1px solid #e9ecef !important;
+    transition: all 0.3s ease !important;
+}
+
+.project1-dashboard .aircraft-status-card:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    border-color: #007bff !important;
+}
+
+.project1-dashboard .aircraft-header {
+    margin-bottom: 1rem !important;
+}
+
+.project1-dashboard .aircraft-icon {
+    width: 2rem !important;
+    height: 2rem !important;
+    background: #007bff !important;
+    color: white !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.project1-dashboard .aircraft-tail {
+    font-weight: 600 !important;
+    color: #2c3e50 !important;
+    margin-bottom: 0.25rem !important;
+}
+
+.project1-dashboard .aircraft-model {
+    color: #6c757d !important;
+    font-size: 0.875rem !important;
+}
+
+.project1-dashboard .aircraft-status {
+    margin-bottom: 0.5rem !important;
+}
+
+.project1-dashboard .aircraft-age {
+    background: #e9ecef !important;
+    color: #495057 !important;
+    font-size: 0.75rem !important;
+    padding: 0.25rem 0.5rem !important;
+    border-radius: 4px !important;
+}
+
+.project1-dashboard .aircraft-age .sapMObjStatusText {
+    background: #e9ecef !important;
+    color: #495057 !important;
+    font-size: 0.75rem !important;
+    padding: 0.25rem 0.5rem !important;
+    border-radius: 4px !important;
+    border: 1px solid #dee2e6 !important;
+}
+
+/* Predictive Alerts */
+.project1-dashboard .predictive-alerts {
+    margin-bottom: 1rem !important;
+}
+
+.project1-dashboard .alert-list {
+    background: transparent !important;
+    border: none !important;
+}
+
+.project1-dashboard .alert-list .sapMList {
+    background: transparent !important;
+    border: none !important;
+}
+
+.project1-dashboard .alert-item {
+    padding: 0.75rem !important;
+    border-radius: 6px !important;
+    margin-bottom: 0.5rem !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+.project1-dashboard .alert-item.critical {
+    background: #f8d7da !important;
+    border: 1px solid #f5c6cb !important;
+}
+
+.project1-dashboard .alert-item.warning {
+    background: #fff3cd !important;
+    border: 1px solid #ffeaa7 !important;
+}
+
+.project1-dashboard .alert-item.critical .sapMSLITitle {
+    color: #721c24 !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+}
+
+.project1-dashboard .alert-item.warning .sapMSLITitle {
+    color: #856404 !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+}
+
+.project1-dashboard .alert-item.critical .sapMSLIImg {
+    color: #dc3545 !important;
+}
+
+.project1-dashboard .alert-item.warning .sapMSLIImg {
+    color: #ffc107 !important;
+}
+
+/* Operational Metrics Grid */
+.project1-dashboard .operational-metrics-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.project1-dashboard .metric-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+    padding: 0.75rem !important;
+    background: white !important;
+    border-radius: 6px !important;
+    border: 1px solid #e9ecef !important;
+}
+
+.project1-dashboard .metric-icon {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+    border-radius: 4px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: white !important;
+}
+
+.project1-dashboard .metric-icon.flight-hours {
+    background: #007bff !important;
+}
+
+.project1-dashboard .metric-icon.engine-temp {
+    background: #dc3545 !important;
+}
+
+.project1-dashboard .metric-icon.vibration {
+    background: #ffc107 !important;
+}
+
+.project1-dashboard .metric-icon.brake-wear {
+    background: #6f42c1 !important;
+}
+
+.project1-dashboard .metric-label {
+    font-size: 0.75rem !important;
+    color: #6c757d !important;
+    margin-bottom: 0.25rem !important;
+}
+
+.project1-dashboard .metric-value {
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    color: #2c3e50 !important;
+}
+
+.project1-dashboard .metric-value.critical {
+    color: #dc3545 !important;
+}
+
+.project1-dashboard .metric-value.warning {
+    color: #ffc107 !important;
+}
+
+/* Additional Metrics */
+.project1-dashboard .additional-metrics {
+    margin-bottom: 1rem !important;
+    padding: 1rem !important;
+    background: white !important;
+    border-radius: 6px !important;
+    border: 1px solid #e9ecef !important;
+}
+
+/* Failure History */
+.project1-dashboard .failure-history {
+    padding: 1rem !important;
+    background: white !important;
+    border-radius: 6px !important;
+    border: 1px solid #e9ecef !important;
+}
+
+.project1-dashboard .last-failure {
+    font-size: 0.875rem !important;
+    color: #495057 !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.project1-dashboard .failure-badges {
+    gap: 0.5rem !important;
+}
+
+.project1-dashboard .failure-list {
+    background: transparent !important;
+    border: none !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+    width: 100% !important;
+}
+
+.project1-dashboard .failure-list .sapMList {
+    background: transparent !important;
+    border: none !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+}
+
+.project1-dashboard .failure-list-item {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: auto !important;
+    min-width: auto !important;
+}
+
+.project1-dashboard .failure-badge {
+    font-size: 0.75rem !important;
+    padding: 0.25rem 0.5rem !important;
+    margin-right: 0.5rem !important;
+    margin-bottom: 0.25rem !important;
+}
+
+.project1-dashboard .failure-badge .sapMObjStatusText {
+    font-size: 0.75rem !important;
+    padding: 0.25rem 0.5rem !important;
+    border-radius: 4px !important;
+    border: 1px solid !important;
+}
+
+.project1-dashboard .failure-badge.minor .sapMObjStatusText {
+    background: #d1ecf1 !important;
+    color: #0c5460 !important;
+    border-color: #bee5eb !important;
+}
+
+.project1-dashboard .failure-badge.major .sapMObjStatusText {
+    background: #fff3cd !important;
+    color: #856404 !important;
+    border-color: #ffeaa7 !important;
+}
+
+.project1-dashboard .failure-badge.critical .sapMObjStatusText {
+    background: #f8d7da !important;
+    color: #721c24 !important;
+    border-color: #f5c6cb !important;
+}
+
+.project1-dashboard .no-failures {
+    color: #28a745 !important;
+    font-weight: 500 !important;
+    font-style: italic !important;
+}
+
+/* Analytics Section */
+.project1-dashboard .analytics-panel {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.project1-dashboard .analytics-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)) !important;
+    gap: 2rem !important;
+}
+
+.project1-dashboard .tnp-panel,
+.project1-dashboard .mtbf-panel {
+    background: white !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid #e9ecef !important;
+    overflow: hidden !important;
+}
+
+/* TNP Legend */
+.project1-dashboard .tnp-legend {
+    margin-bottom: 1rem !important;
+    gap: 2rem !important;
+}
+
+.project1-dashboard .legend-icon {
+    width: 1rem !important;
+    height: 1rem !important;
+    border-radius: 50% !important;
+    margin-right: 0.5rem !important;
+}
+
+.project1-dashboard .legend-icon.normal {
+    background: #28a745 !important;
+}
+
+.project1-dashboard .legend-icon.urgent {
+    background: #dc3545 !important;
+}
+
+.project1-dashboard .legend-text {
+    font-size: 0.875rem !important;
+    color: #6c757d !important;
+}
+
+/* Chart Containers */
+.project1-dashboard .tnp-chart-container,
+.project1-dashboard .mtbf-chart-container {
+    margin: 1rem 0 !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+}
+
+/* Summary Sections */
+.project1-dashboard .tnp-summary,
+.project1-dashboard .mtbf-summary {
+    margin-top: 1rem !important;
+    padding: 1rem !important;
+    background: #f8f9fa !important;
+    border-radius: 8px !important;
+    border: 1px solid #e9ecef !important;
+}
+
+.project1-dashboard .summary-label {
+    font-size: 0.875rem !important;
+    color: #6c757d !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.project1-dashboard .summary-value {
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    color: #2c3e50 !important;
+}
+
+.project1-dashboard .summary-value.urgent {
+    color: #dc3545 !important;
+}
+
+.project1-dashboard .summary-value.success {
+    color: #28a745 !important;
+}
+
+.project1-dashboard .summary-value.critical {
+    color: #dc3545 !important;
+}
+
+.project1-dashboard .chart-note {
+    font-size: 0.75rem !important;
+    color: #6c757d !important;
+    font-style: italic !important;
+    margin-top: 0.5rem !important;
+}
+
+/* Modern Table */
+.project1-dashboard .table-panel {
+    background: white !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid #e9ecef !important;
+    overflow: hidden !important;
+}
+
+.project1-dashboard .modern-table {
+    border-radius: 8px !important;
+    overflow: hidden !important;
+}
+
+.project1-dashboard .aircraft-link {
+    color: #007bff !important;
+    text-decoration: none !important;
+    font-weight: 500 !important;
+}
+
+.project1-dashboard .aircraft-link:hover {
+    color: #0056b3 !important;
+    text-decoration: underline !important;
+}
+
+.project1-dashboard .status-badge {
+    border-radius: 4px !important;
+    padding: 0.25rem 0.5rem !important;
+}
+
+.project1-dashboard .risk-score {
+    font-weight: 600 !important;
+}
+
+.project1-dashboard .failure-date {
+    color: #6c757d !important;
+    font-size: 0.875rem !important;
+}
+
+/* Dashboard Footer */
+.project1-dashboard .dashboard-footer {
+    background: white !important;
+    border-top: 1px solid #e9ecef !important;
+    padding: 1rem !important;
+}
+
+.project1-dashboard .footer-button {
+    border-radius: 8px !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+}
+
+.project1-dashboard .footer-button:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .project1-dashboard .metrics-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    
+    .project1-dashboard .aircraft-status-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    
+    .project1-dashboard .analytics-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    
+    .project1-dashboard .operational-metrics-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .project1-dashboard .dashboardTitle {
+        font-size: 1.5rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .project1-dashboard .metric-card {
+        margin: 0.5rem 0 !important;
+    }
+    
+    .project1-dashboard .aircraft-status-card {
+        padding: 1rem !important;
+    }
+    
+    .project1-dashboard .additional-metrics {
+        flex-direction: column !important;
+        gap: 1rem !important;
+    }
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+    .project1-dashboard .metric-card,
+    .project1-dashboard .aircraft-status-card,
+    .project1-dashboard .action-button,
+    .project1-dashboard .footer-button {
+        transition: none !important;
+    }
+}
+
+@media (prefers-contrast: high) {
+    .project1-dashboard .metric-card,
+    .project1-dashboard .fleet-status-panel,
+    .project1-dashboard .tnp-panel,
+    .project1-dashboard .mtbf-panel,
+    .project1-dashboard .table-panel {
+        border: 2px solid #000 !important;
+    }
+    
+    .project1-dashboard .metric-value.critical,
+    .project1-dashboard .summary-value.urgent,
+    .project1-dashboard .summary-value.critical {
+        color: #000 !important;
+        background: #ffff00 !important;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .project1-dashboard .action-button,
+    .project1-dashboard .footer-button {
+        display: none !important;
+    }
+    
+    .project1-dashboard .metric-card,
+    .project1-dashboard .fleet-status-panel,
+    .project1-dashboard .tnp-panel,
+    .project1-dashboard .mtbf-panel,
+    .project1-dashboard .table-panel {
+        box-shadow: none !important;
+        border: 1px solid #000 !important;
+        break-inside: avoid !important;
+    }
+}
+
+/* Focus States for Accessibility */
+.project1-dashboard .metric-card:focus,
+.project1-dashboard .aircraft-status-card:focus,
+.project1-dashboard .action-button:focus,
+.project1-dashboard .footer-button:focus {
+    outline: 2px solid #007bff !important;
+    outline-offset: 2px !important;
+}
+
+/* Loading States */
+.project1-dashboard .loading {
+    position: relative !important;
+    opacity: 0.7 !important;
+    pointer-events: none !important;
+}
+
+.project1-dashboard .loading::after {
+    content: "" !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    width: 2rem !important;
+    height: 2rem !important;
+    margin: -1rem 0 0 -1rem !important;
+    border: 2px solid #f3f3f3 !important;
+    border-top: 2px solid #007bff !important;
+    border-radius: 50% !important;
+    animation: project1-spin 1s linear infinite !important;
+}
+
+@keyframes project1-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Legacy Support - Keep existing styles for backward compatibility */
+.project1-dashboard .sapSuiteALPChartContainer {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    border: 1px solid #e1e5e9;
+}
+
+.project1-dashboard .sapSuiteALPTableContainer {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.project1-dashboard .sectionTitle {
+    color: #34495e !important;
+    font-weight: 600 !important;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 0.5rem;
+}
+
+.project1-dashboard .dashboardTile {
+    background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%) !important;
+    border: 1px solid #e9ecef !important;
+    border-radius: 12px !important;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    margin-bottom: 1rem;
+}
+
+.project1-dashboard .dashboardTile:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    border-color: #007bff !important;
+}
+
+.project1-dashboard .dashboardValue.success {
+    color: #28a745 !important;
+    font-weight: 700 !important;
+}
+
+.project1-dashboard .dashboardValue.error {
+    color: #dc3545 !important;
+    font-weight: 700 !important;
+}
+
+.project1-dashboard .dashboardValue.critical {
+    color: #e74c3c !important;
+    font-weight: 700 !important;
+    animation: project1-pulse 2s infinite;
+}
+
+.project1-dashboard .dashboardValue.neutral {
+    color: #6c757d !important;
+    font-weight: 600 !important;
+}
+
+.project1-dashboard .trendText {
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+}
+
+.project1-dashboard .riskScoreHigh {
+    color: #e74c3c !important;
+    font-weight: 700 !important;
+    background: #fdeded !important;
+    padding: 0.25rem 0.5rem !important;
+    border-radius: 6px !important;
+}
+
+.project1-dashboard .riskScoreMedium {
+    color: #f39c12 !important;
+    font-weight: 600 !important;
+    background: #fef9e7 !important;
+    padding: 0.25rem 0.5rem !important;
+    border-radius: 6px !important;
+}
+
+.project1-dashboard .riskScoreLow {
+    color: #27ae60 !important;
+    font-weight: 600 !important;
+    background: #eafaf1 !important;
+    padding: 0.25rem 0.5rem !important;
+    border-radius: 6px !important;
+}
+
+.project1-dashboard .riskPanelLow .sapMPanelHdr {
+    border-left: 4px solid #27ae60 !important;
+}
+
+.project1-dashboard .riskPanelMedium .sapMPanelHdr {
+    border-left: 4px solid #f39c12 !important;
+}
+
+.project1-dashboard .riskPanelHigh .sapMPanelHdr {
+    border-left: 4px solid #e74c3c !important;
+}
+
+.project1-dashboard .alertStatusCritical {
+    color: #e74c3c !important;
+    font-weight: 700 !important;
+    background: #fdeded !important;
+    padding: 0.25rem 0.5rem !important;
+    border-radius: 6px !important;
+    border: 1px solid #f5c6cb !important;
+}
+
+.project1-dashboard .alertStatusWarning {
+    color: #f39c12 !important;
+    font-weight: 600 !important;
+    background: #fef9e7 !important;
+    padding: 0.25rem 0.5rem !important;
+    border-radius: 6px !important;
+    border: 1px solid #ffeaa7 !important;
+}
+
+.project1-dashboard .alertStatusNormal {
+    color: #27ae60 !important;
+    font-weight: 600 !important;
+    background: #eafaf1 !important;
+    padding: 0.25rem 0.5rem !important;
+    border-radius: 6px !important;
+    border: 1px solid #c3e6cb !important;
+}
+
+.project1-dashboard .sensorValue {
+    font-weight: 600 !important;
+    font-size: 0.875rem !important;
+}
+
+.project1-dashboard .sensorValueCritical {
+    color: #e74c3c !important;
+}
+
+.project1-dashboard .sensorValueWarning {
+    color: #f39c12 !important;
+}
+
+.project1-dashboard .sensorValueNormal {
+    color: #27ae60 !important;
+}
+
+.project1-dashboard .sapSuiteALPFilterBar {
+    background: white !important;
+    border-radius: 8px !important;
+    padding: 1rem !important;
+    margin-bottom: 1.5rem !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.project1-dashboard .dashboardGrid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+    gap: 1.5rem !important;
+    margin-bottom: 2rem !important;
+}
+
+.project1-dashboard .vizFrameContainer {
+    background: white !important;
+    border-radius: 8px !important;
+    padding: 1.5rem !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid #e1e5e9 !important;
+}
+
+.project1-dashboard .maintenanceStatusScheduled {
+    color: #27ae60 !important;
+    font-weight: 600 !important;
+    background: #eafaf1 !important;
+    padding: 0.25rem 0.5rem !important;
+    border-radius: 4px !important;
+}
+
+.project1-dashboard .maintenanceStatusOverdue {
+    color: #e74c3c !important;
+    font-weight: 700 !important;
+    background: #fdeded !important;
+    padding: 0.25rem 0.5rem !important;
+    border-radius: 4px !important;
+    animation: project1-pulse 2s infinite !important;
+}
+
+.project1-dashboard .maintenanceStatusCompleted {
+    color: #27ae60 !important;
+    font-weight: 600 !important;
+    background: #eafaf1 !important;
+    padding: 0.25rem 0.5rem !important;
+    border-radius: 4px !important;
+}
+
+.project1-dashboard .thresholdExceeded {
+    color: #e74c3c !important;
+    font-weight: 700 !important;
+    animation: project1-pulse 2s infinite !important;
+}
+
+.project1-dashboard .thresholdNormal {
+    color: #27ae60 !important;
+    font-weight: 600 !important;
+}
+
+@keyframes project1-pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+.project1-dashboard .sapUiTable {
+    border-radius: 8px !important;
+    overflow: hidden !important;
+}
+
+.project1-dashboard .sapUiTableHdr {
+    background: #f8f9fa !important;
+    border-bottom: 2px solid #dee2e6 !important;
+}
+
+.project1-dashboard .sapUiTableRowAlternate {
+    background: #f8f9fa !important;
+}
+
+.project1-dashboard .sapUiTableRowHvr {
+    background: #e3f2fd !important;
+}
+
+.project1-dashboard .tnpUrgent {
+    color: #e74c3c !important;
+    font-weight: 700 !important;
+    background: #fdeded !important;
+    padding: 0.25rem 0.5rem !important;
+    border-radius: 4px !important;
+}
+
+.project1-dashboard .tnpNormal {
+    color: #27ae60 !important;
+    font-weight: 600 !important;
+    background: #eafaf1 !important;
+    padding: 0.25rem 0.5rem !important;
+    border-radius: 4px !important;
+}
+
+.project1-dashboard .sapMPI {
+    margin: 1rem 0 !important;
+}
+
+.project1-dashboard .sapMNumericTile {
+    border-radius: 8px !important;
+    transition: all 0.3s ease !important;
+}
+
+.project1-dashboard .sapMNumericTile:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.project1-dashboard .sapMPanel {
+    border-radius: 8px !important;
+    overflow: hidden !important;
+}
+
+.project1-dashboard .sapMPanelHdr {
+    background: #f8f9fa !important;
+    border-bottom: 1px solid #dee2e6 !important;
+    font-weight: 600 !important;
+}
+
+@media (min-width: 1024px) {
+    .project1-dashboard .sapSuiteALPContainer {
+        padding: 2rem !important;
+    }
+    
+    .project1-dashboard .dashboardGrid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+    }
+    
+    .project1-dashboard .vizFrameContainer {
+        padding: 2rem !important;
+    }
+    
+    .project1-dashboard .dashboardTitle {
+        font-size: 2.5rem !important;
+    }
+    
+    .project1-dashboard .sectionTitle {
+        font-size: 1.5rem !important;
+    }
+}
+
+@media (min-width: 1440px) {
+    .project1-dashboard .sapSuiteALPContainer {
+        padding: 3rem !important;
+        max-width: 1400px !important;
+        margin: 0 auto !important;
+    }
+    
+    .project1-dashboard .dashboardGrid {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)) !important;
+        gap: 2rem !important;
+    }
+    
+    .project1-dashboard .vizFrameContainer {
+        padding: 2.5rem !important;
+    }
+}
+
+.project1-dashboard .sapSuiteALPContainer:focus {
+    outline: 2px solid #007bff !important;
+    outline-offset: 2px !important;
+}
+
+.project1-dashboard .sapUiIcon {
+    transition: all 0.2s ease !important;
+}
+
+.project1-dashboard .sapUiIcon:hover {
+    transform: scale(1.1) !important;
+}
+
+.project1-dashboard .sapMBtn {
+    border-radius: 6px !important;
+    transition: all 0.2s ease !important;
+}
+
+.project1-dashboard .sapMBtn:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+.project1-dashboard .sapMComboBox,
+.project1-dashboard .sapMSelect {
+    border-radius: 6px !important;
+    transition: all 0.2s ease !important;
+}
+
+.project1-dashboard .sapMComboBox:focus,
+.project1-dashboard .sapMSelect:focus {
+    border-color: #007bff !important;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25) !important;
+}
+
+.project1-dashboard .status-critical {
+    color: #e74c3c !important;
+}
+
+.project1-dashboard .status-warning {
+    color: #f39c12 !important;
+}
+
+.project1-dashboard .status-normal {
+    color: #27ae60 !important;
+}
+
+.project1-dashboard .chart-container {
+    background: white !important;
+    border-radius: 8px !important;
+    padding: 1.5rem !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid #e1e5e9 !important;
+}
+
+.project1-dashboard .chart-title {
+    color: #2c3e50 !important;
+    font-weight: 600 !important;
+    margin-bottom: 1rem !important;
+    border-bottom: 2px solid #3498db !important;
+    padding-bottom: 0.5rem !important;
+}
+
+.project1-dashboard .sidebar {
+    background: #f8f9fa !important;
+    border-right: 1px solid #dee2e6 !important;
+    padding: 1rem !important;
+}
+
+.project1-dashboard .sidebar .sapMListItem {
+    border-radius: 6px !important;
+    margin-bottom: 0.5rem !important;
+    transition: all 0.2s ease !important;
+}
+
+.project1-dashboard .sidebar .sapMListItem:hover {
+    background: #e3f2fd !important;
+    transform: translateX(4px) !important;
+}
+
+.project1-dashboard .sidebar .sapMListItem.selected {
+    background: #007bff !important;
+    color: white !important;
+}
+
+/* ObjectStatus Badge Styling for App View */
+.project1-dashboard .sapUiTinyMarginStart .sapMObjStatusText {
+    background: var(--sapAccentColor1) !important;
+    color: white !important;
+    font-size: 0.75rem !important;
+    padding: 0.25rem 0.5rem !important;
+    border-radius: 12px !important;
+    border: none !important;
+    min-width: 1.5rem !important;
+    text-align: center !important;
+}
+
+.project1-dashboard .sapMBtn .sapMObjStatusText {
+    background: #dc3545 !important;
+    color: white !important;
+    font-size: 0.75rem !important;
+    padding: 0.25rem 0.5rem !important;
+    border-radius: 12px !important;
+    border: none !important;
+    min-width: 1.5rem !important;
+    text-align: center !important;
+    position: absolute !important;
+    top: -5px !important;
+    right: -5px !important;
+}
+
+/* Chart Visualizations */
+.project1-dashboard .chart-list,
+.project1-dashboard .mtbf-chart-list {
+    background: transparent !important;
+    border: none !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 1rem !important;
+    width: 100% !important;
+}
+
+.project1-dashboard .chart-list .sapMList,
+.project1-dashboard .mtbf-chart-list .sapMList {
+    background: transparent !important;
+    border: none !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 1rem !important;
+}
+
+.project1-dashboard .chart-bar-wrapper,
+.project1-dashboard .mtbf-line-item {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: auto !important;
+    min-width: auto !important;
+}
+
+.project1-dashboard .chart-bars-container {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 1rem !important;
+    align-items: end !important;
+    min-height: 250px !important;
+    padding: 1rem 0 !important;
+}
+
+.project1-dashboard .chart-bar {
+    width: 60px !important;
+    min-height: 20px !important;
+    background: linear-gradient(to top, #007bff, #0056b3) !important;
+    border-radius: 4px 4px 0 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    padding: 0.5rem 0.25rem !important;
+    position: relative !important;
+    transition: all 0.3s ease !important;
+}
+
+.project1-dashboard .chart-bar.urgent {
+    background: linear-gradient(to top, #dc3545, #c82333) !important;
+}
+
+.project1-dashboard .chart-bar-label {
+    font-size: 0.75rem !important;
+    color: white !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    margin-bottom: 0.25rem !important;
+}
+
+.project1-dashboard .chart-bar-value {
+    font-size: 0.7rem !important;
+    color: white !important;
+    text-align: center !important;
+}
+
+.project1-dashboard .mtbf-line {
+    width: 100% !important;
+    padding: 0.75rem !important;
+    border-bottom: 1px solid #e9ecef !important;
+}
+
+.project1-dashboard .mtbf-model {
+    font-weight: 600 !important;
+    color: #495057 !important;
+    font-size: 0.9rem !important;
+}
+
+.project1-dashboard .mtbf-period {
+    font-size: 0.8rem !important;
+    color: #6c757d !important;
+}
+
+.project1-dashboard .mtbf-bar {
+    height: 20px !important;
+    min-width: 20px !important;
+    background: linear-gradient(to right, #28a745, #20c997) !important;
+    border-radius: 2px !important;
+    margin-right: 0.5rem !important;
+    transition: all 0.3s ease !important;
+}
+
+.project1-dashboard .mtbf-bar.warning {
+    background: linear-gradient(to right, #ffc107, #e0a800) !important;
+}
+
+.project1-dashboard .mtbf-bar.critical {
+    background: linear-gradient(to right, #dc3545, #c82333) !important;
+}
+
+.project1-dashboard .mtbf-value {
+    font-weight: 600 !important;
+    color: #495057 !important;
+    font-size: 0.9rem !important;
+    min-width: 60px !important;
+    text-align: right !important;
+}

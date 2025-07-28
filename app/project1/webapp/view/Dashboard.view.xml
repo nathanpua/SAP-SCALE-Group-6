@@ -1,0 +1,695 @@
+<mvc:View
+    controllerName="project1.controller.Dashboard"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:table="sap.ui.table"
+    xmlns:layout="sap.ui.layout"
+    xmlns:ui="sap.ui"
+    xmlns:grid="sap.ui.layout.cssgrid"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:micro="sap.suite.ui.microchart"
+
+    class="sapUiSizeCompact">
+    
+    <Page id="dashboardPage" 
+          title="Skylink Atlas"
+          class="sapUiResponsiveContentPadding project1-dashboard"
+          backgroundDesign="Transparent"
+          showHeader="true"
+          enableScrolling="true">
+            <content>
+            <layout:Grid defaultSpan="XL12 L12 M12 S12" class="dashboard-content-grid">
+                
+                <!-- Sidebar Column -->
+                <layout:Grid defaultSpan="XL3 L3 M4 S12" class="sidebar-column">
+                    <Panel id="sidebarPanel"
+                           class="sidebar-panel" 
+                           backgroundDesign="Transparent"
+                           headerText=""
+                           expandable="false">
+                        <content>
+                            <!-- Sidebar Header -->
+                            <VBox class="sidebar-header">
+                                <HBox alignItems="Center" justifyContent="SpaceBetween" class="sapUiTinyMarginBottom">
+                                    <Title text="Navigation" level="H3" class="sidebar-title"/>
+                                    <Button id="sidebarToggleBtn"
+                                            icon="sap-icon://menu2" 
+                                            type="Transparent"
+                                            press="onToggleSidebar"
+                                            class="sidebar-toggle-btn"/>
+                                </HBox>
+                                <HBox class="sidebar-separator" height="1px" backgroundDesign="Solid"/>
+                            </VBox>
+                            
+                            <!-- Navigation Menu -->
+                            <VBox class="sidebar-navigation">
+                                <List id="sidebarNavList" 
+                                      class="sidebar-nav-list"
+                                      items="{/NavigationItems}"
+                                      showNoData="false">
+                                    <CustomListItem class="sidebar-nav-item" 
+                                                   type="Active"
+                                                   press="onNavigationItemPress">
+                                        <HBox alignItems="Center" class="sidebar-nav-content">
+                                            <core:Icon src="{icon}" 
+                                                      class="sapUiTinyMarginEnd sidebar-nav-icon"/>
+                                            <VBox class="sidebar-nav-text">
+                                                <Text text="{title}" class="sidebar-nav-title"/>
+                                                <Text text="{description}" class="sidebar-nav-desc"/>
+                                            </VBox>
+                                            <core:Icon src="sap-icon://arrow-right" 
+                                                      class="sapUiTinyMarginBegin sidebar-nav-arrow"
+                                                      visible="{= ${hasSubItems} === true}"/>
+                                        </HBox>
+                                    </CustomListItem>
+                                </List>
+                            </VBox>
+                            
+                            <!-- Quick Actions -->
+                            <VBox class="sidebar-quick-actions">
+                                <Title text="Quick Actions" level="H4" class="sapUiTinyMarginBottom"/>
+                                <VBox class="quick-actions-list">
+                                    <Button text="Add Aircraft" 
+                                            icon="sap-icon://add"
+                                            type="Transparent"
+                                            press="onAddAircraft"
+                                            class="quick-action-btn"/>
+                                    <Button text="Generate Report" 
+                                            icon="sap-icon://document-text"
+                                            type="Transparent"
+                                            press="onGenerateReport"
+                                            class="quick-action-btn"/>
+                                    <Button text="Alert Center" 
+                                            icon="sap-icon://alert"
+                                            type="Transparent"
+                                            press="onAlertCenter"
+                                            class="quick-action-btn"/>
+                                </VBox>
+                            </VBox>
+                            
+                            <!-- Fleet Summary -->
+                            <VBox class="sidebar-fleet-summary">
+                                <Title text="Fleet Summary" level="H4" class="sapUiTinyMarginBottom"/>
+                                <VBox class="fleet-summary-stats">
+                                    <HBox justifyContent="SpaceBetween" class="fleet-stat-item">
+                                        <Text text="Total Aircraft:" class="fleet-stat-label"/>
+                                        <Text text="{/FleetSummary/totalAircraft}" class="fleet-stat-value"/>
+                                    </HBox>
+                                    <HBox justifyContent="SpaceBetween" class="fleet-stat-item">
+                                        <Text text="In Service:" class="fleet-stat-label"/>
+                                        <Text text="{/FleetSummary/inService}" class="fleet-stat-value success"/>
+                                    </HBox>
+                                    <HBox justifyContent="SpaceBetween" class="fleet-stat-item">
+                                        <Text text="Maintenance:" class="fleet-stat-label"/>
+                                        <Text text="{/FleetSummary/inMaintenance}" class="fleet-stat-value warning"/>
+                                    </HBox>
+                                    <HBox justifyContent="SpaceBetween" class="fleet-stat-item">
+                                        <Text text="Critical Alerts:" class="fleet-stat-label"/>
+                                        <Text text="{/FleetSummary/criticalAlerts}" class="fleet-stat-value error"/>
+                                    </HBox>
+                                </VBox>
+                            </VBox>
+                            
+                            <!-- Recent Activity -->
+                            <VBox class="sidebar-recent-activity">
+                                <Title text="Recent Activity" level="H4" class="sapUiTinyMarginBottom"/>
+                                <List items="{/RecentActivity}" 
+                                      showNoData="false"
+                                      class="recent-activity-list">
+                                    <CustomListItem class="recent-activity-item">
+                                        <HBox alignItems="Start" class="recent-activity-content">
+                                            <core:Icon src="{icon}" 
+                                                      class="sapUiTinyMarginEnd recent-activity-icon"/>
+                                            <VBox class="recent-activity-text">
+                                                <Text text="{title}" class="recent-activity-title"/>
+                                                <Text text="{timestamp}" class="recent-activity-time"/>
+                                            </VBox>
+                                        </HBox>
+                                    </CustomListItem>
+                                </List>
+                            </VBox>
+                        </content>
+                    </Panel>
+                </layout:Grid>
+                
+                <!-- Main Content Column -->
+                <layout:Grid defaultSpan="XL9 L9 M8 S12" class="main-content-column">
+                    <!-- Modern Metrics Cards Grid -->
+                    <Panel headerText="Fleet Overview" 
+                           class="sapUiResponsiveMargin metrics-panel"
+                           backgroundDesign="Transparent">
+                        <content>
+                            <grid:CSSGrid id="metricsGrid"
+                                          class="metrics-grid"
+                                          items="{metrics>/Metrics}">
+                                <Panel class="metric-card" width="100%">
+                                    <headerToolbar>
+                                        <Toolbar class="metric-card-header">
+                                            <core:Icon src="{icon}" class="sapUiTinyMarginEnd"/>
+                                            <Title text="{title}" level="H3" class="sapUiTinyMarginEnd"/>
+                                            <ToolbarSpacer/>
+                                            <Text text="{subtitle}" class="sapUiTinyMarginEnd"/>
+                                        </Toolbar>
+                                    </headerToolbar>
+                                    <content>
+                                        <VBox alignItems="Center" class="sapUiMediumMargin metric-content">
+                                            <Title text="{value}" 
+                                                   level="H1" 
+                                                   class="metric-value {status}"/>
+                                            <HBox alignItems="Center" class="sapUiTinyMarginTop">
+                                                <core:Icon src="{= ${trend} === 'up' ? 'sap-icon://trend-up' : 'sap-icon://trend-down'}" 
+                                                          class="sapUiTinyMarginEnd {= ${trend} === 'up' ? 'trend-up' : 'trend-down'}"
+                                                          color="{= ${trend} === 'up' ? '#28a745' : '#dc3545'}"/>
+                                                <Text text="{change}" class="trend-text"/>
+                                            </HBox>
+                                        </VBox>
+                                    </content>
+                                </Panel>
+                            </grid:CSSGrid>
+                        </content>
+                    </Panel>
+
+                    <!-- Advanced Filters Panel -->
+                    <Panel headerText="Data Filters &amp; Controls" 
+                           class="sapUiResponsiveMargin filters-panel"
+                           expandable="true" 
+                           expanded="true"
+                           backgroundDesign="Transparent">
+                        <content>
+                            <form:SimpleForm editable="true" 
+                                             layout="ResponsiveGridLayout" 
+                                             labelSpanXL="3" 
+                                             labelSpanL="3" 
+                                             labelSpanM="4" 
+                                             labelSpanS="12"
+                                             class="filters-form">
+                                <form:content>
+                                    <!-- Model Filter -->
+                                    <Label text="Aircraft Model:" class="filter-label"/>
+                                    <ComboBox id="modelFilter" 
+                                             items="{/Models}" 
+                                             width="100%"
+                                             class="filter-control">
+                                        <core:Item key="{model}" text="{model}"/>
+                                    </ComboBox>
+                                    
+                                    <!-- Alert Status Filter -->
+                                    <Label text="Alert Status:" class="filter-label"/>
+                                    <ComboBox id="alertFilter" 
+                                             items="{/AlertStatuses}" 
+                                             width="100%"
+                                             class="filter-control">
+                                        <core:Item key="{status}" text="{status}"/>
+                                    </ComboBox>
+                                    
+                                    <!-- Risk Level Filter -->
+                                    <Label text="Risk Level:" class="filter-label"/>
+                                    <ComboBox id="riskFilter" 
+                                             width="100%"
+                                             class="filter-control">
+                                        <items>
+                                            <core:Item key="All" text="All"/>
+                                            <core:Item key="Low" text="Low (0-30)"/>
+                                            <core:Item key="Medium" text="Medium (31-60)"/>
+                                            <core:Item key="High" text="High (61-100)"/>
+                                        </items>
+                                    </ComboBox>
+                                    
+                                    <!-- Sort Options -->
+                                    <Label text="Sort By:" class="filter-label"/>
+                                    <ComboBox id="sortSelect" 
+                                             items="{/SortOptions}" 
+                                             width="100%"
+                                             class="filter-control">
+                                        <core:Item key="{value}" text="{label}"/>
+                                    </ComboBox>
+                                    
+                                    <!-- Filter Actions -->
+                                    <Label text="Actions:" class="filter-label"/>
+                                    <HBox class="filter-actions">
+                                        <Button text="Apply" 
+                                                press="onApplyFilters" 
+                                                type="Emphasized" 
+                                                class="sapUiTinyMarginEnd"/>
+                                        <Button text="Reset" 
+                                                press="onResetFilters"
+                                                type="Transparent"/>
+                                    </HBox>
+                                </form:content>
+                            </form:SimpleForm>
+                        </content>
+                    </Panel>
+
+                    <!-- Fleet Status Overview Panel -->
+                    <Panel headerText="Fleet Status Overview"
+                           class="sapUiResponsiveMargin fleet-status-panel"
+                           backgroundDesign="Transparent">
+                        <headerToolbar>
+                            <Toolbar class="fleet-status-header">
+                                <core:Icon src="sap-icon://flight" class="sapUiTinyMarginEnd"/>
+                                <Title text="Fleet Status Overview" level="H2" class="sapUiTinyMarginEnd"/>
+                                <ToolbarSpacer/>
+                                <Text text="Real-time aircraft monitoring and predictive alerts"/>
+                            </Toolbar>
+                        </headerToolbar>
+                        <content>
+                            <VBox class="sapUiMediumMargin">
+                                <!-- Status Summary -->
+                                <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiTinyMarginBottom">
+                                    <Text text="Showing {/Aircraft/length} aircraft" class="status-summary"/>
+                                    <Button text="View All" 
+                                            icon="sap-icon://arrow-right" 
+                                            type="Transparent"
+                                            press="onViewAllAircraft"/>
+                                </HBox>
+                                
+                                <!-- Aircraft Status Grid -->
+                                <grid:CSSGrid id="aircraftStatusGrid"
+                                              class="aircraft-status-grid"
+                                              items="{/Aircraft}">
+                                    <VBox class="aircraft-status-card">
+                                        <HBox justifyContent="SpaceBetween" alignItems="Start" class="aircraft-header">
+                                            <HBox alignItems="Center" class="aircraft-info">
+                                                <core:Icon src="sap-icon://flight" 
+                                                          class="sapUiTinyMarginEnd aircraft-icon"/>
+                                                <VBox>
+                                                    <Title text="{tailNumber}" level="H4" class="aircraft-tail"/>
+                                                    <Text text="{model}" class="aircraft-model"/>
+                                                </VBox>
+                                            </HBox>
+                                            <VBox alignItems="End">
+                                                <ObjectStatus text="{overallStatus}" 
+                                                            state="{path: 'overallStatus', formatter: '.formatOverallStatusState'}"
+                                                            class="aircraft-status"/>
+                                                <ObjectStatus text="{aircraftAgeYears}y old" 
+                                                            state="Information"
+                                                            class="aircraft-age"/>
+                                            </VBox>
+                                        </HBox>
+                                        
+                                        <!-- Predictive Alerts -->
+                                        <VBox class="predictive-alerts" visible="{= ${predictiveFlags}.length > 0}">
+                                            <List items="{predictiveFlags}" 
+                                                  showNoData="false"
+                                                  class="alert-list">
+                                                <StandardListItem title="{message}"
+                                                                icon="{= ${type} === 'critical' ? 'sap-icon://alert' : 'sap-icon://warning'}"
+                                                                class="alert-item {type}"/>
+                                            </List>
+                                        </VBox>
+                                        
+                                        <!-- Operational Metrics -->
+                                        <grid:CSSGrid class="operational-metrics-grid">
+                                            <VBox class="metric-item">
+                                                <core:Icon src="sap-icon://clock" class="metric-icon flight-hours"/>
+                                                <VBox>
+                                                    <Text text="Flight Hrs" class="metric-label"/>
+                                                    <Text text="{flightHoursSinceLastMaintenance}" class="metric-value"/>
+                                                </VBox>
+                                            </VBox>
+                                            
+                                            <VBox class="metric-item">
+                                                <core:Icon src="sap-icon://temperature" class="metric-icon engine-temp"/>
+                                                <VBox>
+                                                    <Text text="Engine Temp" class="metric-label"/>
+                                                    <Text text="{engineTemperature}°C" 
+                                                          class="metric-value {= ${engineTemperature} > 520 ? 'critical' : ''}"/>
+                                                </VBox>
+                                            </VBox>
+                                            
+                                            <VBox class="metric-item">
+                                                <core:Icon src="sap-icon://activity" class="metric-icon vibration"/>
+                                                <VBox>
+                                                    <Text text="Vibration" class="metric-label"/>
+                                                    <Text text="{vibrationLevel}g" 
+                                                          class="metric-value {= ${vibrationLevel} > 2.0 ? 'critical' : ''}"/>
+                                                </VBox>
+                                            </VBox>
+                                            
+                                            <VBox class="metric-item">
+                                                <core:Icon src="sap-icon://gauge" class="metric-icon brake-wear"/>
+                                                <VBox>
+                                                    <Text text="Brake Wear" class="metric-label"/>
+                                                    <Text text="{brakeWearPercent}%" 
+                                                          class="metric-value {= ${brakeWearPercent} > 85 ? 'critical' : ${brakeWearPercent} > 70 ? 'warning' : ''}"/>
+                                                </VBox>
+                                            </VBox>
+                                        </grid:CSSGrid>
+                                        
+                                        <!-- Additional Metrics -->
+                                        <HBox justifyContent="SpaceBetween" class="additional-metrics">
+                                            <VBox>
+                                                <Text text="Oil Particles" class="metric-label"/>
+                                                <Text text="{oilParticleCount}/ml" 
+                                                      class="metric-value {= ${oilParticleCount} > 1000 ? 'critical' : ''}"/>
+                                            </VBox>
+                                            <VBox>
+                                                <Text text="MTBF" class="metric-label"/>
+                                                <Text text="{mtbf} hrs" class="metric-value"/>
+                                            </VBox>
+                                            <VBox>
+                                                <Text text="Flight Cycles" class="metric-label"/>
+                                                <Text text="{flightCycles}" class="metric-value"/>
+                                            </VBox>
+                                        </HBox>
+                                        
+                                        <!-- Failure History -->
+                                        <VBox class="failure-history">
+                                            <HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                                                <core:Icon src="sap-icon://history" class="sapUiTinyMarginEnd"/>
+                                                <Title text="Failure History" level="H5"/>
+                                            </HBox>
+                                            <VBox visible="{= ${lastFailureDate} !== null}">
+                                                <Text text="Last Failure: {lastFailureDate} - {lastFailureType}" 
+                                                      class="last-failure"/>
+                                                <HBox wrap="Wrap" class="failure-badges">
+                                                    <List items="{failureHistory}" 
+                                                          showNoData="false"
+                                                          class="failure-list">
+                                                        <CustomListItem class="failure-list-item">
+                                                            <ObjectStatus text="{type} ({date})" 
+                                                                       state="{= ${severity} === 'critical' ? 'Error' : ${severity} === 'major' ? 'Warning' : 'Success'}"
+                                                                       class="failure-badge {severity}"/>
+                                                        </CustomListItem>
+                                                    </List>
+                                                </HBox>
+                                            </VBox>
+                                            <Text text="No recorded failures" 
+                                                  class="no-failures"
+                                                  visible="{= ${lastFailureDate} === null}"/>
+                                        </VBox>
+                                    </VBox>
+                                </grid:CSSGrid>
+                            </VBox>
+                        </content>
+                    </Panel>
+
+                    <!-- Predictive Analytics Section -->
+                    <Panel headerText="Predictive Maintenance Analytics" 
+                           class="sapUiResponsiveMargin analytics-panel"
+                           backgroundDesign="Transparent">
+                        <content>
+                            <grid:CSSGrid class="analytics-grid">
+                                
+                                <!-- Time to Next Predicted Maintenance -->
+                                <Panel class="tnp-panel">
+                                    <headerToolbar>
+                                        <Toolbar class="tnp-panel-header">
+                                            <core:Icon src="sap-icon://calendar" class="sapUiTinyMarginEnd"/>
+                                            <Title text="Time to Next Predicted Maintenance" level="H3" class="sapUiTinyMarginEnd"/>
+                                            <ToolbarSpacer/>
+                                            <Text text="Predictive maintenance analysis based on real-time sensor data"/>
+                                        </Toolbar>
+                                    </headerToolbar>
+                                    <content>
+                                        <VBox class="sapUiMediumMargin">
+                                            <!-- Legend -->
+                                            <HBox class="tnp-legend">
+                                                <HBox alignItems="Center" class="sapUiTinyMarginEnd">
+                                                    <core:Icon src="sap-icon://circle-task-2" 
+                                                              class="legend-icon normal"/>
+                                                    <Text text="Normal (&gt;7 days)" class="legend-text"/>
+                                                </HBox>
+                                                <HBox alignItems="Center">
+                                                    <core:Icon src="sap-icon://circle-task-2" 
+                                                              class="legend-icon urgent"/>
+                                                    <Text text="Urgent (≤7 days)" class="legend-text"/>
+                                                </HBox>
+                                            </HBox>
+                                            
+                                            <!-- TNP Chart Visualization -->
+                                            <VBox class="tnp-chart-container">
+                                                <HBox class="chart-bars-container">
+                                                    <List items="{/TNPData}" 
+                                                          showNoData="false"
+                                                          class="chart-list">
+                                                        <CustomListItem class="chart-bar-wrapper">
+                                                            <VBox class="chart-bar {= ${daysUntilMaintenance} <= 7 ? 'urgent' : 'normal'}"
+                                                                  style="height: {= Math.max(20, (${daysUntilMaintenance} / 30) * 200)}px;">
+                                                                <Text text="{tailNumber}" class="chart-bar-label"/>
+                                                                <Text text="{daysUntilMaintenance} days" class="chart-bar-value"/>
+                                                            </VBox>
+                                                        </CustomListItem>
+                                                    </List>
+                                                </HBox>
+                                            </VBox>
+                                            
+                                            <!-- TNP Summary -->
+                                            <HBox justifyContent="SpaceBetween" class="tnp-summary">
+                                                <VBox>
+                                                    <Text text="Aircraft Needing Immediate Attention" class="summary-label"/>
+                                                    <Title text="{= ${/TNPData}.filter(function(item) { return item.isUrgent; }).length}" 
+                                                           level="H2" 
+                                                           class="summary-value urgent"/>
+                                                </VBox>
+                                                <VBox>
+                                                    <Text text="Average Days Until Maintenance" class="summary-label"/>
+                                                    <Title text="{= Math.round(${/TNPData}.reduce(function(sum, item) { return sum + item.daysUntilMaintenance; }, 0) / ${/TNPData}.length)}" 
+                                                           level="H2" 
+                                                           class="summary-value"/>
+                                                </VBox>
+                                            </HBox>
+                                        </VBox>
+                                    </content>
+                                </Panel>
+                                
+                                <!-- MTBF Trends -->
+                                <Panel class="mtbf-panel">
+                                    <headerToolbar>
+                                        <Toolbar class="mtbf-panel-header">
+                                            <core:Icon src="sap-icon://trend-down" class="sapUiTinyMarginEnd"/>
+                                            <Title text="MTBF Trends by Aircraft Type" level="H3" class="sapUiTinyMarginEnd"/>
+                                            <ToolbarSpacer/>
+                                            <Text text="Rolling 6-month MTBF average"/>
+                                        </Toolbar>
+                                    </headerToolbar>
+                                    <content>
+                                        <VBox class="sapUiMediumMargin">
+                                            <!-- MTBF Chart Visualization -->
+                                            <VBox class="mtbf-chart-container">
+                                                <VBox class="chart-line-container">
+                                                    <List items="{/MTBFTrends}" 
+                                                          showNoData="false"
+                                                          class="mtbf-chart-list">
+                                                        <CustomListItem class="mtbf-line-item">
+                                                            <HBox justifyContent="SpaceBetween" alignItems="Center" class="mtbf-line">
+                                                                <VBox>
+                                                                    <Text text="{model}" class="mtbf-model"/>
+                                                                    <Text text="{period}" class="mtbf-period"/>
+                                                                </VBox>
+                                                                <HBox alignItems="Center">
+                                                                    <VBox class="mtbf-bar {= ${mtbf} < 300 ? 'critical' : ${mtbf} < 500 ? 'warning' : 'success'}"
+                                                                          style="width: {= Math.max(20, (${mtbf} / 800) * 200)}px;">
+                                                                    </VBox>
+                                                                    <Text text="{mtbf} hrs" class="mtbf-value"/>
+                                                                </HBox>
+                                                            </HBox>
+                                                        </CustomListItem>
+                                                    </List>
+                                                </VBox>
+                                            </VBox>
+                                            
+                                            <!-- MTBF Summary -->
+                                            <HBox justifyContent="SpaceBetween" class="mtbf-summary">
+                                                <VBox>
+                                                    <Text text="Best Performing Model" class="summary-label"/>
+                                                    <Title text="Boeing 787 (720 hrs)" level="H2" class="summary-value success"/>
+                                                </VBox>
+                                                <VBox>
+                                                    <Text text="Needs Attention" class="summary-label"/>
+                                                    <Title text="Airbus A330 (180 hrs)" level="H2" class="summary-value critical"/>
+                                                </VBox>
+                                            </HBox>
+                                            
+                                            <Text text="*Lower values indicate more frequent failures" 
+                                                  class="chart-note"/>
+                                        </VBox>
+                                    </content>
+                                </Panel>
+                            </grid:CSSGrid>
+                        </content>
+                    </Panel>
+
+                    <!-- Comprehensive Aircraft Data Table -->
+                    <Panel headerText="Aircraft Fleet Data &amp; Predictive Maintenance" 
+                           class="sapUiResponsiveMargin table-panel"
+                           backgroundDesign="Transparent">
+                        <content>
+                            <table:Table id="aircraftTable" 
+                                        rows="{/Aircraft}"
+                                        selectionMode="MultiToggle"
+                                        enableSelectAll="true"
+                                        ariaLabelledBy="title"
+                                        visibleRowCount="12"
+                                        class="sapUiResponsiveContentPadding modern-table"
+                                        alternateRowColors="true">
+                                
+                                <table:columns>
+                                    <!-- Tail Number -->
+                                    <table:Column width="120px" sortProperty="tailNumber">
+                                        <Label text="Tail Number"/>
+                                        <table:template>
+                                            <Link text="{tailNumber}" 
+                                                  class="aircraft-link"
+                                                  press="onAircraftSelect"/>
+                                        </table:template>
+                                    </table:Column>
+                                    
+                                    <!-- Aircraft Model -->
+                                    <table:Column width="140px" sortProperty="model">
+                                        <Label text="Aircraft Model"/>
+                                        <table:template>
+                                            <Text text="{model}"/>
+                                        </table:template>
+                                    </table:Column>
+                                    
+                                    <!-- Overall Status -->
+                                    <table:Column width="100px" sortProperty="overallStatus">
+                                        <Label text="Status"/>
+                                        <table:template>
+                                            <ObjectStatus text="{overallStatus}" 
+                                                        state="{path: 'overallStatus', formatter: '.formatOverallStatusState'}"
+                                                        class="status-badge"/>
+                                        </table:template>
+                                    </table:Column>
+                                    
+                                    <!-- Risk Score -->
+                                    <table:Column width="100px" sortProperty="riskScore">
+                                        <Label text="Risk Score"/>
+                                        <table:template>
+                                            <ObjectNumber 
+                                                number="{path: 'riskScore', type: 'sap.ui.model.type.Float', formatOptions: {decimals: 1}}" 
+                                                state="{path: 'riskScore', formatter: '.formatRiskState'}"
+                                                class="risk-score"/>
+                                        </table:template>
+                                    </table:Column>
+                                    
+                                    <!-- Flight Hours -->
+                                    <table:Column width="120px" sortProperty="flightHoursSinceLastMaintenance">
+                                        <Label text="Flight Hours"/>
+                                        <table:template>
+                                            <ObjectNumber number="{flightHoursSinceLastMaintenance}" 
+                                                        class="flight-hours"/>
+                                        </table:template>
+                                    </table:Column>
+                                    
+                                    <!-- Engine Temperature -->
+                                    <table:Column width="120px" sortProperty="engineTemperature">
+                                        <Label text="Engine Temp (°F)"/>
+                                        <table:template>
+                                            <ObjectNumber 
+                                                number="{path: 'engineTemperature', type: 'sap.ui.model.type.Float', formatOptions: {decimals: 1}}" 
+                                                state="{path: 'engineTemperature', formatter: '.formatTempState'}"
+                                                class="engine-temp"/>
+                                        </table:template>
+                                    </table:Column>
+                                    
+                                    <!-- Vibration Level -->
+                                    <table:Column width="120px" sortProperty="vibrationLevel">
+                                        <Label text="Vibration (g)"/>
+                                        <table:template>
+                                            <ObjectNumber 
+                                                number="{path: 'vibrationLevel', type: 'sap.ui.model.type.Float', formatOptions: {decimals: 1}}" 
+                                                state="{path: 'vibrationLevel', formatter: '.formatVibrationState'}"
+                                                class="vibration-level"/>
+                                        </table:template>
+                                    </table:Column>
+                                    
+                                    <!-- Brake Wear -->
+                                    <table:Column width="120px" sortProperty="brakeWearPercent">
+                                        <Label text="Brake Wear (%)"/>
+                                        <table:template>
+                                            <ObjectNumber 
+                                                number="{path: 'brakeWearPercent', type: 'sap.ui.model.type.Float', formatOptions: {decimals: 1}}" 
+                                                state="{= ${brakeWearPercent} > 85 ? 'Error' : ${brakeWearPercent} > 70 ? 'Warning' : 'Success'}"
+                                                class="brake-wear"/>
+                                        </table:template>
+                                    </table:Column>
+                                    
+                                    <!-- Oil Particle Count -->
+                                    <table:Column width="120px" sortProperty="oilParticleCount">
+                                        <Label text="Oil Particles"/>
+                                        <table:template>
+                                            <ObjectNumber 
+                                                number="{oilParticleCount}" 
+                                                state="{= ${oilParticleCount} > 1000 ? 'Error' : ${oilParticleCount} > 800 ? 'Warning' : 'Success'}"
+                                                class="oil-particles"/>
+                                        </table:template>
+                                    </table:Column>
+                                    
+                                    <!-- MTBF -->
+                                    <table:Column width="100px" sortProperty="mtbf">
+                                        <Label text="MTBF (hrs)"/>
+                                        <table:template>
+                                            <ObjectNumber number="{mtbf}" class="mtbf-value"/>
+                                        </table:template>
+                                    </table:Column>
+                                    
+                                    <!-- Aircraft Age -->
+                                    <table:Column width="100px" sortProperty="aircraftAgeYears">
+                                        <Label text="Age (years)"/>
+                                        <table:template>
+                                            <Text text="{aircraftAgeYears}"/>
+                                        </table:template>
+                                    </table:Column>
+                                    
+                                    <!-- Last Failure -->
+                                    <table:Column width="140px" sortProperty="lastFailureType">
+                                        <Label text="Last Failure"/>
+                                        <table:template>
+                                            <VBox>
+                                                <Text text="{lastFailureType}" 
+                                                      class="{= ${lastFailureType} ? '' : 'sapUiTinyMarginBottom'}"/>
+                                                <Text text="{lastFailureDate}" 
+                                                      class="failure-date"/>
+                                            </VBox>
+                                        </table:template>
+                                    </table:Column>
+                                    
+                                    <!-- Next Maintenance -->
+                                    <table:Column width="150px" sortProperty="nextMaintenanceEstimate">
+                                        <Label text="Next Maintenance"/>
+                                        <table:template>
+                                            <Text text="{nextMaintenanceEstimate}"/>
+                                        </table:template>
+                                    </table:Column>
+                                    
+                                    <!-- Maintenance Status -->
+                                    <table:Column width="130px" sortProperty="maintenanceStatus">
+                                        <Label text="Maint. Status"/>
+                                        <table:template>
+                                            <ObjectStatus text="{maintenanceStatus}" 
+                                                        state="{path: 'maintenanceStatus', formatter: '.formatMaintenanceState'}"
+                                                        class="maintenance-status"/>
+                                        </table:template>
+                                    </table:Column>
+                                </table:columns>
+                            </table:Table>
+                        </content>
+                    </Panel>
+
+                </layout:Grid>
+            </content>
+            
+            <!-- Modern Footer with Actions -->
+            <footer>
+                <Toolbar class="dashboard-footer">
+                    <ToolbarSpacer/>
+                    <Button text="Fleet Analytics" 
+                            icon="sap-icon://bar-chart" 
+                            press="onNavigateToAnalytics" 
+                            class="sapUiTinyMarginEnd footer-button"/>
+                    <Button text="Safety Compliance" 
+                            icon="sap-icon://shield" 
+                            press="onNavigateToCompliance" 
+                            class="sapUiTinyMarginEnd footer-button"/>
+                    <Button text="Import Data" 
+                            icon="sap-icon://upload" 
+                            press="onNavigateToImport" 
+                            type="Emphasized"
+                            class="footer-button"/>
+                </Toolbar>
+            </footer>
+        </Page>
+    </mvc:View>
