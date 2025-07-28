@@ -1,5 +1,5 @@
 {
-  "name": "AircraftMaintenance",
+  "name": "aircraft-maintenance",
   "version": "1.0.0",
   "description": "A simple CAP project.",
   "repository": "<Add your repository here>",
@@ -7,7 +7,9 @@
   "private": true,
   "dependencies": {
     "@sap/cds": "^8",
-    "express": "^4"
+    "express": "^4",
+    "axios": "^1.6.0",
+    "moment": "^2.29.0"
   },
   "devDependencies": {
     "@cap-js/cds-types": "^0.10.0",
@@ -21,7 +23,10 @@
     "watch-project1": "cds watch --open project1/webapp/index.html?sap-ui-xx-viewCache=false",
     "undeploy": "cf undeploy AircraftMaintenance --delete-services --delete-service-keys --delete-service-brokers",
     "build": "rimraf resources mta_archives && mbt build --mtar archive",
-    "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+    "demo": "node scripts/demo-forecast.js",
+    "seed-data": "cds deploy --to sqlite",
+    "reset-db": "rimraf db/maintenance.db && cds deploy"
   },
   "sapux": [
     "app/project1"
