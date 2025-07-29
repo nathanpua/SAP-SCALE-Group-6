@@ -413,7 +413,7 @@
                                                                 
                                                                 <!-- Engine Temperature -->
                                                                 <VBox class="metric-column">
-                                                                    <Label text="Engine" class="metric-label-compact"/>
+                                                                    <Label text="Engine Temp" class="metric-label-compact"/>
                                                                     <ObjectNumber number="{engineTemperature}" 
                                                                                 unit="°C"
                                                                                 state="{path: 'engineTemperature', formatter: '.formatTempState'}"
@@ -422,7 +422,7 @@
                                                                 
                                                                 <!-- Vibration Level -->
                                                                 <VBox class="metric-column">
-                                                                    <Label text="Vibration" class="metric-label-compact"/>
+                                                                    <Label text="Vibration Level" class="metric-label-compact"/>
                                                                     <ObjectNumber number="{vibrationLevel}" 
                                                                                 unit="g"
                                                                                 state="{path: 'vibrationLevel', formatter: '.formatVibrationState'}"
@@ -431,7 +431,7 @@
                                                                 
                                                                 <!-- Brake Wear -->
                                                                 <VBox class="metric-column">
-                                                                    <Label text="Brakes" class="metric-label-compact"/>
+                                                                    <Label text="Brake Wear" class="metric-label-compact"/>
                                                                     <ObjectNumber number="{brakeWearPercent}" 
                                                                                 unit="%"
                                                                                 state="{= ${brakeWearPercent} > 85 ? 'Error' : ${brakeWearPercent} > 70 ? 'Warning' : 'Success'}"

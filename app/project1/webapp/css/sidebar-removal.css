@@ -1,0 +1,18 @@
+/* Hide all sidebar elements - Full width layout */
+.sidebar,
+.sapMSplitContainer .sapMSplitContainerMaster,
+.project1-dashboard .sidebar-column,
+.project1-dashboard .sidebar-panel,
+.project1-dashboard .sidebar-header,
+.project1-dashboard .sidebar-navigation,
+.project1-dashboard .sidebar-quick-actions,
+.project1-dashboard .sidebar-fleet-summary,
+.project1-dashboard .sidebar-recent-activity {
+    display: none !important;
+}
+
+/* Ensure full width layout */
+.sapMSplitContainer .sapMSplitContainerDetail {
+    width: 100% !important;
+    margin-left: 0 !important;
+}

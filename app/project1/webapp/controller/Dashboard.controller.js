@@ -4,8 +4,9 @@ sap.ui.define([
     "sap/m/MessageToast",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
-    "sap/ui/model/Sorter"
-], function (Controller, JSONModel, MessageToast, Filter, FilterOperator, Sorter) {
+    "sap/ui/model/Sorter",
+    "project1/model/aircraftData"
+], function (Controller, JSONModel, MessageToast, Filter, FilterOperator, Sorter, AircraftData) {
     "use strict";
 
     return Controller.extend("project1.controller.Dashboard", {
@@ -94,161 +95,8 @@ sap.ui.define([
         _initializeModels: function () {
             console.log("Initializing comprehensive aircraft data models");
             
-            // Comprehensive aircraft data matching React dashboard
-            var aircraftData = [
-                {
-                    tailNumber: "N456AB",
-                    model: "Boeing 737-800",
-                    flightHoursSinceLastMaintenance: 125,
-                    engineTemperature: 485,
-                    vibrationLevel: 1.8,
-                    hydraulicPressure: 3000,
-                    brakeWearPercent: 25,
-                    oilParticleCount: 850,
-                    weatherStressIndex: 7.2,
-                    aircraftAgeYears: 8,
-                    flightCycles: 8920,
-                    mtbf: 450,
-                    lastFailureDate: "2023-11-15",
-                    lastFailureType: "Hydraulic",
-                    failureHistory: [
-                        { date: "2023-11-15", type: "Hydraulic", severity: "minor" },
-                        { date: "2023-08-22", type: "Engine", severity: "major" },
-                        { date: "2023-05-10", type: "Landing Gear", severity: "minor" }
-                    ],
-                    // Calculated fields
-                    overallStatus: "normal",
-                    riskScore: 25.5,
-                    nextMaintenanceEstimate: "2025-06-15",
-                    alertStatus: "Normal",
-                    maintenanceStatus: "Scheduled"
-                },
-                {
-                    tailNumber: "N789CD",
-                    model: "Airbus A320",
-                    flightHoursSinceLastMaintenance: 890,
-                    engineTemperature: 512,
-                    vibrationLevel: 2.4,
-                    hydraulicPressure: 2850,
-                    brakeWearPercent: 67,
-                    oilParticleCount: 1250,
-                    weatherStressIndex: 8.9,
-                    aircraftAgeYears: 5,
-                    flightCycles: 6420,
-                    mtbf: 320,
-                    lastFailureDate: "2024-01-08",
-                    lastFailureType: "Engine",
-                    failureHistory: [
-                        { date: "2024-01-08", type: "Engine", severity: "critical" },
-                        { date: "2023-10-14", type: "Avionics", severity: "major" },
-                        { date: "2023-07-03", type: "Hydraulic", severity: "minor" }
-                    ],
-                    overallStatus: "critical",
-                    riskScore: 78.3,
-                    nextMaintenanceEstimate: "2025-03-12",
-                    alertStatus: "Critical",
-                    maintenanceStatus: "Overdue"
-                },
-                {
-                    tailNumber: "N123EF",
-                    model: "Boeing 777-300",
-                    flightHoursSinceLastMaintenance: 210,
-                    engineTemperature: 498,
-                    vibrationLevel: 1.2,
-                    hydraulicPressure: 3200,
-                    brakeWearPercent: 12,
-                    oilParticleCount: 650,
-                    weatherStressIndex: 5.1,
-                    aircraftAgeYears: 12,
-                    flightCycles: 11250,
-                    mtbf: 680,
-                    lastFailureDate: "2023-09-20",
-                    lastFailureType: "Landing Gear",
-                    failureHistory: [
-                        { date: "2023-09-20", type: "Landing Gear", severity: "minor" },
-                        { date: "2023-04-15", type: "Hydraulic", severity: "minor" }
-                    ],
-                    overallStatus: "normal",
-                    riskScore: 18.9,
-                    nextMaintenanceEstimate: "2025-12-10",
-                    alertStatus: "Normal",
-                    maintenanceStatus: "Scheduled"
-                },
-                {
-                    tailNumber: "N654GH",
-                    model: "Airbus A330",
-                    flightHoursSinceLastMaintenance: 450,
-                    engineTemperature: 545,
-                    vibrationLevel: 1.9,
-                    hydraulicPressure: 2650,
-                    brakeWearPercent: 88,
-                    oilParticleCount: 1450,
-                    weatherStressIndex: 9.7,
-                    aircraftAgeYears: 15,
-                    flightCycles: 16890,
-                    mtbf: 180,
-                    lastFailureDate: "2024-02-01",
-                    lastFailureType: "Brake System",
-                    failureHistory: [
-                        { date: "2024-02-01", type: "Brake System", severity: "critical" },
-                        { date: "2023-12-18", type: "Engine", severity: "major" },
-                        { date: "2023-09-05", type: "Hydraulic", severity: "major" },
-                        { date: "2023-06-12", type: "Avionics", severity: "minor" }
-                    ],
-                    overallStatus: "critical",
-                    riskScore: 89.1,
-                    nextMaintenanceEstimate: "2025-02-15",
-                    alertStatus: "Critical",
-                    maintenanceStatus: "Overdue"
-                },
-                {
-                    tailNumber: "N987IJ",
-                    model: "Boeing 787-9",
-                    flightHoursSinceLastMaintenance: 95,
-                    engineTemperature: 475,
-                    vibrationLevel: 1.1,
-                    hydraulicPressure: 3100,
-                    brakeWearPercent: 18,
-                    oilParticleCount: 420,
-                    weatherStressIndex: 4.3,
-                    aircraftAgeYears: 3,
-                    flightCycles: 4230,
-                    mtbf: 720,
-                    lastFailureDate: null,
-                    lastFailureType: null,
-                    failureHistory: [],
-                    overallStatus: "normal",
-                    riskScore: 12.4,
-                    nextMaintenanceEstimate: "2025-11-20",
-                    alertStatus: "Normal",
-                    maintenanceStatus: "Scheduled"
-                },
-                {
-                    tailNumber: "N321KL",
-                    model: "Airbus A321",
-                    flightHoursSinceLastMaintenance: 820,
-                    engineTemperature: 501,
-                    vibrationLevel: 2.1,
-                    hydraulicPressure: 2950,
-                    brakeWearPercent: 45,
-                    oilParticleCount: 980,
-                    weatherStressIndex: 6.8,
-                    aircraftAgeYears: 7,
-                    flightCycles: 7650,
-                    mtbf: 380,
-                    lastFailureDate: "2023-12-03",
-                    lastFailureType: "Avionics",
-                    failureHistory: [
-                        { date: "2023-12-03", type: "Avionics", severity: "major" },
-                        { date: "2023-08-15", type: "Engine", severity: "minor" }
-                    ],
-                    overallStatus: "warning",
-                    riskScore: 45.2,
-                    nextMaintenanceEstimate: "2025-07-18",
-                    alertStatus: "Warning",
-                    maintenanceStatus: "Scheduled"
-                }
-            ];
+            // Get aircraft data from the dedicated model following SAP UI5 best practices
+            var aircraftData = AircraftData.getAircraftData();
 
             // Calculate predictive flags for each aircraft
             aircraftData.forEach(function(aircraft) {
