@@ -19,6 +19,15 @@ entity Aircraft {
      aircraftAgeYears            : Integer;       // age in years
      flightCycles                : Integer;       // number of takeoff/landing cycles
      
+     // Controller expected fields
+     lastFailureDate             : Date;          // last failure date
+     lastFailureType             : String(50);    // last failure type
+     
+     // Additional controller compatibility fields
+     overallStatus               : String(20);    // overall status (normal, warning, critical)
+     predictiveFlags             : String(500);   // JSON string of predictive flags
+     failureHistory              : String(1000);  // JSON string of failure history array
+     
      // Predictive Analytics Fields
      riskScore                   : Decimal(4,2);  // risk score 0-100
      mtbf                        : Integer;       // Mean Time Between Failures in hours
