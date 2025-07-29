@@ -21,28 +21,30 @@
             
         <customHeader>
             <Toolbar class="dashboard-navbar">
-                <Title text="Skylink Atlas" level="H2" class="navbar-title"/>
+                <Title text="Skylink Atlas" level="H2" class="navbar-title" style="color: #000000;"/>
                 <ToolbarSpacer/>
                 <HBox alignItems="Center" class="navbar-actions">
                     <Button icon="sap-icon://bell" 
                             type="Transparent" 
                             tooltip="Notifications"
                             press="onNotifications"
-                            class="navbar-action-btn"/>
+                            class="navbar-action-btn"
+                            style="color: #000000;"/>
                     <Button icon="sap-icon://settings" 
                             type="Transparent" 
                             tooltip="Settings"
                             press="onSettings"
-                            class="navbar-action-btn"/>
+                            class="navbar-action-btn"
+                            style="color: #000000;"/>
                     <Button icon="sap-icon://person-placeholder" 
                             type="Transparent" 
                             tooltip="User Profile"
                             press="onUserProfile"
-                            class="navbar-action-btn"/>
+                            class="navbar-action-btn"
+                            style="color: #000000;"/>
                 </HBox>
             </Toolbar>
         </customHeader>
-            
         <content>
             <!-- Integrated Navigation Tabs -->
             <IconTabBar id="mainNavigation"

@@ -90,7 +90,7 @@
 .project1-dashboard .sapMPage {
     padding: 1rem;
     min-height: 100vh;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: white;
 }
 
 /* Sidebar Styles - Modern SAP Fiori Design */
@@ -2066,7 +2066,7 @@
 }
 
 .navbar-title {
-    color: #ffffff !important;
+    color: #000000 !important;
     font-weight: 600;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
@@ -2697,7 +2697,7 @@
 
 /* Dashboard Page Background */
 .project1-dashboard {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: white;
     min-height: 100vh;
 }
 
@@ -3394,7 +3394,7 @@
 }
 
 .navbar-title {
-    color: #ffffff !important;
+    color: #000000 !important;
     font-weight: 600;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
@@ -3985,7 +3985,2583 @@
 
 /* Dashboard Page Background */
 .project1-dashboard {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: white;
+    min-height: 100vh;
+}
+
+/* Footer Styling */
+.dashboard-footer {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-top: 1px solid #dee2e6;
+    padding: 1rem 2rem;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.footer-button {
+    border-radius: 6px !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+}
+
+.footer-button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Status and State Colors */
+.success {
+    color: #4caf50 !important;
+}
+
+.warning {
+    color: #ff9800 !important;
+}
+
+.error {
+    color: #f44336 !important;
+}
+
+.critical {
+    color: #d32f2f !important;
+}
+
+/* Ensure good contrast and readability */
+.sapUiSizeCompact .sapMText,
+.sapUiSizeCompact .sapMTitle,
+.sapUiSizeCompact .sapMLabel {
+    line-height: 1.5;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+}
+
+/* Print styles */
+@media print {
+    .dashboard-navbar,
+    .dashboard-navigation,
+    .dashboard-footer {
+        display: none !important;
+    }
+    
+    .tab-content-container {
+        padding: 0 !important;
+        background: #ffffff !important;
+    }
+}
+
+/* ===== AIRCRAFT STATUS SCROLLABLE LIST STYLES ===== */
+
+/* Main Aircraft List Container */
+.aircraft-status-list {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    max-height: 700px;
+    overflow-y: auto;
+    width: 100%;
+    scrollbar-width: thin;
+    scrollbar-color: #c0c0c0 #f0f0f0;
+}
+
+.aircraft-status-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.aircraft-status-list::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 4px;
+}
+
+.aircraft-status-list::-webkit-scrollbar-thumb {
+    background: #c0c0c0;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+
+.aircraft-status-list::-webkit-scrollbar-thumb:hover {
+    background: #a0a0a0;
+}
+
+/* Individual Aircraft Row */
+.aircraft-status-row {
+    border-bottom: 1px solid #e8e8e8;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    padding: 1.25rem !important;
+    margin-bottom: 0.25rem;
+}
+
+.aircraft-status-row:hover {
+    background: #f5f7fa !important;
+    border-left: 4px solid #1976d2;
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.1);
+    transform: translateX(2px);
+}
+
+.aircraft-status-row:last-child {
+    border-bottom: none;
+}
+
+/* Row Content Layout */
+.aircraft-row-content {
+    min-height: 90px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+/* Aircraft Identity Section */
+.aircraft-identity-section {
+    flex: 0 0 280px;
+    min-width: 280px;
+    padding-right: 1rem;
+}
+
+.aircraft-identity {
+    width: 100%;
+}
+
+.aircraft-tail-number {
+    font-size: 1.25rem !important;
+    font-weight: 700 !important;
+    color: #1565c0 !important;
+    margin: 0 0 0.25rem 0 !important;
+    letter-spacing: 0.5px;
+}
+
+.aircraft-model-name {
+    color: #424242;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.375rem;
+}
+
+.aircraft-overall-status {
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+}
+
+.aircraft-basic-info {
+    margin-top: 0.375rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.aircraft-basic-info .sapMText {
+    font-size: 0.8rem;
+    color: #666666;
+    font-weight: 500;
+}
+
+.risk-score-compact {
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+}
+
+/* Operational Metrics Row */
+.operational-metrics-row {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    padding: 0 1rem;
+    align-items: center;
+    justify-items: center;
+}
+
+.metric-column {
+    text-align: center;
+    padding: 0.5rem;
+    background: #fafbfc;
+    border-radius: 6px;
+    border: 1px solid #e8eaed;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px;
+}
+
+.metric-column:hover {
+    background: #f1f3f4;
+    transform: translateY(-1px);
+}
+
+.metric-label-compact {
+    font-size: 0.8rem !important;
+    color: #5f6368 !important;
+    font-weight: 600 !important;
+    margin-bottom: 0.375rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+    width: 100%;
+}
+
+.metric-value-compact {
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    color: #202124 !important;
+    text-align: center;
+    width: 100%;
+}
+
+/* Additional Stats Section */
+.additional-stats-section {
+    flex: 0 0 320px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    align-items: center;
+    padding-left: 1rem;
+    border-left: 2px solid #e8eaed;
+}
+
+/* Alert Indicator */
+.alert-indicator-column {
+    text-align: center;
+    background: #fafbfc;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #e8eaed;
+}
+
+.alert-indicator {
+    justify-content: center;
+    align-items: center;
+}
+
+.alert-count {
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-left: 0.25rem;
+}
+
+/* Action Buttons */
+.action-buttons-column {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-btn-compact {
+    min-width: 2.25rem !important;
+    width: 2.25rem !important;
+    height: 2.25rem !important;
+    padding: 0 !important;
+    border-radius: 6px !important;
+    background: #f8f9fa !important;
+    border: 1px solid #e0e0e0 !important;
+    transition: all 0.2s ease !important;
+}
+
+.action-btn-compact:hover {
+    background: #e3f2fd !important;
+    border-color: #1976d2 !important;
+    transform: scale(1.1);
+    box-shadow: 0 2px 6px rgba(25, 118, 210, 0.2);
+}
+
+.action-btn-compact:hover {
+    background: #e3f2fd !important;
+    transform: scale(1.1);
+}
+
+/* Expandable Details Section */
+.aircraft-details-expanded {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+}
+
+.expanded-content {
+    gap: 2rem;
+}
+
+.failure-history-section,
+.alerts-section,
+.maintenance-section {
+    flex: 1;
+}
+
+.section-title {
+    font-size: 0.875rem !important;
+    color: #424242 !important;
+    margin-bottom: 0.5rem !important;
+    font-weight: 600 !important;
+}
+
+.last-failure-text {
+    font-size: 0.75rem;
+    color: #666666;
+    margin-bottom: 0.5rem;
+}
+
+.failure-badges-row {
+    gap: 0.25rem;
+}
+
+.failure-badges-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+}
+
+.failure-badge-item {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.failure-badge-compact {
+    font-size: 0.625rem !important;
+    padding: 0.125rem 0.25rem !important;
+}
+
+.no-failures-text {
+    font-size: 0.75rem;
+    color: #999999;
+    font-style: italic;
+}
+
+/* Alerts Detail List */
+.alerts-detail-list .alert-detail-item {
+    font-size: 0.75rem !important;
+}
+
+.alerts-detail-list .alert-detail-item.critical {
+    background: #ffebee;
+    border-left: 3px solid #f44336;
+}
+
+.alerts-detail-list .alert-detail-item.warning {
+    background: #fff8e1;
+    border-left: 3px solid #ff9800;
+}
+
+/* Maintenance Info */
+.maintenance-info {
+    gap: 0.25rem;
+}
+
+.info-label {
+    font-size: 0.75rem;
+    color: #666666;
+    font-weight: 500;
+}
+
+.info-value {
+    font-size: 0.75rem;
+    color: #424242;
+}
+
+.maintenance-status-compact {
+    font-size: 0.75rem !important;
+}
+
+/* List Growing Feature Styles */
+.aircraft-status-list .sapMGrowingList {
+    border-top: 1px solid #e0e0e0;
+}
+
+.aircraft-status-list .sapMGrowingListTrigger {
+    background: #f8f9fa;
+    color: #1976d2;
+    border: none;
+    padding: 1rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.aircraft-status-list .sapMGrowingListTrigger:hover {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+/* No Data State */
+.aircraft-status-list .sapMLIBNoData {
+    padding: 2rem;
+    text-align: center;
+    color: #666666;
+    font-style: italic;
+}
+
+/* ===== RESPONSIVE DESIGN FOR AIRCRAFT LIST ===== */
+
+/* Tablet View */
+@media (max-width: 1024px) {
+    .aircraft-row-content {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+        min-height: auto;
+    }
+    
+    .aircraft-identity-section {
+        flex: none;
+        min-width: auto;
+        padding-right: 0;
+        border-bottom: 1px solid #e8eaed;
+        padding-bottom: 0.75rem;
+    }
+    
+    .operational-metrics-row {
+        flex: none;
+        padding: 0;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+        margin-top: 0.75rem;
+    }
+    
+    .additional-stats-section {
+        flex: none;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+        padding-left: 0;
+        border-left: none;
+        border-top: 1px solid #e8eaed;
+        padding-top: 0.75rem;
+        margin-top: 0.75rem;
+    }
+    
+    .aircraft-tail-number {
+        font-size: 1.125rem !important;
+    }
+    
+    .metric-column {
+        padding: 0.375rem;
+    }
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+    .aircraft-status-row {
+        padding: 1rem !important;
+    }
+    
+    .aircraft-row-content {
+        gap: 0.75rem;
+    }
+    
+    .aircraft-identity-section {
+        padding-bottom: 0.5rem;
+    }
+    
+    .aircraft-tail-number {
+        font-size: 1rem !important;
+    }
+    
+    .aircraft-model-name {
+        font-size: 0.8rem;
+    }
+    
+    .operational-metrics-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+    }
+    
+    .additional-stats-section {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+    }
+    
+    .action-buttons-column {
+        grid-column: span 2;
+        justify-self: center;
+        margin-top: 0.5rem;
+    }
+    
+    .metric-column {
+        padding: 0.25rem;
+    }
+    
+    .metric-label-compact {
+        font-size: 0.7rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+    
+    .metric-value-compact {
+        font-size: 0.85rem !important;
+    }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 480px) {
+    .operational-metrics-row {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+    
+    .additional-stats-section {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+    
+    .action-buttons-column {
+        grid-column: span 1;
+        flex-direction: row;
+        gap: 0.75rem;
+    }
+    
+    .aircraft-basic-info {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+    .aircraft-status-list {
+        max-height: 500px;
+    }
+    
+    .aircraft-status-row {
+        padding: 0.75rem !important;
+    }
+    
+    .aircraft-row-content {
+        min-height: auto;
+        padding: 0.25rem 0;
+    }
+    
+    .operational-metrics-row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+    }
+    
+    .additional-stats-section {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+    }
+    
+    .action-buttons-column {
+        flex-direction: row;
+        justify-content: center;
+        grid-column: span 2;
+        margin-top: 0.5rem;
+    }
+    
+    .aircraft-tail-number {
+        font-size: 1rem !important;
+    }
+    
+    .metric-label-compact {
+        font-size: 0.625rem !important;
+    }
+    
+    .metric-value-compact {
+        font-size: 0.75rem !important;
+    }
+}
+
+/* Small Mobile View */
+@media (max-width: 480px) {
+    .aircraft-status-list {
+        max-height: 400px;
+    }
+    
+    .aircraft-identity-section {
+        text-align: center;
+    }
+    
+    .aircraft-basic-info {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .operational-metrics-row,
+    .additional-stats-section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .aircraft-details-expanded {
+        padding: 0.75rem;
+    }
+    
+    .expanded-content {
+        gap: 0.75rem;
+    }
+}
+
+/* ===== ACCESSIBILITY AND INTERACTION ENHANCEMENTS ===== */
+
+/* Focus States */
+.aircraft-status-row:focus {
+    outline: 2px solid #1976d2;
+    outline-offset: 2px;
+    background: #e3f2fd !important;
+}
+
+.action-btn-compact:focus {
+    outline: 2px solid #1976d2;
+    outline-offset: 1px;
+}
+
+/* Selection State */
+.aircraft-status-row.selected {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2;
+}
+
+/* Loading State */
+.aircraft-status-list.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .aircraft-status-row {
+        border-bottom: 2px solid #000000;
+    }
+    
+    .aircraft-status-row:hover {
+        background: #ffffff !important;
+        border-left: 4px solid #000000;
+    }
+    
+    .metric-label-compact,
+    .metric-value-compact {
+        color: #000000 !important;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .aircraft-status-row,
+    .action-btn-compact {
+        transition: none;
+    }
+    
+    .action-btn-compact:hover {
+        transform: none;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .aircraft-status-list {
+        max-height: none;
+        overflow: visible;
+        box-shadow: none;
+        border: 1px solid #000000;
+    }
+    
+    .action-buttons-column {
+        display: none;
+    }
+    
+    .aircraft-details-expanded {
+        background: #ffffff;
+    }
+}
+
+/* ===== EXISTING STYLES (preserved) ===== */
+
+/* ===== DASHBOARD NAVBAR STYLES ===== */
+
+/* Main Dashboard Navbar */
+.dashboard-navbar {
+    background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0 1rem;
+    min-height: 3.5rem;
+}
+
+.navbar-title {
+    color: #000000 !important;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-actions {
+    gap: 0.5rem;
+}
+
+.navbar-action-btn {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #ffffff !important;
+    border-radius: 6px !important;
+    transition: all 0.2s ease !important;
+}
+
+.navbar-action-btn:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Navigation Tab Bar */
+.dashboard-navigation {
+    border-bottom: 1px solid #e0e0e0;
+    background: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.dashboard-navigation .sapMITH {
+    background: #ffffff !important;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.dashboard-navigation .sapMITBItem {
+    border-right: 1px solid #f0f0f0;
+    transition: all 0.2s ease;
+}
+
+.dashboard-navigation .sapMITBItem:hover {
+    background: #f8f9fa !important;
+}
+
+.dashboard-navigation .sapMITBSelected {
+    background: #ffffff !important;
+    border-bottom: 3px solid #1976d2 !important;
+}
+
+.dashboard-navigation .sapMITBText {
+    font-weight: 500;
+    color: #424242;
+}
+
+.dashboard-navigation .sapMITBSelected .sapMITBText {
+    color: #1976d2;
+    font-weight: 600;
+}
+
+.dashboard-navigation .sapUiIcon {
+    color: #666666;
+}
+
+.dashboard-navigation .sapMITBSelected .sapUiIcon {
+    color: #1976d2;
+}
+
+/* Tab Content Container */
+.tab-content-container {
+    padding: 1.5rem;
+    background: #f8f9fa;
+    min-height: calc(100vh - 200px);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ===== FLIGHT OPERATIONS STYLES ===== */
+
+/* Flight Operations Grid */
+.flight-ops-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.flight-metric-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.flight-metric-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.flight-metric-content {
+    padding: 2rem;
+    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flight-metric-icon {
+    font-size: 3rem !important;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.flight-metric-icon.active {
+    color: #4caf50;
+}
+
+.flight-metric-icon.scheduled {
+    color: #2196f3;
+}
+
+.flight-metric-icon.warning {
+    color: #ff9800;
+}
+
+.flight-metric-icon.success {
+    color: #4caf50;
+}
+
+.metric-subtitle {
+    color: #666666;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    text-align: center;
+    line-height: 1.4;
+}
+
+/* Quick Actions Panel */
+.quick-actions-panel {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    width: 100%;
+}
+
+.quick-actions-container {
+    padding: 1rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.quick-actions-container .sapMBtn {
+    border-radius: 8px !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+    min-width: 120px;
+    text-align: center;
+}
+
+.quick-actions-container .sapMBtn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* ===== DASHBOARD LAYOUT ADJUSTMENTS ===== */
+
+/* Remove sidebar-specific styles and ensure full width */
+.dashboard-content-grid {
+    width: 100%;
+    max-width: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Adjust main content to full width */
+.main-content-column {
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0;
+}
+
+/* Panel styling improvements with proper content display */
+.metrics-panel,
+.filters-panel,
+.fleet-status-panel,
+.analytics-panel,
+.table-panel,
+.flight-ops-panel {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: visible;
+}
+
+/* Fix panel header styling and ensure text is visible */
+.metrics-panel .sapMPanelHdr,
+.filters-panel .sapMPanelHdr,
+.fleet-status-panel .sapMPanelHdr,
+.analytics-panel .sapMPanelHdr,
+.table-panel .sapMPanelHdr,
+.flight-ops-panel .sapMPanelHdr {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border-bottom: 1px solid #e0e0e0;
+    border-radius: 12px 12px 0 0;
+    padding: 1rem 1.5rem;
+    min-height: 2.5rem;
+    display: flex;
+    align-items: center;
+}
+
+/* Ensure panel content is properly displayed */
+.metrics-panel .sapMPanelContent,
+.filters-panel .sapMPanelContent,
+.fleet-status-panel .sapMPanelContent,
+.analytics-panel .sapMPanelContent,
+.table-panel .sapMPanelContent,
+.flight-ops-panel .sapMPanelContent {
+    padding: 0;
+    overflow: visible;
+    width: 100%;
+}
+
+/* Panel titles should be fully visible */
+.sapMPanelHdr .sapMTitle {
+    font-size: 1.125rem !important;
+    font-weight: 600 !important;
+    color: #424242 !important;
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: unset;
+    width: auto;
+    max-width: none;
+}
+
+/* Metrics Grid Enhancements with proper sizing */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.metric-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+}
+
+.metric-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.metric-card-header {
+    background: linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%);
+    border-bottom: 1px solid #e0e0e0;
+    padding: 1rem 1.5rem;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+/* Ensure metric card header titles are fully visible */
+.metric-card-header .sapMTitle {
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    color: #424242 !important;
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: unset;
+    flex: 1;
+}
+
+.metric-content {
+    padding: 2rem 1.5rem;
+    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.metric-value {
+    font-size: 2.5rem !important;
+    font-weight: 700 !important;
+    margin: 1rem 0;
+    line-height: 1.2;
+    color: #424242;
+}
+
+.metric-value.success {
+    color: #4caf50;
+}
+
+.metric-value.warning {
+    color: #ff9800;
+}
+
+.metric-value.neutral {
+    color: #2196f3;
+}
+
+.trend-up {
+    color: #4caf50 !important;
+}
+
+.trend-down {
+    color: #dc3545 !important;
+}
+
+.trend-text {
+    color: #666666;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.4;
+}
+
+/* Fix text overflow and ensure all text is visible */
+.sapMText,
+.sapMTitle,
+.sapMLabel {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    word-wrap: break-word;
+    line-height: 1.5;
+}
+
+/* Ensure form controls in filters panel are properly sized */
+.filters-form {
+    width: 100%;
+    padding: 1.5rem;
+}
+
+.filters-form .sapMComboBox,
+.filters-form .sapMInput {
+    width: 100% !important;
+    min-width: 200px;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablet and Mobile Adjustments */
+@media (max-width: 1024px) {
+    .dashboard-navigation .sapMITBItem {
+        min-width: auto;
+        flex: 1;
+    }
+    
+    .dashboard-navigation .sapMITBText {
+        font-size: 0.875rem;
+    }
+    
+    .flight-ops-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+    
+    .metrics-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    .tab-content-container {
+        padding: 1rem;
+    }
+    
+    .metric-card {
+        min-height: 240px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-title {
+        font-size: 1.25rem !important;
+    }
+    
+    .navbar-actions {
+        gap: 0.25rem;
+    }
+    
+    .navbar-action-btn {
+        min-width: 2.5rem !important;
+        padding: 0.5rem !important;
+    }
+    
+    .dashboard-navigation .sapMITBText {
+        display: none;
+    }
+    
+    .dashboard-navigation .sapUiIcon {
+        font-size: 1.25rem !important;
+    }
+    
+    .flight-ops-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .quick-actions-container {
+        flex-direction: column;
+    }
+    
+    .quick-actions-container .sapMBtn {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+    
+    .flight-metric-content {
+        padding: 1.5rem 1rem;
+    }
+    
+    .flight-metric-icon {
+        font-size: 2.5rem !important;
+    }
+    
+    .metric-value {
+        font-size: 2rem !important;
+    }
+    
+    .metric-card {
+        min-height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tab-content-container {
+        padding: 0.75rem;
+    }
+    
+    .flight-metric-content {
+        padding: 1rem;
+    }
+    
+    .flight-metric-icon {
+        font-size: 2rem !important;
+    }
+    
+    .metric-value {
+        font-size: 1.75rem !important;
+    }
+    
+    .metrics-grid {
+        grid-template-columns: 1fr;
+        padding: 0.75rem;
+    }
+    
+    .metric-card {
+        min-height: 180px;
+    }
+}
+
+/* ===== ENHANCED ANIMATIONS ===== */
+
+/* Tab transition animations */
+.dashboard-navigation .sapMITBItem {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dashboard-navigation .sapMITBSelected {
+    animation: tabSelect 0.3s ease-out;
+}
+
+@keyframes tabSelect {
+    0% {
+        border-bottom-width: 0px;
+        transform: translateY(2px);
+    }
+    100% {
+        border-bottom-width: 3px;
+        transform: translateY(0px);
+    }
+}
+
+/* Card hover animations */
+.flight-metric-card,
+.metric-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.flight-metric-card:hover .flight-metric-icon,
+.metric-card:hover .sapUiIcon {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+/* Button animations */
+.quick-actions-container .sapMBtn,
+.navbar-action-btn {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Loading and state animations */
+.tab-content-container {
+    animation: fadeInContent 0.4s ease-out;
+}
+
+@keyframes fadeInContent {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== ACCESSIBILITY IMPROVEMENTS ===== */
+
+/* Focus indicators */
+.dashboard-navigation .sapMITBItem:focus,
+.navbar-action-btn:focus,
+.quick-actions-container .sapMBtn:focus {
+    outline: 2px solid #1976d2;
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .dashboard-navbar {
+        background: #000000;
+        border-bottom: 2px solid #ffffff;
+    }
+    
+    .navbar-title {
+        color: #ffffff !important;
+    }
+    
+    .dashboard-navigation {
+        border-bottom: 2px solid #000000;
+    }
+    
+    .flight-metric-card,
+    .metric-card {
+        border: 2px solid #000000;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .flight-metric-card,
+    .metric-card,
+    .dashboard-navigation .sapMITBItem,
+    .navbar-action-btn,
+    .quick-actions-container .sapMBtn {
+        transition: none;
+    }
+    
+    .tab-content-container {
+        animation: none;
+    }
+    
+    .flight-metric-card:hover,
+    .metric-card:hover {
+        transform: none;
+    }
+}
+
+/* ===== EXISTING STYLES (preserved) ===== */
+
+/* Dashboard Page Background */
+.project1-dashboard {
+    background: white;
+    min-height: 100vh;
+}
+
+/* Footer Styling */
+.dashboard-footer {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-top: 1px solid #dee2e6;
+    padding: 1rem 2rem;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.footer-button {
+    border-radius: 6px !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+}
+
+.footer-button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Status and State Colors */
+.success {
+    color: #4caf50 !important;
+}
+
+.warning {
+    color: #ff9800 !important;
+}
+
+.error {
+    color: #f44336 !important;
+}
+
+.critical {
+    color: #d32f2f !important;
+}
+
+/* Ensure good contrast and readability */
+.sapUiSizeCompact .sapMText,
+.sapUiSizeCompact .sapMTitle,
+.sapUiSizeCompact .sapMLabel {
+    line-height: 1.5;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+}
+
+/* Print styles */
+@media print {
+    .dashboard-navbar,
+    .dashboard-navigation,
+    .dashboard-footer {
+        display: none !important;
+    }
+    
+    .tab-content-container {
+        padding: 0 !important;
+        background: #ffffff !important;
+    }
+}
+
+/* ===== AIRCRAFT STATUS SCROLLABLE LIST STYLES ===== */
+
+/* Main Aircraft List Container */
+.aircraft-status-list {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    max-height: 700px;
+    overflow-y: auto;
+    width: 100%;
+    scrollbar-width: thin;
+    scrollbar-color: #c0c0c0 #f0f0f0;
+}
+
+.aircraft-status-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.aircraft-status-list::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 4px;
+}
+
+.aircraft-status-list::-webkit-scrollbar-thumb {
+    background: #c0c0c0;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+
+.aircraft-status-list::-webkit-scrollbar-thumb:hover {
+    background: #a0a0a0;
+}
+
+/* Individual Aircraft Row */
+.aircraft-status-row {
+    border-bottom: 1px solid #e8e8e8;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    padding: 1.25rem !important;
+    margin-bottom: 0.25rem;
+}
+
+.aircraft-status-row:hover {
+    background: #f5f7fa !important;
+    border-left: 4px solid #1976d2;
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.1);
+    transform: translateX(2px);
+}
+
+.aircraft-status-row:last-child {
+    border-bottom: none;
+}
+
+/* Row Content Layout */
+.aircraft-row-content {
+    min-height: 90px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+/* Aircraft Identity Section */
+.aircraft-identity-section {
+    flex: 0 0 280px;
+    min-width: 280px;
+    padding-right: 1rem;
+}
+
+.aircraft-identity {
+    width: 100%;
+}
+
+.aircraft-tail-number {
+    font-size: 1.25rem !important;
+    font-weight: 700 !important;
+    color: #1565c0 !important;
+    margin: 0 0 0.25rem 0 !important;
+    letter-spacing: 0.5px;
+}
+
+.aircraft-model-name {
+    color: #424242;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.375rem;
+}
+
+.aircraft-overall-status {
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+}
+
+.aircraft-basic-info {
+    margin-top: 0.375rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.aircraft-basic-info .sapMText {
+    font-size: 0.8rem;
+    color: #666666;
+    font-weight: 500;
+}
+
+.risk-score-compact {
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+}
+
+/* Operational Metrics Row */
+.operational-metrics-row {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    padding: 0 1rem;
+    align-items: center;
+    justify-items: center;
+}
+
+.metric-column {
+    text-align: center;
+    padding: 0.5rem;
+    background: #fafbfc;
+    border-radius: 6px;
+    border: 1px solid #e8eaed;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px;
+}
+
+.metric-column:hover {
+    background: #f1f3f4;
+    transform: translateY(-1px);
+}
+
+.metric-label-compact {
+    font-size: 0.8rem !important;
+    color: #5f6368 !important;
+    font-weight: 600 !important;
+    margin-bottom: 0.375rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+    width: 100%;
+}
+
+.metric-value-compact {
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    color: #202124 !important;
+    text-align: center;
+    width: 100%;
+}
+
+/* Additional Stats Section */
+.additional-stats-section {
+    flex: 0 0 320px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    align-items: center;
+    padding-left: 1rem;
+    border-left: 2px solid #e8eaed;
+}
+
+/* Alert Indicator */
+.alert-indicator-column {
+    text-align: center;
+    background: #fafbfc;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #e8eaed;
+}
+
+.alert-indicator {
+    justify-content: center;
+    align-items: center;
+}
+
+.alert-count {
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-left: 0.25rem;
+}
+
+/* Action Buttons */
+.action-buttons-column {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-btn-compact {
+    min-width: 2.25rem !important;
+    width: 2.25rem !important;
+    height: 2.25rem !important;
+    padding: 0 !important;
+    border-radius: 6px !important;
+    background: #f8f9fa !important;
+    border: 1px solid #e0e0e0 !important;
+    transition: all 0.2s ease !important;
+}
+
+.action-btn-compact:hover {
+    background: #e3f2fd !important;
+    border-color: #1976d2 !important;
+    transform: scale(1.1);
+    box-shadow: 0 2px 6px rgba(25, 118, 210, 0.2);
+}
+
+.action-btn-compact:hover {
+    background: #e3f2fd !important;
+    transform: scale(1.1);
+}
+
+/* Expandable Details Section */
+.aircraft-details-expanded {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+}
+
+.expanded-content {
+    gap: 2rem;
+}
+
+.failure-history-section,
+.alerts-section,
+.maintenance-section {
+    flex: 1;
+}
+
+.section-title {
+    font-size: 0.875rem !important;
+    color: #424242 !important;
+    margin-bottom: 0.5rem !important;
+    font-weight: 600 !important;
+}
+
+.last-failure-text {
+    font-size: 0.75rem;
+    color: #666666;
+    margin-bottom: 0.5rem;
+}
+
+.failure-badges-row {
+    gap: 0.25rem;
+}
+
+.failure-badges-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+}
+
+.failure-badge-item {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.failure-badge-compact {
+    font-size: 0.625rem !important;
+    padding: 0.125rem 0.25rem !important;
+}
+
+.no-failures-text {
+    font-size: 0.75rem;
+    color: #999999;
+    font-style: italic;
+}
+
+/* Alerts Detail List */
+.alerts-detail-list .alert-detail-item {
+    font-size: 0.75rem !important;
+}
+
+.alerts-detail-list .alert-detail-item.critical {
+    background: #ffebee;
+    border-left: 3px solid #f44336;
+}
+
+.alerts-detail-list .alert-detail-item.warning {
+    background: #fff8e1;
+    border-left: 3px solid #ff9800;
+}
+
+/* Maintenance Info */
+.maintenance-info {
+    gap: 0.25rem;
+}
+
+.info-label {
+    font-size: 0.75rem;
+    color: #666666;
+    font-weight: 500;
+}
+
+.info-value {
+    font-size: 0.75rem;
+    color: #424242;
+}
+
+.maintenance-status-compact {
+    font-size: 0.75rem !important;
+}
+
+/* List Growing Feature Styles */
+.aircraft-status-list .sapMGrowingList {
+    border-top: 1px solid #e0e0e0;
+}
+
+.aircraft-status-list .sapMGrowingListTrigger {
+    background: #f8f9fa;
+    color: #1976d2;
+    border: none;
+    padding: 1rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.aircraft-status-list .sapMGrowingListTrigger:hover {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+/* No Data State */
+.aircraft-status-list .sapMLIBNoData {
+    padding: 2rem;
+    text-align: center;
+    color: #666666;
+    font-style: italic;
+}
+
+/* ===== RESPONSIVE DESIGN FOR AIRCRAFT LIST ===== */
+
+/* Tablet View */
+@media (max-width: 1024px) {
+    .aircraft-row-content {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+        min-height: auto;
+    }
+    
+    .aircraft-identity-section {
+        flex: none;
+        min-width: auto;
+        padding-right: 0;
+        border-bottom: 1px solid #e8eaed;
+        padding-bottom: 0.75rem;
+    }
+    
+    .operational-metrics-row {
+        flex: none;
+        padding: 0;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+        margin-top: 0.75rem;
+    }
+    
+    .additional-stats-section {
+        flex: none;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+        padding-left: 0;
+        border-left: none;
+        border-top: 1px solid #e8eaed;
+        padding-top: 0.75rem;
+        margin-top: 0.75rem;
+    }
+    
+    .aircraft-tail-number {
+        font-size: 1.125rem !important;
+    }
+    
+    .metric-column {
+        padding: 0.375rem;
+    }
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+    .aircraft-status-row {
+        padding: 1rem !important;
+    }
+    
+    .aircraft-row-content {
+        gap: 0.75rem;
+    }
+    
+    .aircraft-identity-section {
+        padding-bottom: 0.5rem;
+    }
+    
+    .aircraft-tail-number {
+        font-size: 1rem !important;
+    }
+    
+    .aircraft-model-name {
+        font-size: 0.8rem;
+    }
+    
+    .operational-metrics-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+    }
+    
+    .additional-stats-section {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+    }
+    
+    .action-buttons-column {
+        grid-column: span 2;
+        justify-self: center;
+        margin-top: 0.5rem;
+    }
+    
+    .metric-column {
+        padding: 0.25rem;
+    }
+    
+    .metric-label-compact {
+        font-size: 0.7rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+    
+    .metric-value-compact {
+        font-size: 0.85rem !important;
+    }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 480px) {
+    .operational-metrics-row {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+    
+    .additional-stats-section {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+    
+    .action-buttons-column {
+        grid-column: span 1;
+        flex-direction: row;
+        gap: 0.75rem;
+    }
+    
+    .aircraft-basic-info {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+    .aircraft-status-list {
+        max-height: 500px;
+    }
+    
+    .aircraft-status-row {
+        padding: 0.75rem !important;
+    }
+    
+    .aircraft-row-content {
+        min-height: auto;
+        padding: 0.25rem 0;
+    }
+    
+    .operational-metrics-row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+    }
+    
+    .additional-stats-section {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+    }
+    
+    .action-buttons-column {
+        flex-direction: row;
+        justify-content: center;
+        grid-column: span 2;
+        margin-top: 0.5rem;
+    }
+    
+    .aircraft-tail-number {
+        font-size: 1rem !important;
+    }
+    
+    .metric-label-compact {
+        font-size: 0.625rem !important;
+    }
+    
+    .metric-value-compact {
+        font-size: 0.75rem !important;
+    }
+}
+
+/* Small Mobile View */
+@media (max-width: 480px) {
+    .aircraft-status-list {
+        max-height: 400px;
+    }
+    
+    .aircraft-identity-section {
+        text-align: center;
+    }
+    
+    .aircraft-basic-info {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .operational-metrics-row,
+    .additional-stats-section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .aircraft-details-expanded {
+        padding: 0.75rem;
+    }
+    
+    .expanded-content {
+        gap: 0.75rem;
+    }
+}
+
+/* ===== ACCESSIBILITY AND INTERACTION ENHANCEMENTS ===== */
+
+/* Focus States */
+.aircraft-status-row:focus {
+    outline: 2px solid #1976d2;
+    outline-offset: 2px;
+    background: #e3f2fd !important;
+}
+
+.action-btn-compact:focus {
+    outline: 2px solid #1976d2;
+    outline-offset: 1px;
+}
+
+/* Selection State */
+.aircraft-status-row.selected {
+    background: #e3f2fd !important;
+    border-left: 4px solid #1976d2;
+}
+
+/* Loading State */
+.aircraft-status-list.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .aircraft-status-row {
+        border-bottom: 2px solid #000000;
+    }
+    
+    .aircraft-status-row:hover {
+        background: #ffffff !important;
+        border-left: 4px solid #000000;
+    }
+    
+    .metric-label-compact,
+    .metric-value-compact {
+        color: #000000 !important;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .aircraft-status-row,
+    .action-btn-compact {
+        transition: none;
+    }
+    
+    .action-btn-compact:hover {
+        transform: none;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .aircraft-status-list {
+        max-height: none;
+        overflow: visible;
+        box-shadow: none;
+        border: 1px solid #000000;
+    }
+    
+    .action-buttons-column {
+        display: none;
+    }
+    
+    .aircraft-details-expanded {
+        background: #ffffff;
+    }
+}
+
+/* ===== EXISTING STYLES (preserved) ===== */
+
+/* ===== DASHBOARD NAVBAR STYLES ===== */
+
+/* Main Dashboard Navbar */
+.dashboard-navbar {
+    background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0 1rem;
+    min-height: 3.5rem;
+}
+
+.navbar-title {
+    color: #000000 !important;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-actions {
+    gap: 0.5rem;
+}
+
+.navbar-action-btn {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #ffffff !important;
+    border-radius: 6px !important;
+    transition: all 0.2s ease !important;
+}
+
+.navbar-action-btn:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Navigation Tab Bar */
+.dashboard-navigation {
+    border-bottom: 1px solid #e0e0e0;
+    background: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.dashboard-navigation .sapMITH {
+    background: #ffffff !important;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.dashboard-navigation .sapMITBItem {
+    border-right: 1px solid #f0f0f0;
+    transition: all 0.2s ease;
+}
+
+.dashboard-navigation .sapMITBItem:hover {
+    background: #f8f9fa !important;
+}
+
+.dashboard-navigation .sapMITBSelected {
+    background: #ffffff !important;
+    border-bottom: 3px solid #1976d2 !important;
+}
+
+.dashboard-navigation .sapMITBText {
+    font-weight: 500;
+    color: #424242;
+}
+
+.dashboard-navigation .sapMITBSelected .sapMITBText {
+    color: #1976d2;
+    font-weight: 600;
+}
+
+.dashboard-navigation .sapUiIcon {
+    color: #666666;
+}
+
+.dashboard-navigation .sapMITBSelected .sapUiIcon {
+    color: #1976d2;
+}
+
+/* Tab Content Container */
+.tab-content-container {
+    padding: 1.5rem;
+    background: #f8f9fa;
+    min-height: calc(100vh - 200px);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ===== FLIGHT OPERATIONS STYLES ===== */
+
+/* Flight Operations Grid */
+.flight-ops-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.flight-metric-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.flight-metric-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.flight-metric-content {
+    padding: 2rem;
+    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flight-metric-icon {
+    font-size: 3rem !important;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.flight-metric-icon.active {
+    color: #4caf50;
+}
+
+.flight-metric-icon.scheduled {
+    color: #2196f3;
+}
+
+.flight-metric-icon.warning {
+    color: #ff9800;
+}
+
+.flight-metric-icon.success {
+    color: #4caf50;
+}
+
+.metric-subtitle {
+    color: #666666;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    text-align: center;
+    line-height: 1.4;
+}
+
+/* Quick Actions Panel */
+.quick-actions-panel {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    width: 100%;
+}
+
+.quick-actions-container {
+    padding: 1rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.quick-actions-container .sapMBtn {
+    border-radius: 8px !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+    min-width: 120px;
+    text-align: center;
+}
+
+.quick-actions-container .sapMBtn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* ===== DASHBOARD LAYOUT ADJUSTMENTS ===== */
+
+/* Remove sidebar-specific styles and ensure full width */
+.dashboard-content-grid {
+    width: 100%;
+    max-width: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Adjust main content to full width */
+.main-content-column {
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0;
+}
+
+/* Panel styling improvements with proper content display */
+.metrics-panel,
+.filters-panel,
+.fleet-status-panel,
+.analytics-panel,
+.table-panel,
+.flight-ops-panel {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: visible;
+}
+
+/* Fix panel header styling and ensure text is visible */
+.metrics-panel .sapMPanelHdr,
+.filters-panel .sapMPanelHdr,
+.fleet-status-panel .sapMPanelHdr,
+.analytics-panel .sapMPanelHdr,
+.table-panel .sapMPanelHdr,
+.flight-ops-panel .sapMPanelHdr {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border-bottom: 1px solid #e0e0e0;
+    border-radius: 12px 12px 0 0;
+    padding: 1rem 1.5rem;
+    min-height: 2.5rem;
+    display: flex;
+    align-items: center;
+}
+
+/* Ensure panel content is properly displayed */
+.metrics-panel .sapMPanelContent,
+.filters-panel .sapMPanelContent,
+.fleet-status-panel .sapMPanelContent,
+.analytics-panel .sapMPanelContent,
+.table-panel .sapMPanelContent,
+.flight-ops-panel .sapMPanelContent {
+    padding: 0;
+    overflow: visible;
+    width: 100%;
+}
+
+/* Panel titles should be fully visible */
+.sapMPanelHdr .sapMTitle {
+    font-size: 1.125rem !important;
+    font-weight: 600 !important;
+    color: #424242 !important;
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: unset;
+    width: auto;
+    max-width: none;
+}
+
+/* Metrics Grid Enhancements with proper sizing */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.metric-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+}
+
+.metric-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.metric-card-header {
+    background: linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%);
+    border-bottom: 1px solid #e0e0e0;
+    padding: 1rem 1.5rem;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+/* Ensure metric card header titles are fully visible */
+.metric-card-header .sapMTitle {
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    color: #424242 !important;
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: unset;
+    flex: 1;
+}
+
+.metric-content {
+    padding: 2rem 1.5rem;
+    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.metric-value {
+    font-size: 2.5rem !important;
+    font-weight: 700 !important;
+    margin: 1rem 0;
+    line-height: 1.2;
+    color: #424242;
+}
+
+.metric-value.success {
+    color: #4caf50;
+}
+
+.metric-value.warning {
+    color: #ff9800;
+}
+
+.metric-value.neutral {
+    color: #2196f3;
+}
+
+.trend-up {
+    color: #4caf50 !important;
+}
+
+.trend-down {
+    color: #dc3545 !important;
+}
+
+.trend-text {
+    color: #666666;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.4;
+}
+
+/* Fix text overflow and ensure all text is visible */
+.sapMText,
+.sapMTitle,
+.sapMLabel {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    word-wrap: break-word;
+    line-height: 1.5;
+}
+
+/* Ensure form controls in filters panel are properly sized */
+.filters-form {
+    width: 100%;
+    padding: 1.5rem;
+}
+
+.filters-form .sapMComboBox,
+.filters-form .sapMInput {
+    width: 100% !important;
+    min-width: 200px;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablet and Mobile Adjustments */
+@media (max-width: 1024px) {
+    .dashboard-navigation .sapMITBItem {
+        min-width: auto;
+        flex: 1;
+    }
+    
+    .dashboard-navigation .sapMITBText {
+        font-size: 0.875rem;
+    }
+    
+    .flight-ops-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+    
+    .metrics-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    .tab-content-container {
+        padding: 1rem;
+    }
+    
+    .metric-card {
+        min-height: 240px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-title {
+        font-size: 1.25rem !important;
+    }
+    
+    .navbar-actions {
+        gap: 0.25rem;
+    }
+    
+    .navbar-action-btn {
+        min-width: 2.5rem !important;
+        padding: 0.5rem !important;
+    }
+    
+    .dashboard-navigation .sapMITBText {
+        display: none;
+    }
+    
+    .dashboard-navigation .sapUiIcon {
+        font-size: 1.25rem !important;
+    }
+    
+    .flight-ops-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .quick-actions-container {
+        flex-direction: column;
+    }
+    
+    .quick-actions-container .sapMBtn {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+    
+    .flight-metric-content {
+        padding: 1.5rem 1rem;
+    }
+    
+    .flight-metric-icon {
+        font-size: 2.5rem !important;
+    }
+    
+    .metric-value {
+        font-size: 2rem !important;
+    }
+    
+    .metric-card {
+        min-height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tab-content-container {
+        padding: 0.75rem;
+    }
+    
+    .flight-metric-content {
+        padding: 1rem;
+    }
+    
+    .flight-metric-icon {
+        font-size: 2rem !important;
+    }
+    
+    .metric-value {
+        font-size: 1.75rem !important;
+    }
+    
+    .metrics-grid {
+        grid-template-columns: 1fr;
+        padding: 0.75rem;
+    }
+    
+    .metric-card {
+        min-height: 180px;
+    }
+}
+
+/* ===== ENHANCED ANIMATIONS ===== */
+
+/* Tab transition animations */
+.dashboard-navigation .sapMITBItem {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dashboard-navigation .sapMITBSelected {
+    animation: tabSelect 0.3s ease-out;
+}
+
+@keyframes tabSelect {
+    0% {
+        border-bottom-width: 0px;
+        transform: translateY(2px);
+    }
+    100% {
+        border-bottom-width: 3px;
+        transform: translateY(0px);
+    }
+}
+
+/* Card hover animations */
+.flight-metric-card,
+.metric-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.flight-metric-card:hover .flight-metric-icon,
+.metric-card:hover .sapUiIcon {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+/* Button animations */
+.quick-actions-container .sapMBtn,
+.navbar-action-btn {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Loading and state animations */
+.tab-content-container {
+    animation: fadeInContent 0.4s ease-out;
+}
+
+@keyframes fadeInContent {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== ACCESSIBILITY IMPROVEMENTS ===== */
+
+/* Focus indicators */
+.dashboard-navigation .sapMITBItem:focus,
+.navbar-action-btn:focus,
+.quick-actions-container .sapMBtn:focus {
+    outline: 2px solid #1976d2;
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .dashboard-navbar {
+        background: #000000;
+        border-bottom: 2px solid #ffffff;
+    }
+    
+    .navbar-title {
+        color: #ffffff !important;
+    }
+    
+    .dashboard-navigation {
+        border-bottom: 2px solid #000000;
+    }
+    
+    .flight-metric-card,
+    .metric-card {
+        border: 2px solid #000000;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .flight-metric-card,
+    .metric-card,
+    .dashboard-navigation .sapMITBItem,
+    .navbar-action-btn,
+    .quick-actions-container .sapMBtn {
+        transition: none;
+    }
+    
+    .tab-content-container {
+        animation: none;
+    }
+    
+    .flight-metric-card:hover,
+    .metric-card:hover {
+        transform: none;
+    }
+}
+
+/* ===== EXISTING STYLES (preserved) ===== */
+
+/* Dashboard Page Background */
+.project1-dashboard {
+    background: white;
     min-height: 100vh;
 }
 
