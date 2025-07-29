@@ -4,27 +4,36 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:core="sap.ui.core"
     xmlns="sap.m"
-    displayBlock="true">
+    displayBlock="true"
+    class="sapUiFullHeight">
     
-    <Shell id="shell" appWidthLimited="false">
-        <App id="app" class="myAppDemoWT">
+    <Shell id="shell" appWidthLimited="false" class="sapUiFullHeight">
+        <App id="app" class="myAppDemoWT sapUiFullHeight">
             <pages>
                 <!-- Main Application Page -->
-                <Page showHeader="false" class="sapUiContentPadding">
+                <Page showHeader="false" class="sapUiNoContentPadding sapUiFullHeight">
                     <content>
-                        <!-- Main Layout Container -->
+                        <!-- Main Layout Container with Fixed Configuration -->
                         <SplitContainer id="splitContainer" 
                                        class="sapUiFullHeight"
                                        masterButtonText="Menu"
                                        masterButtonTooltip="Toggle Sidebar"
-                                       mode="ShowHideMode">
+                                       mode="StretchCompressMode"
+                                       defaultTransitionNameDetail="slide"
+                                       defaultTransitionNameMaster="slide"
+                                       masterButtonVisibility="true"
+                                       backgroundColor="Transparent">
                             <!-- Sidebar Navigation -->
                             <masterPages>
-                                <Page title="" showHeader="false" class="sidebar sapUiFullHeight">
+                                <Page title="" 
+                                      showHeader="false" 
+                                      class="sidebar sapUiFullHeight sapUiNoContentPadding"
+                                      enableScrolling="true">
                                     <content>
-                                        <VBox class="sapUiFullHeight">
+                                        <VBox class="sapUiFullHeight sapUiNoContentPadding">
                                             <!-- Application Header -->
-                                            <Panel class="sapUiResponsiveMargin" backgroundDesign="Transparent">
+                                            <Panel class="sapUiResponsiveMargin sapUiNoContentPadding" 
+                                                   backgroundDesign="Transparent">
                                                 <content>
                                                     <VBox alignItems="Center" class="sapUiMediumMargin">
                                                         <HBox alignItems="Center" class="sapUiMediumMarginBottom">
@@ -41,8 +50,9 @@
                                             <!-- Navigation Menu -->
                                             <List id="navigationList" 
                                                   items="{navigation>/navigationItems}" 
-                                                  class="sapUiResponsiveMargin"
-                                                  itemPress="onNavigationItemPress">
+                                                  class="sapUiResponsiveMargin sapUiNoContentPadding"
+                                                  itemPress="onNavigationItemPress"
+                                                  mode="SingleSelectMaster">
                                                 <CustomListItem press="onNavigationItemPress" 
                                                               class="{= ${navigation>id} === ${navigation>/activeSection} ? 'selected' : ''}"
                                                               type="Active">
@@ -56,7 +66,7 @@
                                                                 </VBox>
                                                             </HBox>
                                                             <ObjectStatus text="{navigation>badge}" 
-                                                                         visible="{= ${navigation&gtbadge} !== null &amp&amp ${navigation&gtbadge} !== undefined}"
+                                                                         visible="{= ${navigation>badge} !== null &amp;&amp; ${navigation>badge} !== undefined}"
                                                                          class="sapUiTinyMarginStart"
                                                                          state="Information"/>
                                                         </HBox>
@@ -65,7 +75,7 @@
                                             </List>
 
                                             <!-- Spacer to push user info to bottom -->
-                                            <core:HTML content="&lt;div style='flex-grow: 1;'&gt;&lt;/div&gt;"/>
+                                            <core:HTML content="&lt;div class='sidebar-spacer'&gt;&lt;/div&gt;"/>
 
                                             <!-- User Information Panel -->
                                             <Panel class="sapUiResponsiveMargin" backgroundDesign="Solid">
@@ -83,15 +93,18 @@
                                                                     <Text text="{navigation>/userInfo/role}" class="sapUiContentLabelColor sapUiTinyText"/>
                                                                 </VBox>
                                                             </HBox>
-                                                            <!-- Notifications Badge -->
-                                                            <Button icon="sap-icon://bell" 
-                                                                    type="Transparent" 
-                                                                    press="onShowNotifications"
-                                                                    tooltip="Notifications">
+                                                            <!-- Notifications Badge - Fixed Structure -->
+                                                            <HBox alignItems="Center">
+                                                                <Button icon="sap-icon://bell" 
+                                                                        type="Transparent" 
+                                                                        press="onShowNotifications"
+                                                                        tooltip="Notifications"
+                                                                        class="notification-button"/>
                                                                 <ObjectStatus text="{navigation>/userInfo/notifications}" 
                                                                              visible="{= ${navigation>/userInfo/notifications} > 0}"
-                                                                             state="Error"/>
-                                                            </Button>
+                                                                             state="Error"
+                                                                             class="notification-badge"/>
+                                                            </HBox>
                                                         </HBox>
                                                         
                                                         <!-- Quick Actions -->
@@ -124,11 +137,12 @@
                                 <Page id="mainContentPage" 
                                       title="{navigation>/activeSection}" 
                                       showHeader="true"
-                                      class="sapUiResponsiveContentPadding">
+                                      class="sapUiResponsiveContentPadding sapUiFullHeight"
+                                      enableScrolling="true">
                                     
                                     <!-- Page Header -->
                                     <customHeader>
-                                        <Toolbar class="sapUiMediumMarginBottom">
+                                        <Toolbar class="sapUiMediumMarginBottom" height="auto">
                                             <Title text="AeroMaint - Aircraft Maintenance Dashboard" level="H2"/>
                                             <ToolbarSpacer/>
                                             
@@ -155,7 +169,7 @@
 
                                     <content>
                                         <!-- Dynamic Content Container -->
-                                        <VBox id="mainContentContainer" class="sapUiFullHeight">
+                                        <VBox id="mainContentContainer" class="sapUiFullHeight sapUiResponsiveContentPadding">
                                             
                                             <!-- Welcome/Dashboard Content (Default) -->
                                             <Panel headerText="Welcome to AeroMaint" class="sapUiResponsiveMargin">

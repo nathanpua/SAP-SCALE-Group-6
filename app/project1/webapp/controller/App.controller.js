@@ -1,8 +1,9 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
-    "sap/m/MessageToast"
-], function (Controller, JSONModel, MessageToast) {
+    "sap/m/MessageToast",
+    "sap/ui/Device"
+], function (Controller, JSONModel, MessageToast, Device) {
     "use strict";
 
     return Controller.extend("project1.controller.App", {
@@ -22,16 +23,28 @@ sap.ui.define([
         },
 
         _initializeSplitContainer: function () {
-            // Ensure SplitContainer is properly configured
+            // Ensure SplitContainer is properly configured according to SAP UI5 best practices
             var splitContainer = this.byId("splitContainer");
             if (splitContainer) {
-                // Set initial mode to show both master and detail
-                splitContainer.setMode("ShowHideMode");
+                // Set responsive mode for better device adaptation
+                splitContainer.setMode("StretchCompressMode");
                 
-                // Ensure proper layout
+                // Configure master button visibility
+                splitContainer.setMasterButtonText("Menu");
+                splitContainer.setMasterButtonTooltip("Toggle Navigation");
+                
+                // Ensure proper CSS classes
                 splitContainer.addStyleClass("sapUiFullHeight");
                 
-                console.log("SplitContainer initialized successfully");
+                // Set initial master visibility based on screen size
+                var isPhone = Device.system.phone;
+                if (isPhone) {
+                    splitContainer.hideMaster();
+                } else {
+                    splitContainer.showMaster();
+                }
+                
+                console.log("SplitContainer initialized successfully with responsive configuration");
             }
         },
 

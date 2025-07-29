@@ -22,6 +22,7 @@ mta_archives/
 .DS_Store
 *.orig
 *.log
+SAP_UI5_FIORI_Best_Practices.md
 
 *.iml
 *.flattened-pom.xml

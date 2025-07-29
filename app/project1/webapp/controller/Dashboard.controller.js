@@ -11,204 +11,84 @@ sap.ui.define([
     return Controller.extend("project1.controller.Dashboard", {
 
         onInit: function () {
-            console.log("Dashboard controller initialized - Aircraft Maintenance Dashboard");
+            console.log("Dashboard controller initialized - Aircraft Maintenance Dashboard with Navbar");
             
             // Initialize models and data
             this._initializeModels();
             this._initializeMetrics();
             this._initializeTNPData();
             this._initializeMTBFTrends();
-            this._initializeSidebarData();
+            this._initializeViewData();
         },
 
-        _initializeSidebarData: function () {
-            console.log("Initializing sidebar navigation and data");
+        _initializeViewData: function () {
+            console.log("Initializing view navigation data");
             
-            // Navigation items for sidebar
-            var navigationItems = [
-                {
-                    title: "Dashboard",
-                    description: "Main overview",
-                    icon: "sap-icon://home",
-                    hasSubItems: false,
-                    route: "dashboard"
-                },
-                {
-                    title: "Fleet Management",
-                    description: "Aircraft inventory",
-                    icon: "sap-icon://flight",
-                    hasSubItems: true,
-                    route: "fleet"
-                },
-                {
-                    title: "Maintenance",
-                    description: "Scheduled & predictive",
-                    icon: "sap-icon://wrench",
-                    hasSubItems: true,
-                    route: "maintenance"
-                },
-                {
-                    title: "Analytics",
-                    description: "Reports & insights",
-                    icon: "sap-icon://bar-chart",
-                    hasSubItems: false,
-                    route: "analytics"
-                },
-                {
-                    title: "Alerts",
-                    description: "System notifications",
-                    icon: "sap-icon://alert",
-                    hasSubItems: false,
-                    route: "alerts"
-                },
-                {
-                    title: "Compliance",
-                    description: "Safety & regulations",
-                    icon: "sap-icon://shield",
-                    hasSubItems: false,
-                    route: "compliance"
-                },
-                {
-                    title: "Settings",
-                    description: "Configuration",
-                    icon: "sap-icon://settings",
-                    hasSubItems: false,
-                    route: "settings"
-                }
-            ];
+            // Initialize view model for tab navigation
+            var viewModel = new JSONModel({
+                selectedTab: "flightOperations" // Default to Flight Operations tab
+            });
+            
+            this.getView().setModel(viewModel, "view");
+            console.log("View model initialized with default tab: flightOperations");
+        },
 
-            // Fleet summary data
-            var fleetSummary = {
-                totalAircraft: 24,
-                inService: 18,
-                inMaintenance: 4,
-                criticalAlerts: 2
+        // Navigation tab selection handler
+        onNavigationTabSelect: function (oEvent) {
+            var selectedKey = oEvent.getParameter("selectedKey");
+            console.log("Navigation tab selected:", selectedKey);
+            
+            // Update the view model
+            this.getView().getModel("view").setProperty("/selectedTab", selectedKey);
+            
+            // Show toast for navigation feedback
+            var tabNames = {
+                "flightOperations": "Flight Operations",
+                "fleet": "Fleet Management", 
+                "maintenance": "Maintenance",
+                "analytics": "Analytics",
+                "alerts": "Alerts",
+                "compliance": "Compliance"
             };
-
-            // Recent activity data
-            var recentActivity = [
-                {
-                    title: "Maintenance completed on N456AB",
-                    timestamp: "2 hours ago",
-                    icon: "sap-icon://accept"
-                },
-                {
-                    title: "New alert: Engine temperature high",
-                    timestamp: "4 hours ago",
-                    icon: "sap-icon://alert"
-                },
-                {
-                    title: "Predictive maintenance scheduled",
-                    timestamp: "6 hours ago",
-                    icon: "sap-icon://calendar"
-                },
-                {
-                    title: "Fleet report generated",
-                    timestamp: "1 day ago",
-                    icon: "sap-icon://document-text"
-                }
-            ];
-
-            // Set models
-            this.getView().setModel(new JSONModel(navigationItems), "NavigationItems");
-            this.getView().setModel(new JSONModel(fleetSummary), "FleetSummary");
-            this.getView().setModel(new JSONModel(recentActivity), "RecentActivity");
-        },
-
-        onToggleSidebar: function () {
-            var sidebarPanel = this.byId("sidebarPanel");
-            if (sidebarPanel) {
-                var isExpanded = sidebarPanel.getExpanded();
-                sidebarPanel.setExpanded(!isExpanded);
-                
-                // Update toggle button icon
-                var toggleBtn = this.byId("sidebarToggleBtn");
-                if (toggleBtn) {
-                    toggleBtn.setIcon(isExpanded ? "sap-icon://menu2" : "sap-icon://menu");
-                }
-                
-                MessageToast.show("Sidebar " + (isExpanded ? "collapsed" : "expanded"));
-            }
-        },
-
-        onNavigationItemPress: function (oEvent) {
-            var oItem = oEvent.getSource();
-            var oContext = oItem.getBindingContext("NavigationItems");
-            var oData = oContext.getObject();
             
-            console.log("Navigation item pressed:", oData.title);
-            
-            // Handle navigation based on route
-            switch (oData.route) {
-                case "dashboard":
-                    MessageToast.show("Already on Dashboard");
-                    break;
-                case "fleet":
-                    this._navigateToFleet();
-                    break;
-                case "maintenance":
-                    this._navigateToMaintenance();
-                    break;
-                case "analytics":
-                    this._navigateToAnalytics();
-                    break;
-                case "alerts":
-                    this._navigateToAlerts();
-                    break;
-                case "compliance":
-                    this._navigateToCompliance();
-                    break;
-                case "settings":
-                    this._navigateToSettings();
-                    break;
-                default:
-                    MessageToast.show("Navigation to " + oData.title + " not implemented yet");
-            }
+            MessageToast.show("Switched to " + (tabNames[selectedKey] || selectedKey));
         },
 
-        onAddAircraft: function () {
-            MessageToast.show("Add Aircraft functionality will be implemented");
-            // TODO: Implement add aircraft dialog
+        // Navbar action handlers
+        onNotifications: function () {
+            MessageToast.show("Opening notifications...");
+            // TODO: Implement notifications functionality
         },
 
-        onGenerateReport: function () {
-            MessageToast.show("Generating fleet report...");
-            // TODO: Implement report generation
+        onSettings: function () {
+            MessageToast.show("Opening settings...");
+            // TODO: Implement settings functionality
         },
 
-        onAlertCenter: function () {
-            MessageToast.show("Opening Alert Center...");
-            // TODO: Navigate to alert center
+        onUserProfile: function () {
+            MessageToast.show("Opening user profile...");
+            // TODO: Implement user profile functionality
         },
 
-        _navigateToFleet: function () {
-            MessageToast.show("Navigating to Fleet Management");
-            // TODO: Implement navigation to fleet management
+        // Flight Operations tab handlers
+        onScheduleFlight: function () {
+            MessageToast.show("Opening flight scheduling...");
+            // TODO: Implement flight scheduling functionality
         },
 
-        _navigateToMaintenance: function () {
-            MessageToast.show("Navigating to Maintenance");
-            // TODO: Implement navigation to maintenance
+        onFlightStatus: function () {
+            MessageToast.show("Opening flight status dashboard...");
+            // TODO: Implement flight status functionality
         },
 
-        _navigateToAnalytics: function () {
-            MessageToast.show("Navigating to Analytics");
-            // TODO: Implement navigation to analytics
+        onWeatherReport: function () {
+            MessageToast.show("Opening weather report...");
+            // TODO: Implement weather report functionality
         },
 
-        _navigateToAlerts: function () {
-            MessageToast.show("Navigating to Alerts");
-            // TODO: Implement navigation to alerts
-        },
-
-        _navigateToCompliance: function () {
-            MessageToast.show("Navigating to Compliance");
-            // TODO: Implement navigation to compliance
-        },
-
-        _navigateToSettings: function () {
-            MessageToast.show("Navigating to Settings");
-            // TODO: Implement navigation to settings
+        onCrewManagement: function () {
+            MessageToast.show("Opening crew management...");
+            // TODO: Implement crew management functionality
         },
 
         _initializeModels: function () {
@@ -369,6 +249,11 @@ sap.ui.define([
                     maintenanceStatus: "Scheduled"
                 }
             ];
+
+            // Calculate predictive flags for each aircraft
+            aircraftData.forEach(function(aircraft) {
+                aircraft.predictiveFlags = this._calculatePredictiveFlags(aircraft);
+            }.bind(this));
 
             // Calculate TNP data for each aircraft
             var tnpData = aircraftData.map(this._calculateTNP.bind(this));
@@ -709,34 +594,316 @@ sap.ui.define([
             }
         },
 
-        formatRiskState: function (riskScore) {
-            if (riskScore > 60) return "Error";
-            if (riskScore > 30) return "Warning";
-            return "Success";
+        // ===== NEW AIRCRAFT LIST EVENT HANDLERS =====
+
+        /**
+         * Handles press event on aircraft row
+         * @param {sap.ui.base.Event} oEvent The press event
+         */
+        onAircraftRowPress: function(oEvent) {
+            var oSource = oEvent.getSource();
+            var oBindingContext = oSource.getBindingContext();
+            var oAircraftData = oBindingContext.getObject();
+            
+            console.log("Aircraft row pressed:", oAircraftData.tailNumber);
+            
+            // Toggle expanded details section
+            var sDetailsId = oSource.getId() + "-details";
+            var oDetailsSection = oSource.getDependents().find(function(oItem) {
+                return oItem.hasStyleClass && oItem.hasStyleClass("aircraft-details-expanded");
+            });
+            
+            if (oDetailsSection) {
+                var bCurrentVisible = oDetailsSection.getVisible();
+                oDetailsSection.setVisible(!bCurrentVisible);
+                
+                // Add selection styling
+                if (!bCurrentVisible) {
+                    oSource.addStyleClass("selected");
+                } else {
+                    oSource.removeStyleClass("selected");
+                }
+            }
+            
+            sap.m.MessageToast.show(`Aircraft ${oAircraftData.tailNumber} details ${oDetailsSection && !oDetailsSection.getVisible() ? 'expanded' : 'collapsed'}`);
         },
 
-        formatTempState: function (temp) {
-            if (temp > 520) return "Error";
-            if (temp > 500) return "Warning";
-            return "Success";
+        /**
+         * Handles aircraft detail view button press
+         * @param {sap.ui.base.Event} oEvent The press event
+         */
+        onAircraftDetailPress: function(oEvent) {
+            var oBindingContext = oEvent.getSource().getBindingContext();
+            var oAircraftData = oBindingContext.getObject();
+            
+            console.log("Aircraft detail view requested:", oAircraftData.tailNumber);
+            
+            // Navigate to aircraft detail view or open dialog
+            this._openAircraftDetailDialog(oAircraftData);
         },
 
-        formatVibrationState: function (vibration) {
-            if (vibration > 2.0) return "Error";
-            if (vibration > 1.5) return "Warning";
-            return "Success";
+        /**
+         * Handles schedule maintenance button press
+         * @param {sap.ui.base.Event} oEvent The press event
+         */
+        onScheduleMaintenancePress: function(oEvent) {
+            var oBindingContext = oEvent.getSource().getBindingContext();
+            var oAircraftData = oBindingContext.getObject();
+            
+            console.log("Schedule maintenance requested:", oAircraftData.tailNumber);
+            
+            this._openMaintenanceScheduleDialog(oAircraftData);
         },
 
-        formatMaintenanceState: function (status) {
-            switch (status) {
-                case "Scheduled": return "Success";
-                case "Overdue": return "Error";
-                case "Completed": return "Success";
-                default: return "None";
+        // ===== FORMATTER METHODS FOR AIRCRAFT LIST =====
+
+        /**
+         * Formats temperature state for ObjectNumber
+         * @param {number} fTemperature The temperature value
+         * @returns {string} The state
+         */
+        formatTempState: function(fTemperature) {
+            if (fTemperature > 520) {
+                return "Error";
+            } else if (fTemperature > 480) {
+                return "Warning";
+            } else {
+                return "Success";
             }
         },
 
-        // Event handlers for new functionality
+        /**
+         * Formats vibration state for ObjectNumber
+         * @param {number} fVibration The vibration value
+         * @returns {string} The state
+         */
+        formatVibrationState: function(fVibration) {
+            if (fVibration > 2.0) {
+                return "Error";
+            } else if (fVibration > 1.5) {
+                return "Warning";
+            } else {
+                return "Success";
+            }
+        },
+
+        /**
+         * Formats risk score state for ObjectNumber
+         * @param {number} iRiskScore The risk score value
+         * @returns {string} The state
+         */
+        formatRiskState: function(iRiskScore) {
+            if (iRiskScore >= 80) {
+                return "Error";
+            } else if (iRiskScore >= 60) {
+                return "Warning";
+            } else {
+                return "Success";
+            }
+        },
+
+        /**
+         * Formats maintenance status state
+         * @param {string} sStatus The maintenance status
+         * @returns {string} The state
+         */
+        formatMaintenanceState: function(sStatus) {
+            switch (sStatus) {
+                case "Overdue":
+                case "Critical":
+                    return "Error";
+                case "Due Soon":
+                case "Scheduled":
+                    return "Warning";
+                case "Current":
+                case "Complete":
+                    return "Success";
+                default:
+                    return "None";
+            }
+        },
+
+        // ===== PRIVATE HELPER METHODS =====
+
+        /**
+         * Opens aircraft detail dialog
+         * @param {object} oAircraftData The aircraft data
+         * @private
+         */
+        _openAircraftDetailDialog: function(oAircraftData) {
+            var that = this;
+            
+            if (!this._oAircraftDetailDialog) {
+                this._oAircraftDetailDialog = new sap.m.Dialog({
+                    title: "Aircraft Details",
+                    contentWidth: "800px",
+                    contentHeight: "600px",
+                    content: [
+                        new sap.m.VBox({
+                            class: "sapUiMediumMargin",
+                            items: [
+                                new sap.m.Title({
+                                    text: "{tailNumber} - {model}",
+                                    level: "H2",
+                                    class: "sapUiMediumMarginBottom"
+                                }),
+                                new sap.m.ObjectHeader({
+                                    title: "{tailNumber}",
+                                    number: "{overallStatus}",
+                                    numberState: "{path: 'overallStatus', formatter: '.formatOverallStatusState'}",
+                                    statuses: [
+                                        new sap.m.ObjectStatus({
+                                            text: "Age: {aircraftAgeYears} years",
+                                            state: "Information"
+                                        }),
+                                        new sap.m.ObjectStatus({
+                                            text: "Risk Score: {riskScore}",
+                                            state: "{path: 'riskScore', formatter: '.formatRiskState'}"
+                                        })
+                                    ]
+                                }),
+                                new sap.m.Table({
+                                    headerText: "Operational Metrics",
+                                    class: "sapUiMediumMarginTop",
+                                    columns: [
+                                        new sap.m.Column({header: new sap.m.Text({text: "Metric"})}),
+                                        new sap.m.Column({header: new sap.m.Text({text: "Value"})}),
+                                        new sap.m.Column({header: new sap.m.Text({text: "Status"})})
+                                    ],
+                                    items: [
+                                        new sap.m.ColumnListItem({
+                                            cells: [
+                                                new sap.m.Text({text: "Flight Hours"}),
+                                                new sap.m.Text({text: "{flightHoursSinceLastMaintenance}"}),
+                                                new sap.m.ObjectStatus({text: "Normal", state: "Success"})
+                                            ]
+                                        }),
+                                        new sap.m.ColumnListItem({
+                                            cells: [
+                                                new sap.m.Text({text: "Engine Temperature"}),
+                                                new sap.m.Text({text: "{engineTemperature}°C"}),
+                                                new sap.m.ObjectStatus({
+                                                    text: "{= ${engineTemperature} > 520 ? 'Critical' : ${engineTemperature} > 480 ? 'Warning' : 'Normal'}",
+                                                    state: "{path: 'engineTemperature', formatter: '.formatTempState'}"
+                                                })
+                                            ]
+                                        }),
+                                        new sap.m.ColumnListItem({
+                                            cells: [
+                                                new sap.m.Text({text: "Vibration Level"}),
+                                                new sap.m.Text({text: "{vibrationLevel}g"}),
+                                                new sap.m.ObjectStatus({
+                                                    text: "{= ${vibrationLevel} > 2.0 ? 'Critical' : ${vibrationLevel} > 1.5 ? 'Warning' : 'Normal'}",
+                                                    state: "{path: 'vibrationLevel', formatter: '.formatVibrationState'}"
+                                                })
+                                            ]
+                                        })
+                                    ]
+                                })
+                            ]
+                        })
+                    ],
+                    beginButton: new sap.m.Button({
+                        text: "Close",
+                        press: function() {
+                            that._oAircraftDetailDialog.close();
+                        }
+                    })
+                });
+                this.getView().addDependent(this._oAircraftDetailDialog);
+            }
+            
+            // Create a JSON model for the dialog
+            var oDetailModel = new JSONModel(oAircraftData);
+            this._oAircraftDetailDialog.setModel(oDetailModel);
+            
+            this._oAircraftDetailDialog.open();
+        },
+
+        /**
+         * Opens maintenance schedule dialog
+         * @param {object} oAircraftData The aircraft data
+         * @private
+         */
+        _openMaintenanceScheduleDialog: function(oAircraftData) {
+            var that = this;
+            
+            if (!this._oMaintenanceDialog) {
+                this._oMaintenanceDialog = new sap.m.Dialog({
+                    title: "Schedule Maintenance",
+                    contentWidth: "600px",
+                    content: [
+                        new sap.m.VBox({
+                            class: "sapUiMediumMargin",
+                            items: [
+                                new sap.m.Title({
+                                    text: "Schedule Maintenance for {tailNumber}",
+                                    level: "H3",
+                                    class: "sapUiMediumMarginBottom"
+                                }),
+                                new sap.m.form.SimpleForm({
+                                    editable: true,
+                                    layout: "ResponsiveGridLayout",
+                                    content: [
+                                        new sap.m.Label({text: "Maintenance Type:"}),
+                                        new sap.m.ComboBox({
+                                            items: [
+                                                new sap.ui.core.Item({key: "routine", text: "Routine Inspection"}),
+                                                new sap.ui.core.Item({key: "engine", text: "Engine Service"}),
+                                                new sap.ui.core.Item({key: "brake", text: "Brake Replacement"}),
+                                                new sap.ui.core.Item({key: "emergency", text: "Emergency Repair"})
+                                            ]
+                                        }),
+                                        new sap.m.Label({text: "Scheduled Date:"}),
+                                        new sap.m.DatePicker({
+                                            value: "{path: 'nextMaintenanceEstimate', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'yyyy-MM-dd'}}"
+                                        }),
+                                        new sap.m.Label({text: "Priority:"}),
+                                        new sap.m.ComboBox({
+                                            items: [
+                                                new sap.ui.core.Item({key: "low", text: "Low"}),
+                                                new sap.ui.core.Item({key: "medium", text: "Medium"}),
+                                                new sap.ui.core.Item({key: "high", text: "High"}),
+                                                new sap.ui.core.Item({key: "critical", text: "Critical"})
+                                            ]
+                                        }),
+                                        new sap.m.Label({text: "Notes:"}),
+                                        new sap.m.TextArea({
+                                            rows: 3,
+                                            placeholder: "Enter any additional notes..."
+                                        })
+                                    ]
+                                })
+                            ]
+                        })
+                    ],
+                    beginButton: new sap.m.Button({
+                        text: "Schedule",
+                        type: "Emphasized",
+                        press: function() {
+                            sap.m.MessageToast.show(`Maintenance scheduled for ${oAircraftData.tailNumber}`);
+                            that._oMaintenanceDialog.close();
+                        }
+                    }),
+                    endButton: new sap.m.Button({
+                        text: "Cancel",
+                        press: function() {
+                            that._oMaintenanceDialog.close();
+                        }
+                    })
+                });
+                this.getView().addDependent(this._oMaintenanceDialog);
+            }
+            
+            // Create a JSON model for the dialog
+            var oMaintenanceModel = new JSONModel(oAircraftData);
+            this._oMaintenanceDialog.setModel(oMaintenanceModel);
+            
+            this._oMaintenanceDialog.open();
+        },
+
+        // ===== EXISTING METHODS (preserved) =====
+
         onAircraftSelect: function (oEvent) {
             var aircraftId = oEvent.getSource().getText();
             MessageToast.show("Selected aircraft: " + aircraftId);
