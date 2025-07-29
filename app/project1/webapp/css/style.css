@@ -2117,6 +2117,46 @@
     color: #424242;
 }
 
+.large-metric {
+    font-size: 5rem !important;
+    font-weight: 800 !important;
+    line-height: 1.1 !important;
+    margin: 1.5rem 0 !important;
+}
+
+/* Increase font sizes for card titles and other text elements */
+.metric-card-header .sapMTitle {
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+}
+
+.metric-card-header .sapMText {
+    font-size: 1.1rem !important;
+    font-weight: 500 !important;
+}
+
+.trend-text {
+    font-size: 1.3rem !important;
+    font-weight: 500 !important;
+}
+
+.metric-content .sapMText {
+    font-size: 1.2rem !important;
+    font-weight: 500 !important;
+}
+
+/* Force override for all trend text elements */
+.metric-card .trend-text {
+    font-size: 1.3rem !important;
+    font-weight: 500 !important;
+}
+
+/* Force override for all metric values */
+.metric-card .large-metric {
+    font-size: 5rem !important;
+    font-weight: 800 !important;
+}
+
 .metric-value.success {
     color: #4caf50;
 }

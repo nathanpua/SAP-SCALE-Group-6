@@ -168,33 +168,86 @@
                                            width="100%"
                                            expandable="false">
                                         <content>
-                                            <grid:CSSGrid id="metricsGrid"
-                                                          class="metrics-grid"
-                                                          items="{metrics>/Metrics}"
-                                                          width="100%">
+                                            <grid:CSSGrid class="fleet-overview-grid"
+                                                          width="100%"
+                                                          gridTemplateColumns="1fr 1fr 1fr"
+                                                          gridGap="1rem">
+                                                
+                                                <!-- Total Aircraft Count -->
                                                 <Panel class="metric-card" width="100%">
                                                     <headerToolbar>
                                                         <Toolbar class="metric-card-header">
-                                                            <core:Icon src="{icon}" class="sapUiTinyMarginEnd"/>
-                                                            <Title text="{title}" level="H3" class="sapUiTinyMarginEnd"/>
+                                                            <core:Icon src="sap-icon://flight" class="sapUiTinyMarginEnd"/>
+                                                            <Title text="Total Aircraft" level="H3" class="sapUiTinyMarginEnd"/>
                                                             <ToolbarSpacer/>
-                                                            <Text text="{subtitle}" class="sapUiTinyMarginEnd"/>
+                                                            <Text text="Active fleet size" class="sapUiTinyMarginEnd"/>
                                                         </Toolbar>
                                                     </headerToolbar>
                                                     <content>
                                                         <VBox alignItems="Center" class="sapUiMediumMargin metric-content">
-                                                            <Title text="{value}" 
+                                                            <Title text="647" 
                                                                    level="H1" 
-                                                                   class="metric-value {status}"/>
+                                                                   class="metric-value success large-metric"/>
                                                             <HBox alignItems="Center" class="sapUiTinyMarginTop">
-                                                                <core:Icon src="{= ${trend} === 'up' ? 'sap-icon://trend-up' : 'sap-icon://trend-down'}" 
-                                                                          class="sapUiTinyMarginEnd {= ${trend} === 'up' ? 'trend-up' : 'trend-down'}"
-                                                                          color="{= ${trend} === 'up' ? '#28a745' : '#dc3545'}"/>
-                                                                <Text text="{change}" class="trend-text"/>
+                                                                <core:Icon src="sap-icon://trend-up" 
+                                                                          class="sapUiTinyMarginEnd trend-up"
+                                                                          color="#28a745"/>
+                                                                <Text text="+2 this month" class="trend-text"/>
                                                             </HBox>
                                                         </VBox>
                                                     </content>
                                                 </Panel>
+                                                
+                                                <!-- Aircrafts Requiring Attention -->
+                                                <Panel class="metric-card" width="100%">
+                                                    <headerToolbar>
+                                                        <Toolbar class="metric-card-header">
+                                                            <core:Icon src="sap-icon://alert" class="sapUiTinyMarginEnd"/>
+                                                            <Title text="Requiring Attention" level="H3" class="sapUiTinyMarginEnd"/>
+                                                            <ToolbarSpacer/>
+                                                            <Text text="Maintenance alerts" class="sapUiTinyMarginEnd"/>
+                                                        </Toolbar>
+                                                    </headerToolbar>
+                                                    <content>
+                                                        <VBox alignItems="Center" class="sapUiMediumMargin metric-content">
+                                                            <Title text="18" 
+                                                                   level="H1" 
+                                                                   class="metric-value warning large-metric"/>
+                                                            <HBox alignItems="Center" class="sapUiTinyMarginTop">
+                                                                <core:Icon src="sap-icon://trend-down" 
+                                                                          class="sapUiTinyMarginEnd trend-down"
+                                                                          color="#dc3545"/>
+                                                                <Text text="+3 from last week" class="trend-text"/>
+                                                            </HBox>
+                                                        </VBox>
+                                                    </content>
+                                                </Panel>
+                                                
+                                                <!-- Average Risk Score -->
+                                                <Panel class="metric-card" width="100%">
+                                                    <headerToolbar>
+                                                        <Toolbar class="metric-card-header">
+                                                            <core:Icon src="sap-icon://shield" class="sapUiTinyMarginEnd"/>
+                                                            <Title text="Average Risk Score" level="H3" class="sapUiTinyMarginEnd"/>
+                                                            <ToolbarSpacer/>
+                                                            <Text text="Fleet safety index" class="sapUiTinyMarginEnd"/>
+                                                        </Toolbar>
+                                                    </headerToolbar>
+                                                    <content>
+                                                        <VBox alignItems="Center" class="sapUiMediumMargin metric-content">
+                                                            <Title text="34.2" 
+                                                                   level="H1" 
+                                                                   class="metric-value success large-metric"/>
+                                                            <HBox alignItems="Center" class="sapUiTinyMarginTop">
+                                                                <core:Icon src="sap-icon://trend-up" 
+                                                                          class="sapUiTinyMarginEnd trend-up"
+                                                                          color="#28a745"/>
+                                                                <Text text="-2.1 from last month" class="trend-text"/>
+                                                            </HBox>
+                                                        </VBox>
+                                                    </content>
+                                                </Panel>
+                                                
                                             </grid:CSSGrid>
                                         </content>
                                     </Panel>
