@@ -558,32 +558,37 @@
                                     <content>
                                         <grid:CSSGrid class="analytics-grid">
                                             
-                                            <!-- Time to Next Predicted Maintenance -->
-                                            <Panel class="tnp-panel">
-                                                <headerToolbar>
-                                                    <Toolbar class="tnp-panel-header">
-                                                        <core:Icon src="sap-icon://calendar" class="sapUiTinyMarginEnd"/>
-                                                        <Title text="Time to Next Predicted Maintenance" level="H3" class="sapUiTinyMarginEnd"/>
-                                                        <ToolbarSpacer/>
-                                                        <Text text="Predictive maintenance analysis based on real-time sensor data"/>
-                                                    </Toolbar>
-                                                </headerToolbar>
-                                                <content>
-                                                    <VBox class="sapUiMediumMargin">
-                                                        <!-- Legend -->
-                                                        <HBox class="tnp-legend">
-                                                            <HBox alignItems="Center" class="sapUiTinyMarginEnd">
-                                                                <core:Icon src="sap-icon://circle-task-2" 
-                                                                          class="legend-icon normal"/>
-                                                                <Text text="Normal (&gt;7 days)" class="legend-text"/>
-                                                            </HBox>
-                                                            <HBox alignItems="Center">
-                                                                <core:Icon src="sap-icon://circle-task-2" 
-                                                                          class="legend-icon urgent"/>
-                                                                <Text text="Urgent (≤7 days)" class="legend-text"/>
-                                                            </HBox>
-                                                        </HBox>
-                                                        
+                                            <!-- Simple Images Display -->
+                                            <VBox class="simple-images-container">
+                                                <!-- Aircraft Dropdown Image -->
+                                                <Image src="./images/dropdown_aircraft_mockup.png" 
+                                                       alt="Aircraft Selection Interface"
+                                                       densityAware="false"
+                                                       decorative="false"
+                                                       class="simple-analytics-image"/>
+                                                <!-- KPI Summary Image -->
+                                                <Image src="./images/kpi_summary_professional.png" 
+                                                       alt="KPI Summary Dashboard"
+                                                       densityAware="false"
+                                                       decorative="false"
+                                                       class="simple-analytics-image"/>
+                                                <!-- Fleet Distribution Image -->
+                                                <Image src="./images/fleet_distribution_histogram_professional.png" 
+                                                       alt="Fleet Distribution Analysis"
+                                                       densityAware="false"
+                                                       decorative="false"
+                                                       class="simple-analytics-image"/>
+                                                
+                                                <!-- TNP Bar Chart Image -->
+                                                <Image src="./images/tnp_bar_chart_professional.png" 
+                                                       alt="Time to Next Predicted Maintenance"
+                                                       densityAware="false"
+                                                       decorative="false"
+                                                       class="simple-analytics-image"/>
+                                                
+                                            </VBox>
+                                            
+                                            
                                                         <!-- TNP Chart Visualization -->
                                                         <VBox class="tnp-chart-container">
                                                             <HBox class="chart-bars-container">
@@ -674,6 +679,338 @@
                                                 </content>
                                             </Panel>
                                         </grid:CSSGrid>
+                                    </content>
+                                </Panel>
+
+                                <!-- MTBF Analysis Section -->
+                                <Panel headerText="MTBF Trend by Aircraft Type" 
+                                       class="sapUiResponsiveMargin mtbf-analysis-panel"
+                                       backgroundDesign="Transparent">
+                                    <headerToolbar>
+                                        <Toolbar class="mtbf-analysis-header">
+                                            <core:Icon src="sap-icon://line-chart" class="sapUiTinyMarginEnd"/>
+                                            <Title text="MTBF Trend by Aircraft Type" level="H2" class="sapUiTinyMarginEnd"/>
+                                            <ToolbarSpacer/>
+                                            <Text text="Mean Time Between Failures analysis and trends"/>
+                                        </Toolbar>
+                                    </headerToolbar>
+                                    <content>
+                                        <VBox class="sapUiMediumMargin mtbf-analysis-container">
+                                            
+                                            <!-- Aircraft Selection and Controls -->
+                                            <HBox class="mtbf-controls" justifyContent="SpaceBetween" alignItems="Center">
+                                                <VBox class="aircraft-selection-section">
+                                                    <Label text="Select Aircraft:" class="control-label"/>
+                                                    <ComboBox id="aircraftTailNumberSelect"
+                                                             items="{/Aircraft}"
+                                                             width="300px"
+                                                             placeholder="Choose aircraft tail number"
+                                                             selectionChange="onAircraftSelectionChange"
+                                                             class="aircraft-selector">
+                                                        <core:Item key="{tailNumber}" text="{tailNumber} - {model}"/>
+                                                    </ComboBox>
+                                                </VBox>
+                                                
+                                                <VBox class="view-controls-section">
+                                                    <Label text="Time Period:" class="control-label"/>
+                                                    <SegmentedButton id="timePeriodSelector" 
+                                                                    selectedKey="monthly"
+                                                                    selectionChange="onTimePeriodChange"
+                                                                    class="time-period-selector">
+                                                        <items>
+                                                            <SegmentedButtonItem key="weekly" text="Weekly"/>
+                                                            <SegmentedButtonItem key="monthly" text="Monthly"/>
+                                                            <SegmentedButtonItem key="quarterly" text="Quarterly"/>
+                                                        </items>
+                                                    </SegmentedButton>
+                                                </VBox>
+                                            </HBox>
+                                            
+                                            <!-- Expected MTBF by Aircraft Model -->
+                                            <Panel class="expected-mtbf-panel">
+                                                <headerToolbar>
+                                                    <Toolbar>
+                                                        <core:Icon src="sap-icon://target-group" class="sapUiTinyMarginEnd"/>
+                                                        <Title text="Expected MTBF by Aircraft Model" level="H3"/>
+                                                        <ToolbarSpacer/>
+                                                        <Text text="Industry standard benchmarks"/>
+                                                    </Toolbar>
+                                                </headerToolbar>
+                                                <content>
+                                                    <HBox class="expected-mtbf-grid" wrap="Wrap">
+                                                        <!-- Boeing 737 -->
+                                                        <VBox class="mtbf-model-card">
+                                                            <VBox class="model-header">
+                                                                <Title text="Boeing 737" level="H4" class="model-name"/>
+                                                                <Text text="Narrow-body aircraft" class="model-description"/>
+                                                            </VBox>
+                                                            <VBox class="mtbf-values">
+                                                                <HBox justifyContent="SpaceBetween">
+                                                                    <Text text="Expected MTBF:" class="mtbf-label"/>
+                                                                    <ObjectNumber number="450" 
+                                                                                unit="hrs"
+                                                                                class="mtbf-expected"/>
+                                                                </HBox>
+                                                                <HBox justifyContent="SpaceBetween">
+                                                                    <Text text="Current Avg:" class="mtbf-label"/>
+                                                                    <ObjectNumber number="420" 
+                                                                                unit="hrs"
+                                                                                state="Warning"
+                                                                                class="mtbf-current"/>
+                                                                </HBox>
+                                                                <HBox justifyContent="SpaceBetween">
+                                                                    <Text text="Performance:" class="mtbf-label"/>
+                                                                    <ObjectStatus text="93.3%" 
+                                                                                state="Warning"
+                                                                                class="mtbf-performance"/>
+                                                                </HBox>
+                                                            </VBox>
+                                                        </VBox>
+                                                        
+                                                        <!-- Airbus A320 -->
+                                                        <VBox class="mtbf-model-card">
+                                                            <VBox class="model-header">
+                                                                <Title text="Airbus A320" level="H4" class="model-name"/>
+                                                                <Text text="Narrow-body aircraft" class="model-description"/>
+                                                            </VBox>
+                                                            <VBox class="mtbf-values">
+                                                                <HBox justifyContent="SpaceBetween">
+                                                                    <Text text="Expected MTBF:" class="mtbf-label"/>
+                                                                    <ObjectNumber number="380" 
+                                                                                unit="hrs"
+                                                                                class="mtbf-expected"/>
+                                                                </HBox>
+                                                                <HBox justifyContent="SpaceBetween">
+                                                                    <Text text="Current Avg:" class="mtbf-label"/>
+                                                                    <ObjectNumber number="365" 
+                                                                                unit="hrs"
+                                                                                state="Error"
+                                                                                class="mtbf-current"/>
+                                                                </HBox>
+                                                                <HBox justifyContent="SpaceBetween">
+                                                                    <Text text="Performance:" class="mtbf-label"/>
+                                                                    <ObjectStatus text="96.1%" 
+                                                                                state="Success"
+                                                                                class="mtbf-performance"/>
+                                                                </HBox>
+                                                            </VBox>
+                                                        </VBox>
+                                                        
+                                                        <!-- Boeing 777 -->
+                                                        <VBox class="mtbf-model-card">
+                                                            <VBox class="model-header">
+                                                                <Title text="Boeing 777" level="H4" class="model-name"/>
+                                                                <Text text="Wide-body aircraft" class="model-description"/>
+                                                            </VBox>
+                                                            <VBox class="mtbf-values">
+                                                                <HBox justifyContent="SpaceBetween">
+                                                                    <Text text="Expected MTBF:" class="mtbf-label"/>
+                                                                    <ObjectNumber number="680" 
+                                                                                unit="hrs"
+                                                                                class="mtbf-expected"/>
+                                                                </HBox>
+                                                                <HBox justifyContent="SpaceBetween">
+                                                                    <Text text="Current Avg:" class="mtbf-label"/>
+                                                                    <ObjectNumber number="665" 
+                                                                                unit="hrs"
+                                                                                state="Warning"
+                                                                                class="mtbf-current"/>
+                                                                </HBox>
+                                                                <HBox justifyContent="SpaceBetween">
+                                                                    <Text text="Performance:" class="mtbf-label"/>
+                                                                    <ObjectStatus text="97.8%" 
+                                                                                state="Success"
+                                                                                class="mtbf-performance"/>
+                                                                </HBox>
+                                                            </VBox>
+                                                        </VBox>
+                                                        
+                                                        <!-- Boeing 787 -->
+                                                        <VBox class="mtbf-model-card">
+                                                            <VBox class="model-header">
+                                                                <Title text="Boeing 787" level="H4" class="model-name"/>
+                                                                <Text text="Wide-body aircraft" class="model-description"/>
+                                                            </VBox>
+                                                            <VBox class="mtbf-values">
+                                                                <HBox justifyContent="SpaceBetween">
+                                                                    <Text text="Expected MTBF:" class="mtbf-label"/>
+                                                                    <ObjectNumber number="750" 
+                                                                                unit="hrs"
+                                                                                class="mtbf-expected"/>
+                                                                </HBox>
+                                                                <HBox justifyContent="SpaceBetween">
+                                                                    <Text text="Current Avg:" class="mtbf-label"/>
+                                                                    <ObjectNumber number="740" 
+                                                                                unit="hrs"
+                                                                                state="Success"
+                                                                                class="mtbf-current"/>
+                                                                </HBox>
+                                                                <HBox justifyContent="SpaceBetween">
+                                                                    <Text text="Performance:" class="mtbf-label"/>
+                                                                    <ObjectStatus text="98.7%" 
+                                                                                state="Success"
+                                                                                class="mtbf-performance"/>
+                                                                </HBox>
+                                                            </VBox>
+                                                        </VBox>
+                                                        
+                                                        <!-- Airbus A330 -->
+                                                        <VBox class="mtbf-model-card">
+                                                            <VBox class="model-header">
+                                                                <Title text="Airbus A330" level="H4" class="model-name"/>
+                                                                <Text text="Wide-body aircraft" class="model-description"/>
+                                                            </VBox>
+                                                            <VBox class="mtbf-values">
+                                                                <HBox justifyContent="SpaceBetween">
+                                                                    <Text text="Expected MTBF:" class="mtbf-label"/>
+                                                                    <ObjectNumber number="200" 
+                                                                                unit="hrs"
+                                                                                class="mtbf-expected"/>
+                                                                </HBox>
+                                                                <HBox justifyContent="SpaceBetween">
+                                                                    <Text text="Current Avg:" class="mtbf-label"/>
+                                                                    <ObjectNumber number="180" 
+                                                                                unit="hrs"
+                                                                                state="Error"
+                                                                                class="mtbf-current"/>
+                                                                </HBox>
+                                                                <HBox justifyContent="SpaceBetween">
+                                                                    <Text text="Performance:" class="mtbf-label"/>
+                                                                    <ObjectStatus text="90.0%" 
+                                                                                state="Error"
+                                                                                class="mtbf-performance"/>
+                                                                </HBox>
+                                                            </VBox>
+                                                        </VBox>
+                                                        
+                                                        <!-- Airbus A321 -->
+                                                        <VBox class="mtbf-model-card">
+                                                            <VBox class="model-header">
+                                                                <Title text="Airbus A321" level="H4" class="model-name"/>
+                                                                <Text text="Narrow-body aircraft" class="model-description"/>
+                                                            </VBox>
+                                                            <VBox class="mtbf-values">
+                                                                <HBox justifyContent="SpaceBetween">
+                                                                    <Text text="Expected MTBF:" class="mtbf-label"/>
+                                                                    <ObjectNumber number="380" 
+                                                                                unit="hrs"
+                                                                                class="mtbf-expected"/>
+                                                                </HBox>
+                                                                <HBox justifyContent="SpaceBetween">
+                                                                    <Text text="Current Avg:" class="mtbf-label"/>
+                                                                    <ObjectNumber number="370" 
+                                                                                unit="hrs"
+                                                                                state="Warning"
+                                                                                class="mtbf-current"/>
+                                                                </HBox>
+                                                                <HBox justifyContent="SpaceBetween">
+                                                                    <Text text="Performance:" class="mtbf-label"/>
+                                                                    <ObjectStatus text="97.4%" 
+                                                                                state="Success"
+                                                                                class="mtbf-performance"/>
+                                                                </HBox>
+                                                            </VBox>
+                                                        </VBox>
+                                                    </HBox>
+                                                </content>
+                                            </Panel>
+                                            
+                                            <!-- MTBF Trend Chart Visualization -->
+                                            <Panel class="mtbf-trend-chart-panel">
+                                                <headerToolbar>
+                                                    <Toolbar>
+                                                        <core:Icon src="sap-icon://line-chart" class="sapUiTinyMarginEnd"/>
+                                                        <Title text="MTBF Trend Chart" level="H3"/>
+                                                        <ToolbarSpacer/>
+                                                        <Text text="Historical performance over time"/>
+                                                    </Toolbar>
+                                                </headerToolbar>
+                                                <content>
+                                                    <VBox class="mtbf-chart-content">
+                                                        <!-- Chart Legend -->
+                                                        <HBox class="chart-legend" wrap="Wrap">
+                                                            <HBox alignItems="Center" class="legend-item">
+                                                                <VBox class="legend-color boeing-737"></VBox>
+                                                                <Text text="Boeing 737" class="legend-text"/>
+                                                            </HBox>
+                                                            <HBox alignItems="Center" class="legend-item">
+                                                                <VBox class="legend-color airbus-a320"></VBox>
+                                                                <Text text="Airbus A320" class="legend-text"/>
+                                                            </HBox>
+                                                            <HBox alignItems="Center" class="legend-item">
+                                                                <VBox class="legend-color boeing-777"></VBox>
+                                                                <Text text="Boeing 777" class="legend-text"/>
+                                                            </HBox>
+                                                            <HBox alignItems="Center" class="legend-item">
+                                                                <VBox class="legend-color boeing-787"></VBox>
+                                                                <Text text="Boeing 787" class="legend-text"/>
+                                                            </HBox>
+                                                            <HBox alignItems="Center" class="legend-item">
+                                                                <VBox class="legend-color airbus-a330"></VBox>
+                                                                <Text text="Airbus A330" class="legend-text"/>
+                                                            </HBox>
+                                                            <HBox alignItems="Center" class="legend-item">
+                                                                <VBox class="legend-color airbus-a321"></VBox>
+                                                                <Text text="Airbus A321" class="legend-text"/>
+                                                            </HBox>
+                                                        </HBox>
+                                                        
+                                                        <!-- Simulated Line Chart -->
+                                                        <VBox class="mtbf-line-chart">
+                                                            <HBox class="chart-y-axis">
+                                                                <VBox class="y-axis-labels">
+                                                                    <Text text="800" class="axis-label"/>
+                                                                    <Text text="700" class="axis-label"/>
+                                                                    <Text text="600" class="axis-label"/>
+                                                                    <Text text="500" class="axis-label"/>
+                                                                    <Text text="400" class="axis-label"/>
+                                                                    <Text text="300" class="axis-label"/>
+                                                                    <Text text="200" class="axis-label"/>
+                                                                    <Text text="100" class="axis-label"/>
+                                                                    <Text text="0" class="axis-label"/>
+                                                                </VBox>
+                                                                <VBox class="chart-area">
+                                                                    <!-- Chart content would go here - simplified representation -->
+                                                                    <VBox class="chart-placeholder">
+                                                                        <Text text="📈 MTBF Trend Chart" class="chart-placeholder-text"/>
+                                                                        <Text text="Interactive line chart showing MTBF trends over time" class="chart-placeholder-subtitle"/>
+                                                                        <Text text="X-axis: Time (Monthly/Weekly/Quarterly)" class="chart-info"/>
+                                                                        <Text text="Y-axis: Average MTBF (Hours)" class="chart-info"/>
+                                                                    </VBox>
+                                                                </VBox>
+                                                            </HBox>
+                                                            <HBox class="chart-x-axis">
+                                                                <Text text="Aug" class="x-axis-label"/>
+                                                                <Text text="Sep" class="x-axis-label"/>
+                                                                <Text text="Oct" class="x-axis-label"/>
+                                                                <Text text="Nov" class="x-axis-label"/>
+                                                                <Text text="Dec" class="x-axis-label"/>
+                                                                <Text text="Jan" class="x-axis-label"/>
+                                                            </HBox>
+                                                        </VBox>
+                                                        
+                                                        <!-- Chart Summary -->
+                                                        <HBox class="chart-summary" justifyContent="SpaceBetween">
+                                                            <VBox class="summary-item">
+                                                                <Text text="Best Performer" class="summary-label"/>
+                                                                <Title text="Boeing 787" level="H4" class="summary-value success"/>
+                                                                <Text text="740 hrs avg" class="summary-detail"/>
+                                                            </VBox>
+                                                            <VBox class="summary-item">
+                                                                <Text text="Needs Attention" class="summary-label"/>
+                                                                <Title text="Airbus A330" level="H4" class="summary-value error"/>
+                                                                <Text text="180 hrs avg" class="summary-detail"/>
+                                                            </VBox>
+                                                            <VBox class="summary-item">
+                                                                <Text text="Fleet Average" class="summary-label"/>
+                                                                <Title text="456 hrs" level="H4" class="summary-value"/>
+                                                                <Text text="All aircraft types" class="summary-detail"/>
+                                                            </VBox>
+                                                        </HBox>
+                                                    </VBox>
+                                                </content>
+                                            </Panel>
+                                        </VBox>
                                     </content>
                                 </Panel>
 

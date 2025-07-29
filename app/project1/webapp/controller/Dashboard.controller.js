@@ -4,9 +4,8 @@ sap.ui.define([
     "sap/m/MessageToast",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
-    "sap/ui/model/Sorter",
-    "project1/model/aircraftData"
-], function (Controller, JSONModel, MessageToast, Filter, FilterOperator, Sorter, AircraftData) {
+    "sap/ui/model/Sorter"
+], function (Controller, JSONModel, MessageToast, Filter, FilterOperator, Sorter) {
     "use strict";
 
     return Controller.extend("project1.controller.Dashboard", {
@@ -95,8 +94,161 @@ sap.ui.define([
         _initializeModels: function () {
             console.log("Initializing comprehensive aircraft data models");
             
-            // Get aircraft data from the dedicated model following SAP UI5 best practices
-            var aircraftData = AircraftData.getAircraftData();
+            // Comprehensive aircraft data matching React dashboard
+            var aircraftData = [
+                {
+                    tailNumber: "N456AB",
+                    model: "Boeing 737-800",
+                    flightHoursSinceLastMaintenance: 125,
+                    engineTemperature: 485,
+                    vibrationLevel: 1.8,
+                    hydraulicPressure: 3000,
+                    brakeWearPercent: 25,
+                    oilParticleCount: 850,
+                    weatherStressIndex: 7.2,
+                    aircraftAgeYears: 8,
+                    flightCycles: 8920,
+                    mtbf: 450,
+                    lastFailureDate: "2023-11-15",
+                    lastFailureType: "Hydraulic",
+                    failureHistory: [
+                        { date: "2023-11-15", type: "Hydraulic", severity: "minor" },
+                        { date: "2023-08-22", type: "Engine", severity: "major" },
+                        { date: "2023-05-10", type: "Landing Gear", severity: "minor" }
+                    ],
+                    // Calculated fields
+                    overallStatus: "normal",
+                    riskScore: 25.5,
+                    nextMaintenanceEstimate: "2025-06-15",
+                    alertStatus: "Normal",
+                    maintenanceStatus: "Scheduled"
+                },
+                {
+                    tailNumber: "N789CD",
+                    model: "Airbus A320",
+                    flightHoursSinceLastMaintenance: 890,
+                    engineTemperature: 512,
+                    vibrationLevel: 2.4,
+                    hydraulicPressure: 2850,
+                    brakeWearPercent: 67,
+                    oilParticleCount: 1250,
+                    weatherStressIndex: 8.9,
+                    aircraftAgeYears: 5,
+                    flightCycles: 6420,
+                    mtbf: 320,
+                    lastFailureDate: "2024-01-08",
+                    lastFailureType: "Engine",
+                    failureHistory: [
+                        { date: "2024-01-08", type: "Engine", severity: "critical" },
+                        { date: "2023-10-14", type: "Avionics", severity: "major" },
+                        { date: "2023-07-03", type: "Hydraulic", severity: "minor" }
+                    ],
+                    overallStatus: "critical",
+                    riskScore: 78.3,
+                    nextMaintenanceEstimate: "2025-03-12",
+                    alertStatus: "Critical",
+                    maintenanceStatus: "Overdue"
+                },
+                {
+                    tailNumber: "N123EF",
+                    model: "Boeing 777-300",
+                    flightHoursSinceLastMaintenance: 210,
+                    engineTemperature: 498,
+                    vibrationLevel: 1.2,
+                    hydraulicPressure: 3200,
+                    brakeWearPercent: 12,
+                    oilParticleCount: 650,
+                    weatherStressIndex: 5.1,
+                    aircraftAgeYears: 12,
+                    flightCycles: 11250,
+                    mtbf: 680,
+                    lastFailureDate: "2023-09-20",
+                    lastFailureType: "Landing Gear",
+                    failureHistory: [
+                        { date: "2023-09-20", type: "Landing Gear", severity: "minor" },
+                        { date: "2023-04-15", type: "Hydraulic", severity: "minor" }
+                    ],
+                    overallStatus: "normal",
+                    riskScore: 18.9,
+                    nextMaintenanceEstimate: "2025-12-10",
+                    alertStatus: "Normal",
+                    maintenanceStatus: "Scheduled"
+                },
+                {
+                    tailNumber: "N654GH",
+                    model: "Airbus A330",
+                    flightHoursSinceLastMaintenance: 450,
+                    engineTemperature: 545,
+                    vibrationLevel: 1.9,
+                    hydraulicPressure: 2650,
+                    brakeWearPercent: 88,
+                    oilParticleCount: 1450,
+                    weatherStressIndex: 9.7,
+                    aircraftAgeYears: 15,
+                    flightCycles: 16890,
+                    mtbf: 180,
+                    lastFailureDate: "2024-02-01",
+                    lastFailureType: "Brake System",
+                    failureHistory: [
+                        { date: "2024-02-01", type: "Brake System", severity: "critical" },
+                        { date: "2023-12-18", type: "Engine", severity: "major" },
+                        { date: "2023-09-05", type: "Hydraulic", severity: "major" },
+                        { date: "2023-06-12", type: "Avionics", severity: "minor" }
+                    ],
+                    overallStatus: "critical",
+                    riskScore: 89.1,
+                    nextMaintenanceEstimate: "2025-02-15",
+                    alertStatus: "Critical",
+                    maintenanceStatus: "Overdue"
+                },
+                {
+                    tailNumber: "N987IJ",
+                    model: "Boeing 787-9",
+                    flightHoursSinceLastMaintenance: 95,
+                    engineTemperature: 475,
+                    vibrationLevel: 1.1,
+                    hydraulicPressure: 3100,
+                    brakeWearPercent: 18,
+                    oilParticleCount: 420,
+                    weatherStressIndex: 4.3,
+                    aircraftAgeYears: 3,
+                    flightCycles: 4230,
+                    mtbf: 720,
+                    lastFailureDate: null,
+                    lastFailureType: null,
+                    failureHistory: [],
+                    overallStatus: "normal",
+                    riskScore: 12.4,
+                    nextMaintenanceEstimate: "2025-11-20",
+                    alertStatus: "Normal",
+                    maintenanceStatus: "Scheduled"
+                },
+                {
+                    tailNumber: "N321KL",
+                    model: "Airbus A321",
+                    flightHoursSinceLastMaintenance: 820,
+                    engineTemperature: 501,
+                    vibrationLevel: 2.1,
+                    hydraulicPressure: 2950,
+                    brakeWearPercent: 45,
+                    oilParticleCount: 980,
+                    weatherStressIndex: 6.8,
+                    aircraftAgeYears: 7,
+                    flightCycles: 7650,
+                    mtbf: 380,
+                    lastFailureDate: "2023-12-03",
+                    lastFailureType: "Avionics",
+                    failureHistory: [
+                        { date: "2023-12-03", type: "Avionics", severity: "major" },
+                        { date: "2023-08-15", type: "Engine", severity: "minor" }
+                    ],
+                    overallStatus: "warning",
+                    riskScore: 45.2,
+                    nextMaintenanceEstimate: "2025-07-18",
+                    alertStatus: "Warning",
+                    maintenanceStatus: "Scheduled"
+                }
+            ];
 
             // Calculate predictive flags for each aircraft
             aircraftData.forEach(function(aircraft) {
@@ -838,9 +990,464 @@ sap.ui.define([
             // Navigate to compliance page
         },
 
+        // ===== IMAGE GALLERY EVENT HANDLERS =====
+
+        /**
+         * Handles image press event to show full screen view
+         * @param {sap.ui.base.Event} oEvent The press event
+         */
+        onImagePress: function(oEvent) {
+            var oImage = oEvent.getSource();
+            var sImageSrc = oImage.getSrc();
+            var sImageAlt = oImage.getAlt();
+            
+            this._showImageModal(sImageSrc, sImageAlt);
+        },
+
+        /**
+         * Shows all charts in a expanded view
+         */
+        onViewAllCharts: function() {
+            MessageToast.show("Opening comprehensive charts view...");
+            // TODO: Implement expanded charts view
+            this._openChartsDialog();
+        },
+
+        /**
+         * Handles chart upload functionality
+         */
+        onUploadChart: function() {
+            MessageToast.show("Opening chart upload dialog...");
+            // TODO: Implement chart upload functionality
+            this._openUploadDialog();
+        },
+
+        /**
+         * Exports the entire gallery
+         */
+        onExportGallery: function() {
+            MessageToast.show("Preparing gallery export...");
+            // TODO: Implement gallery export functionality
+            this._exportGallery();
+        },
+
+        // ===== PRIVATE IMAGE GALLERY METHODS =====
+
+        /**
+         * Shows image in full screen modal
+         * @param {string} sImageSrc The image source URL
+         * @param {string} sImageAlt The image alt text
+         * @private
+         */
+        _showImageModal: function(sImageSrc, sImageAlt) {
+            var that = this;
+            
+            if (!this._oImageModal) {
+                this._oImageModal = new sap.m.Dialog({
+                    title: "Chart Viewer",
+                    contentWidth: "90%",
+                    contentHeight: "90%",
+                    resizable: true,
+                    draggable: true,
+                    content: [
+                        new sap.m.VBox({
+                            items: [
+                                new sap.m.Image({
+                                    id: "modalImage",
+                                    width: "100%",
+                                    height: "auto",
+                                    densityAware: false
+                                })
+                            ]
+                        })
+                    ],
+                    endButton: new sap.m.Button({
+                        text: "Close",
+                        press: function() {
+                            that._oImageModal.close();
+                        }
+                    }),
+                    beginButton: new sap.m.Button({
+                        text: "Download",
+                        icon: "sap-icon://download",
+                        press: function() {
+                            that._downloadImage(sImageSrc, sImageAlt);
+                        }
+                    })
+                });
+                
+                this.getView().addDependent(this._oImageModal);
+            }
+            
+            // Update modal content
+            var oModalImage = sap.ui.getCore().byId("modalImage");
+            if (oModalImage) {
+                oModalImage.setSrc(sImageSrc);
+                oModalImage.setAlt(sImageAlt);
+            }
+            
+            this._oImageModal.setTitle(sImageAlt || "Chart Viewer");
+            this._oImageModal.open();
+        },
+
+        /**
+         * Opens the expanded charts dialog
+         * @private
+         */
+        _openChartsDialog: function() {
+            var that = this;
+            
+            if (!this._oChartsDialog) {
+                this._oChartsDialog = new sap.m.Dialog({
+                    title: "All Analytics Charts",
+                    contentWidth: "95%",
+                    contentHeight: "95%",
+                    resizable: true,
+                    draggable: true,
+                    content: [
+                        new sap.m.VBox({
+                            items: [
+                                new sap.m.Text({
+                                    text: "This will display all available analytics charts in an expanded grid view."
+                                })
+                            ]
+                        })
+                    ],
+                    endButton: new sap.m.Button({
+                        text: "Close",
+                        press: function() {
+                            that._oChartsDialog.close();
+                        }
+                    })
+                });
+                
+                this.getView().addDependent(this._oChartsDialog);
+            }
+            
+            this._oChartsDialog.open();
+        },
+
+        /**
+         * Opens the upload dialog
+         * @private
+         */
+        _openUploadDialog: function() {
+            var that = this;
+            
+            if (!this._oUploadDialog) {
+                this._oUploadDialog = new sap.m.Dialog({
+                    title: "Upload New Chart",
+                    contentWidth: "500px",
+                    content: [
+                        new sap.m.VBox({
+                            items: [
+                                new sap.m.Label({ text: "Chart Title:" }),
+                                new sap.m.Input({ 
+                                    id: "chartTitleInput",
+                                    placeholder: "Enter chart title"
+                                }),
+                                new sap.m.Label({ text: "Chart Description:" }),
+                                new sap.m.TextArea({ 
+                                    id: "chartDescInput",
+                                    placeholder: "Enter chart description",
+                                    rows: 3
+                                }),
+                                new sap.m.Label({ text: "Upload File:" }),
+                                new sap.ui.unified.FileUploader({
+                                    id: "chartFileUploader",
+                                    uploadUrl: "/upload",
+                                    fileType: ["png", "jpg", "jpeg", "svg"],
+                                    maximumFileSize: 5,
+                                    placeholder: "Choose chart image file..."
+                                })
+                            ]
+                        })
+                    ],
+                    beginButton: new sap.m.Button({
+                        text: "Upload",
+                        type: "Emphasized",
+                        press: function() {
+                            that._handleChartUpload();
+                        }
+                    }),
+                    endButton: new sap.m.Button({
+                        text: "Cancel",
+                        press: function() {
+                            that._oUploadDialog.close();
+                        }
+                    })
+                });
+                
+                this.getView().addDependent(this._oUploadDialog);
+            }
+            
+            this._oUploadDialog.open();
+        },
+
+        /**
+         * Handles chart upload
+         * @private
+         */
+        _handleChartUpload: function() {
+            var sTitle = sap.ui.getCore().byId("chartTitleInput").getValue();
+            var sDescription = sap.ui.getCore().byId("chartDescInput").getValue();
+            var oFileUploader = sap.ui.getCore().byId("chartFileUploader");
+            
+            if (!sTitle || !oFileUploader.getValue()) {
+                MessageToast.show("Please provide a title and select a file");
+                return;
+            }
+            
+            // Simulate upload
+            MessageToast.show("Chart uploaded successfully: " + sTitle);
+            this._oUploadDialog.close();
+            
+            // TODO: Implement actual file upload logic
+        },
+
+        /**
+         * Downloads an image
+         * @param {string} sImageSrc The image source URL
+         * @param {string} sFileName The filename for download
+         * @private
+         */
+        _downloadImage: function(sImageSrc, sFileName) {
+            try {
+                var link = document.createElement('a');
+                link.href = sImageSrc;
+                link.download = sFileName || 'chart.png';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                MessageToast.show("Download started: " + (sFileName || 'chart.png'));
+            } catch (error) {
+                MessageToast.show("Download failed. Please try again.");
+                console.error("Download error:", error);
+            }
+        },
+
+        /**
+         * Exports the entire gallery
+         * @private
+         */
+        _exportGallery: function() {
+            var galleryData = {
+                exportDate: new Date().toISOString(),
+                charts: [
+                    {
+                        title: "Fleet Distribution Analysis",
+                        description: "Aircraft distribution across fleet categories",
+                        url: "./images/fleet_distribution_histogram_professional.png"
+                    },
+                    {
+                        title: "KPI Summary Dashboard", 
+                        description: "Key performance indicators overview",
+                        url: "./images/kpi_summary_professional.png"
+                    },
+                    {
+                        title: "Time to Next Predicted Maintenance",
+                        description: "Predictive maintenance timeline analysis", 
+                        url: "./images/tnp_bar_chart_professional.png"
+                    },
+                    {
+                        title: "Aircraft Selection Interface",
+                        description: "Interactive aircraft selection mockup",
+                        url: "./images/dropdown_aircraft_mockup.png"
+                    }
+                ]
+            };
+            
+            var dataStr = JSON.stringify(galleryData, null, 2);
+            var dataBlob = new Blob([dataStr], {type: 'application/json'});
+            
+            var link = document.createElement('a');
+            link.href = URL.createObjectURL(dataBlob);
+            link.download = 'analytics-gallery-export.json';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            MessageToast.show("Gallery exported successfully");
+        },
+
         onNavigateToImport: function () {
             MessageToast.show("Navigating to Import Data");
             // Navigate to import page
+        },
+
+        // ===== MTBF ANALYSIS EVENT HANDLERS =====
+
+        /**
+         * Handles aircraft selection change in MTBF analysis
+         * @param {sap.ui.base.Event} oEvent The selection change event
+         */
+        onAircraftSelectionChange: function(oEvent) {
+            var selectedKey = oEvent.getParameter("selectedItem").getKey();
+            var selectedText = oEvent.getParameter("selectedItem").getText();
+            
+            console.log("Selected aircraft for MTBF analysis:", selectedKey);
+            MessageToast.show("Analyzing MTBF trends for " + selectedText);
+            
+            // Update the view model with selected aircraft
+            var oModel = this.getView().getModel();
+            oModel.setProperty("/selectedAircraft", selectedKey);
+            
+            // Refresh MTBF chart data for selected aircraft
+            this._updateMTBFChart(selectedKey);
+        },
+
+        /**
+         * Handles time period selection change
+         * @param {sap.ui.base.Event} oEvent The selection change event
+         */
+        onTimePeriodChange: function(oEvent) {
+            var selectedPeriod = oEvent.getParameter("item").getKey();
+            console.log("Time period changed to:", selectedPeriod);
+            
+            MessageToast.show("Updating MTBF trends for " + selectedPeriod + " view");
+            
+            // Update chart with new time period
+            this._updateChartTimePeriod(selectedPeriod);
+        },
+
+        /**
+         * Updates MTBF chart based on selected aircraft
+         * @param {string} sAircraftId The selected aircraft ID
+         * @private
+         */
+        _updateMTBFChart: function(sAircraftId) {
+            var oModel = this.getView().getModel();
+            var aAircraft = oModel.getProperty("/Aircraft");
+            var selectedAircraft = aAircraft.find(aircraft => aircraft.tailNumber === sAircraftId);
+            
+            if (selectedAircraft) {
+                // Generate sample MTBF trend data for the selected aircraft
+                var aTrendData = this._generateMTBFTrendData(selectedAircraft);
+                oModel.setProperty("/selectedAircraftMTBF", aTrendData);
+                
+                console.log("MTBF chart updated for aircraft:", sAircraftId);
+            }
+        },
+
+        /**
+         * Updates chart display based on time period
+         * @param {string} sPeriod The selected time period (weekly/monthly/quarterly)
+         * @private
+         */
+        _updateChartTimePeriod: function(sPeriod) {
+            var oModel = this.getView().getModel();
+            
+            // Generate time-appropriate labels and data
+            var aTimeLabels = this._generateTimeLabels(sPeriod);
+            var aMTBFData = this._generatePeriodMTBFData(sPeriod);
+            
+            oModel.setProperty("/chartTimeLabels", aTimeLabels);
+            oModel.setProperty("/chartMTBFData", aMTBFData);
+            
+            console.log("Chart updated for period:", sPeriod);
+        },
+
+        /**
+         * Generates MTBF trend data for a specific aircraft
+         * @param {object} oAircraft The aircraft object
+         * @returns {array} Array of trend data points
+         * @private
+         */
+        _generateMTBFTrendData: function(oAircraft) {
+            var baseMTBF = oAircraft.mtbf || 400;
+            var trendData = [];
+            
+            // Generate 6 months of trend data
+            var months = ["Aug", "Sep", "Oct", "Nov", "Dec", "Jan"];
+            
+            for (var i = 0; i < months.length; i++) {
+                // Add some variation to the base MTBF
+                var variation = (Math.random() - 0.5) * 100; // ±50 hours variation
+                var mtbfValue = Math.max(100, baseMTBF + variation);
+                
+                trendData.push({
+                    period: months[i],
+                    mtbf: Math.round(mtbfValue),
+                    aircraftModel: oAircraft.model,
+                    tailNumber: oAircraft.tailNumber
+                });
+            }
+            
+            return trendData;
+        },
+
+        /**
+         * Generates time labels based on period
+         * @param {string} sPeriod The time period
+         * @returns {array} Array of time labels
+         * @private
+         */
+        _generateTimeLabels: function(sPeriod) {
+            switch (sPeriod) {
+                case "weekly":
+                    return ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5", "Week 6"];
+                case "monthly":
+                    return ["Aug", "Sep", "Oct", "Nov", "Dec", "Jan"];
+                case "quarterly":
+                    return ["Q2", "Q3", "Q4", "Q1"];
+                default:
+                    return ["Aug", "Sep", "Oct", "Nov", "Dec", "Jan"];
+            }
+        },
+
+        /**
+         * Generates MTBF data for different time periods
+         * @param {string} sPeriod The time period
+         * @returns {array} Array of MTBF data by aircraft model
+         * @private
+         */
+        _generatePeriodMTBFData: function(sPeriod) {
+            var models = ["Boeing 737", "Airbus A320", "Boeing 777", "Boeing 787", "Airbus A330", "Airbus A321"];
+            var timeLabels = this._generateTimeLabels(sPeriod);
+            var mtbfData = [];
+            
+            models.forEach(function(model) {
+                var modelData = {
+                    model: model,
+                    data: []
+                };
+                
+                var baseMTBF = this._getBaseMTBFForModel(model);
+                
+                timeLabels.forEach(function(label) {
+                    var variation = (Math.random() - 0.5) * 100;
+                    var mtbfValue = Math.max(100, baseMTBF + variation);
+                    
+                    modelData.data.push({
+                        period: label,
+                        mtbf: Math.round(mtbfValue)
+                    });
+                });
+                
+                mtbfData.push(modelData);
+            }.bind(this));
+            
+            return mtbfData;
+        },
+
+        /**
+         * Gets base MTBF value for aircraft model
+         * @param {string} sModel The aircraft model
+         * @returns {number} Base MTBF value
+         * @private
+         */
+        _getBaseMTBFForModel: function(sModel) {
+            var baseMTBFValues = {
+                "Boeing 737": 450,
+                "Airbus A320": 380,
+                "Boeing 777": 680,
+                "Boeing 787": 750,
+                "Airbus A330": 200,
+                "Airbus A321": 380
+            };
+            
+            return baseMTBFValues[sModel] || 400;
         }
     });
 });
