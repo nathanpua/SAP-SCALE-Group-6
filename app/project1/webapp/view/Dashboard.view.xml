@@ -292,12 +292,19 @@
                                         <content>
                                             <VBox class="sapUiMediumMargin">
                                                 <!-- Status Summary -->
-                                                <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiTinyMarginBottom">
-                                                    <Text text="Showing {/Aircraft/length} aircraft" class="status-summary"/>
-                                                    <Button text="View All" 
-                                                            icon="sap-icon://arrow-right" 
-                                                            type="Transparent"
-                                                            press="onViewAllAircraft"/>
+                                                <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiMediumMarginBottom">
+                                                    <Text text="Showing {/Aircraft/length} aircraft in fleet" class="status-summary"/>
+                                                    <HBox alignItems="Center" class="sapUiTinyMarginEnd">
+                                                        <Button text="Refresh" 
+                                                                icon="sap-icon://refresh" 
+                                                                type="Transparent"
+                                                                tooltip="Refresh fleet data"
+                                                                class="sapUiTinyMarginEnd"/>
+                                                        <Button text="View All" 
+                                                                icon="sap-icon://arrow-right" 
+                                                                type="Emphasized"
+                                                                press="onViewAllAircraft"/>
+                                                    </HBox>
                                                 </HBox>
                                                 
                                                 <!-- Aircraft Status Scrollable List -->
@@ -353,7 +360,7 @@
                                                                 
                                                                 <!-- Engine Temperature -->
                                                                 <VBox class="metric-column">
-                                                                    <Label text="Engine Temp" class="metric-label-compact"/>
+                                                                    <Label text="Engine" class="metric-label-compact"/>
                                                                     <ObjectNumber number="{engineTemperature}" 
                                                                                 unit="°C"
                                                                                 state="{path: 'engineTemperature', formatter: '.formatTempState'}"
@@ -371,7 +378,7 @@
                                                                 
                                                                 <!-- Brake Wear -->
                                                                 <VBox class="metric-column">
-                                                                    <Label text="Brake Wear" class="metric-label-compact"/>
+                                                                    <Label text="Brakes" class="metric-label-compact"/>
                                                                     <ObjectNumber number="{brakeWearPercent}" 
                                                                                 unit="%"
                                                                                 state="{= ${brakeWearPercent} > 85 ? 'Error' : ${brakeWearPercent} > 70 ? 'Warning' : 'Success'}"
@@ -379,17 +386,9 @@
                                                                 </VBox>
                                                             </HBox>
                                                             
-                                                            <!-- Right Section: Additional Stats & Alerts -->
+                                                            <!-- Right Section: Additional Stats & Actions -->
                                                             <HBox class="additional-stats-section" alignItems="Center">
-                                                                <!-- Oil Particles & MTBF -->
-                                                                <VBox class="metric-column">
-                                                                    <Label text="Oil Particles" class="metric-label-compact"/>
-                                                                    <ObjectNumber number="{oilParticleCount}" 
-                                                                                unit="/ml"
-                                                                                state="{= ${oilParticleCount} > 1000 ? 'Error' : ${oilParticleCount} > 800 ? 'Warning' : 'Success'}"
-                                                                                class="metric-value-compact"/>
-                                                                </VBox>
-                                                                
+                                                                <!-- MTBF -->
                                                                 <VBox class="metric-column">
                                                                     <Label text="MTBF" class="metric-label-compact"/>
                                                                     <ObjectNumber number="{mtbf}" 
@@ -402,9 +401,9 @@
                                                                     <Label text="Alerts" class="metric-label-compact"/>
                                                                     <HBox alignItems="Center" class="alert-indicator">
                                                                         <core:Icon src="{= ${predictiveFlags}.length > 0 ? 'sap-icon://alert' : 'sap-icon://accept'}" 
-                                                                                  color="{= ${predictiveFlags}.length > 0 ? '#e53935' : '#4caf50'}"
+                                                                                  color="{= ${predictiveFlags}.length > 0 ? '#f44336' : '#4caf50'}"
                                                                                   class="sapUiTinyMarginEnd"/>
-                                                                        <Text text="{= ${predictiveFlags}.length > 0 ? ${predictiveFlags}.length + ' alerts' : 'Normal'}" 
+                                                                        <Text text="{= ${predictiveFlags}.length > 0 ? ${predictiveFlags}.length : '0'}" 
                                                                               class="alert-count"/>
                                                                     </HBox>
                                                                 </VBox>
